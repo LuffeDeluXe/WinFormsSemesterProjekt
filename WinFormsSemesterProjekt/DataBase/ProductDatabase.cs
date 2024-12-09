@@ -53,7 +53,7 @@ namespace WinFormsSemesterProjekt.DataBase
 
 		public List<Product> FindAllProducts()
 		{
-			List<Product> products = new List<Product>();
+			List<Product> listOfProducts = new List<Product>();
 			
 			string query = "SELECT * FROM Product";
 
@@ -70,10 +70,38 @@ namespace WinFormsSemesterProjekt.DataBase
 				Convert.ToInt32(reader["Price"]),
 				Convert.ToInt32(reader["Stock"])
 				);
-				products.Add(product);
+				listOfProducts.Add(product);
 			}
 
-			return products;
+			return listOfProducts;
+		}
+
+		public List<Product> SortProductsByCategory(string category)
+		{
+			var listOfCategoryProducts = new List<Product>();
+
+			string query = "SELECT * FROM Product " +
+						   "WHERE Category = @Category";
+
+			var command = new SqlCommand(query, connection);
+
+			command.Parameters.AddWithValue("@Category", category);
+
+			SqlDataReader reader = command.ExecuteReader();
+
+			while (reader.Read())
+			{
+				var product = new Product(
+				reader["Name"].ToString(),
+				reader["Category"].ToString(),
+				reader["Desription"].ToString(),
+				Convert.ToInt32(reader["Price"]),
+				Convert.ToInt32(reader["Stock"])
+				);
+				listOfCategoryProducts.Add(product);
+			}
+
+			return listOfCategoryProducts;
 		}
 
 		public void UpdateProduct(Product product)
