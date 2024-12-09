@@ -6,5 +6,12 @@ namespace WinFormsSemesterProjekt
         {
             InitializeComponent();
         }
+
+        private void buttonProducts_Click(object sender, EventArgs e)
+        {
+            Products products = new Products();
+            products.Show();
+            this.Hide();
+        }
     }
 }
