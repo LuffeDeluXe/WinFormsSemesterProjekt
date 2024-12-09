@@ -9,14 +9,13 @@ namespace WinformsSemesterprojekt.Models
     public class Order
     {
         public int OrderID { get; private set; }
-        public int ProductLineID { get; set; }
         public int CustomerID { get; set; }
         public DateTime OrderDate { get; set; }
+
 
         public Order(int orderID, int productLineID, int customerID, DateTime orderDate)
         {
             OrderID = orderID;
-            ProductLineID = productLineID;
             CustomerID = customerID;
             OrderDate = orderDate;
         }

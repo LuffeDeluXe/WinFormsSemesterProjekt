@@ -8,18 +8,42 @@ using WinformsSemesterprojekt.Models;
 
 namespace WinFormsSemesterProjekt.DataBase
 {
-    public class DatabaseManager
+    internal abstract class DatabaseManager
     {
-        string connectionString = "Data Source=localhost;" +
+        protected const string _ConnectionString = "Data Source=localhost;" +
                                   "Initial Catalog=ProProduction;" +
                                   "Integrated Security=SSPI;" +
                                   "TrustServerCertificate=true";
 
-        public int AddProduct(Product product)
-        {
-            using var connection = new SqlConnection(connectionString);
+        protected static SqlConnection connection = new SqlConnection(_ConnectionString);
 
-            return 0;
+
+        /// <summary>
+        /// Opens, Execute and Close, NonQueries. Returns the number of rows affected by this SQL
+        /// </summary>
+        /// <param name="command"></param>
+        protected static int ExecuteNonQuery(SqlCommand command)
+        {
+            int numberOfRowsAffected = 0;
+            connection.Open();
+            numberOfRowsAffected = command.ExecuteNonQuery();
+            connection.Close();
+            return numberOfRowsAffected;
         }
+
+        /// <summary>
+        /// Opens, Execute and returns the ID from Database, and closes when out of scope
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        protected static int ExecuteScalar(SqlCommand command)
+        {
+            int id = 0;
+            connection.Open();
+            id = (int)command.ExecuteScalar();
+            connection.Close();
+            return id;
+        }
+
     }
 }
