@@ -130,6 +130,7 @@
             buttonNewProduct.TabIndex = 7;
             buttonNewProduct.Text = "Nyt produkt";
             buttonNewProduct.UseVisualStyleBackColor = false;
+            buttonNewProduct.Click += buttonNewProduct_Click;
             // 
             // buttonEditProduct
             // 
