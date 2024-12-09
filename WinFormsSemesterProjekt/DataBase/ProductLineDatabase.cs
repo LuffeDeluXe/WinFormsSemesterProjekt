@@ -13,7 +13,7 @@ namespace WinFormsSemesterProjekt.DataBase
         public static int UploadToDatabase(int orderID, int productID, int amount)
         {
             SqlCommand command = connection.CreateCommand();
-            // Command is inheret from Database.cs as a protected field
+            // Command is inheret from DatabaseManager.cs as a protected field
             string sql =
                 "INSERT INTO ProductLine (OrderID, ProductID, Amount) " +
                 "OUTPUT INSERTED.ProductLine.ID " +
@@ -75,7 +75,7 @@ namespace WinFormsSemesterProjekt.DataBase
             return ProductLineList;
         }
 
-        public static void UpdateAmount(ProductLine productLine, int newQuantity)
+        public static void UpdateAmount(int productLineId, int newAmount)
         {
             SqlCommand command = connection.CreateCommand();
             command.CommandText =
@@ -83,20 +83,20 @@ namespace WinFormsSemesterProjekt.DataBase
                 "Amount = @Amount, " +
                 "WHERE ProductLineID = @ProductLineID";
 
-            command.Parameters.AddWithValue("@Amount", (productLine.Amount + newQuantity));
-            command.Parameters.AddWithValue("@Amount", productLine.ProductLineID);
+            command.Parameters.AddWithValue("@Amount", newAmount);
+            command.Parameters.AddWithValue("@ProductLineID", productLineId);
 
             DatabaseManager.ExecuteNonQuery(command);
         }
 
-        public static bool DeleteProductLine(ProductLine productLine)
+        public static bool DeleteProductLine(int productLineId)
         {
             SqlCommand command = connection.CreateCommand();
             string sql =
                 "DELETE ProductLine WHERE ProductLineID = @ProductLineID";
 
             command.CommandText = sql;
-            command.Parameters.AddWithValue("@ProductLineID", productLine.ProductLineID);
+            command.Parameters.AddWithValue("@ProductLineID", productLineId);
             int numberOfAffectedRows = DatabaseManager.ExecuteNonQuery(command);
 
             if (numberOfAffectedRows > 0)
