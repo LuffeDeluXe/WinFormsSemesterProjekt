@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinformsSemesterprojekt.Models;
 
-namespace WinformsSemesterprojekt.Models
+namespace WinFormsSemesterProjekt.DataBase
 {
     public class DatabaseManager
     {
