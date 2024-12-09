@@ -15,9 +15,8 @@ namespace WinformsSemesterprojekt.Models
         public double UnitPrice { get; set; }
         public int Stock { get; set; }
 
-		public Product(int productID, string productName, string category, string description, double unitPrice, int stock)
+		public Product(string productName, string category, string description, double unitPrice, int stock)
 		{
-			ProductID = productID;
 			ProductName = productName;
 			Category = category;
 			Description = description;
