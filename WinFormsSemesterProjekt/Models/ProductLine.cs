@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinFormsSemesterProjekt.DataBase;
 
 namespace WinformsSemesterprojekt.Models
 {
@@ -15,6 +16,7 @@ namespace WinformsSemesterprojekt.Models
 
         public ProductLine(int orderID, int productID, int amount)
         {
+            ProductLineID = ProductLineDatabase.UploadToDatabase(orderID, productID, amount);
             OrderID = orderID;
             ProductID = productID;
             Amount = amount;
