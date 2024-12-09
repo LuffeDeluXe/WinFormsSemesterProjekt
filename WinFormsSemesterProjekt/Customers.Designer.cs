@@ -130,6 +130,7 @@
             searchBar.Name = "searchBar";
             searchBar.Size = new Size(375, 27);
             searchBar.TabIndex = 35;
+            searchBar.Leave += searchBar_Leave;
             // 
             // buttonMainMenu
             // 
