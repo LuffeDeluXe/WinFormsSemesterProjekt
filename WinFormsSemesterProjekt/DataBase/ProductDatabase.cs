@@ -111,22 +111,24 @@ namespace WinFormsSemesterProjekt.DataBase
 			return listOfCategoryProducts;
 		}
 
-		public static void UpdateProduct(Product product)
+		public static void UpdateProduct(Product product, string name, string category, string desription, int unitPrice, int stock)
 		{
 			string query = "UPDATE Product SET " +
-						   "Name = @Name" +
-						   "Category = @Category" +
-						   "Desription = @Desription" +
-						   "Price = @Price" +
-						   "Stock = @Stock";
+						   "WHERE ProductID = @ProductID " +
+						   "Name = @Name " +
+						   "Category = @Category " +
+						   "Desription = @Desription " +
+						   "Price = @Price " +
+						   "Stock = @Stock ";
 
 			var command = new SqlCommand(query, connection);
 
-			command.Parameters.AddWithValue("@Name", product.ProductName);
-			command.Parameters.AddWithValue("@Category", product.Category);
-			command.Parameters.AddWithValue("@Desription", product.Description);
-			command.Parameters.AddWithValue("@Price", product.UnitPrice);
-			command.Parameters.AddWithValue("@Stock", product.Stock);
+			command.Parameters.AddWithValue("@ProductID", product.ProductID);
+			command.Parameters.AddWithValue("@Name", name);
+			command.Parameters.AddWithValue("@Category", category);
+			command.Parameters.AddWithValue("@Desription", desription);
+			command.Parameters.AddWithValue("@Price", unitPrice);
+			command.Parameters.AddWithValue("@Stock", stock);
 
 			DatabaseManager.ExecuteNonQuery(command);
 		}
