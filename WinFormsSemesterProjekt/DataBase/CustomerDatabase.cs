@@ -14,24 +14,6 @@ namespace WinFormsSemesterProjekt.DataBase
         /// Creates a customer in the database.
         /// </summary>
         /// <param name="customer"></param>
-        public void CreateCustomer(Customer customer)
-        {
-            SqlCommand command = connection.CreateCommand();
-
-            string sql =
-                "INSERT INTO Customer (FirstName, LastName, PhoneNumber, Email) " +
-                "VALUES (@FirstName, @LastName, @PhoneNumber, @Email, )";
-
-            command.CommandText = sql;
-
-            command.Parameters.AddWithValue("@FirstName", customer.FirstName);
-            command.Parameters.AddWithValue("@LastName", customer.LastName);
-            command.Parameters.AddWithValue("@PhoneNumber", customer.PhoneNumber);
-            command.Parameters.AddWithValue("@Email", customer.Email);
-
-            DatabaseManager.ExecuteNonQuery(command);
-        }
-
         public static int CreateCustomer(string firstName, string lastName, int phoneNumber, string email)
         {
             SqlCommand command = connection.CreateCommand();
@@ -39,7 +21,7 @@ namespace WinFormsSemesterProjekt.DataBase
             string sql =
                 "INSERT INTO Customer (FirstName, LastName, PhoneNumber, Email) " +
                 "OUTPUT INSERTED.CustomerID " +
-                "VALUES (@FirstName, @LastName, @PhoneNumber, @Email, )";
+                "VALUES (@FirstName, @LastName, @PhoneNumber, @Email)";
 
             command.CommandText = sql;
 
@@ -56,19 +38,17 @@ namespace WinFormsSemesterProjekt.DataBase
         /// </summary>
         /// <param name="CustomerID"></param>
         /// <returns></returns>
-        public Customer RetrieveASingleCustomers(int CustomerID)
+        public static Customer RetrieveASingleCustomers(int CustomerID)
         {
             var customers = new List<Customer>();
 
             connection.Open();
 
-            // Jeg kan se at både Christinas klasse "Customer" og "DatabaseManager" er sat til public???
             SqlCommand command = connection.CreateCommand();
 
             string sql =
                 (
-                "SELECT [*] Customer_ID, FirstName, LastName, PhoneNumber, Email" +
-                "FROM Customer" +
+                "SELECT * FROM Customer" +
                 "WHERE CustomerID = @CustomerID"
                 );
 
@@ -89,13 +69,10 @@ namespace WinFormsSemesterProjekt.DataBase
             return customers[0];
         }
 
-        public List<Customer> RetrieveListOfAllCustomers()
+        public static List<Customer> RetrieveListOfAllCustomers()
         {
             var customers = new List<Customer>();
 
-            connection.Open();
-
-            // Jeg kan se at både Christinas klasse "Customer" og "DatabaseManager" er sat til public???
             SqlCommand command = connection.CreateCommand();
 
             string sql =
@@ -105,15 +82,17 @@ namespace WinFormsSemesterProjekt.DataBase
 
             command.CommandText = sql;
 
+            connection.Open();
             using var reader = command.ExecuteReader();
 
             while (reader.Read())
             {
 
                 var ReadCustomer = new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
+                customers.Add(ReadCustomer);
 
             }
-            // Mangler vi ikke en connection.Close();
+
             connection.Close();
 
             return customers;
@@ -124,7 +103,7 @@ namespace WinFormsSemesterProjekt.DataBase
         /// Deletes a customer if given the correct CustomerID of said customer.
         /// </summary>
         /// <param name="customer"></param>
-        public void DeleteCustomer(Customer customer)
+        public static void DeleteCustomer(Customer customer)
         {
             SqlCommand command = connection.CreateCommand();
 
@@ -138,13 +117,13 @@ namespace WinFormsSemesterProjekt.DataBase
             DatabaseManager.ExecuteNonQuery(command);
 
             //Forklar mig lige numberOfAffectedRows > 0???
-
         }
+
         /// <summary>
         /// This method has the ability to update one or all parameters of the individual customer information.
         /// </summary>
         /// <param name="customer"></param>
-        public void UpdateCustomerInformation(Customer customer)
+        public static void UpdateCustomerInformation(Customer customer)
         {
             SqlCommand command = connection.CreateCommand();
 

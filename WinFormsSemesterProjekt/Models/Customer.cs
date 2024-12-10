@@ -18,6 +18,14 @@ namespace WinformsSemesterprojekt
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
 
+        /// <summary>
+        /// Use only when reading from database
+        /// </summary>
+        /// <param name="customerID"></param>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="email"></param>
         public Customer (int customerID, string firstName, string lastName, int phoneNumber, string email)
         {
             CustomerID = customerID;
@@ -27,8 +35,17 @@ namespace WinformsSemesterprojekt
             Email = email;
         }
 
+        /// <summary>
+        /// Use when creating a new Customer, NOT when reading from database. Constructor uploads the customer to the database. 
+        /// Creates and then retrieves the correct ID
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="email"></param>
         public Customer(string firstName, string lastName, int phoneNumber, string email)
         {
+            //CustomerID is created and retrived from databasen using the CreateCustomer Method
             CustomerID = CustomerDatabase.CreateCustomer(firstName, lastName, phoneNumber, email);
             FirstName = firstName;
             LastName = lastName;
@@ -36,19 +53,16 @@ namespace WinformsSemesterprojekt
             Email = email;
         }
 
-        public void UpdateEmail(string newEmail)
+        public static void UpdateCustomerEmail(Customer customer, string newEmail)
         {
             if (newEmail.Contains("@"))
             {
-                Email = newEmail;
-            }
-            else
-            {
-                Console.WriteLine("Please, enter a valid email");
+                customer.Email = newEmail;
+                CustomerDatabase.UpdateCustomerInformation(customer);
             }
         }
 
-        public void UpdateFirstName(string newFirstName)
+        public static void UpdateCustomerFirstName(string newFirstName)
         {
             if (newFirstName == "Hitler" || newFirstName == "Putin")
             {
