@@ -60,8 +60,9 @@
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(154, 29);
             buttonAdd.TabIndex = 25;
-            buttonAdd.Text = "Opret produkt";
+            buttonAdd.Text = "Opret kunde";
             buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // label3
             // 

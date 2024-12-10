@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsSemesterProjekt.GUI.PopUps;
 
 namespace WinFormsSemesterProjekt.GUI
 {
@@ -22,6 +23,12 @@ namespace WinFormsSemesterProjekt.GUI
             Customers customers = new Customers();
             customers.Show();
             this.Hide();
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            CreatedCustomer createdCustomer = new CreatedCustomer();
+            createdCustomer.Show();
         }
     }
 }
