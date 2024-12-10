@@ -30,7 +30,6 @@
         {
             radioButtonCompany = new RadioButton();
             radioButtonPrivateCustomer = new RadioButton();
-            buttonSortBy = new Button();
             buttonDeleteCustomer = new Button();
             buttonEditCustomer = new Button();
             buttonNewCustomer = new Button();
@@ -42,6 +41,7 @@
             label2 = new Label();
             label1 = new Label();
             listBox1 = new ListBox();
+            comboBoxSortby = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -66,18 +66,6 @@
             radioButtonPrivateCustomer.TabStop = true;
             radioButtonPrivateCustomer.Text = "Privatkunde";
             radioButtonPrivateCustomer.UseVisualStyleBackColor = true;
-            // 
-            // buttonSortBy
-            // 
-            buttonSortBy.BackColor = Color.Black;
-            buttonSortBy.FlatStyle = FlatStyle.Flat;
-            buttonSortBy.ForeColor = SystemColors.ControlLightLight;
-            buttonSortBy.Location = new Point(694, 59);
-            buttonSortBy.Name = "buttonSortBy";
-            buttonSortBy.Size = new Size(94, 29);
-            buttonSortBy.TabIndex = 40;
-            buttonSortBy.Text = "Sorter efter";
-            buttonSortBy.UseVisualStyleBackColor = false;
             // 
             // buttonDeleteCustomer
             // 
@@ -195,16 +183,29 @@
             listBox1.Size = new Size(213, 164);
             listBox1.TabIndex = 45;
             // 
+            // comboBoxSortby
+            // 
+            comboBoxSortby.BackColor = Color.Black;
+            comboBoxSortby.FlatStyle = FlatStyle.Flat;
+            comboBoxSortby.ForeColor = SystemColors.ControlLightLight;
+            comboBoxSortby.FormattingEnabled = true;
+            comboBoxSortby.Items.AddRange(new object[] { "Fornavn: A-Å", "Fornavn: Å-A", "Efternavn: A-Å", "Efternavn: Å-A", "Område: A-Å", "Område: Å-A" });
+            comboBoxSortby.Location = new Point(670, 59);
+            comboBoxSortby.Name = "comboBoxSortby";
+            comboBoxSortby.Size = new Size(118, 28);
+            comboBoxSortby.TabIndex = 46;
+            comboBoxSortby.Text = "Sorter efter";
+            // 
             // Customers
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(800, 450);
+            Controls.Add(comboBoxSortby);
             Controls.Add(listBox1);
             Controls.Add(radioButtonCompany);
             Controls.Add(radioButtonPrivateCustomer);
-            Controls.Add(buttonSortBy);
             Controls.Add(buttonDeleteCustomer);
             Controls.Add(buttonEditCustomer);
             Controls.Add(buttonNewCustomer);
@@ -226,7 +227,6 @@
 
         private RadioButton radioButtonCompany;
         private RadioButton radioButtonPrivateCustomer;
-        private Button buttonSortBy;
         private Button buttonDeleteCustomer;
         private Button buttonEditCustomer;
         private Button buttonNewCustomer;
@@ -238,5 +238,6 @@
         private Label label2;
         private Label label1;
         private ListBox listBox1;
+        private ComboBox comboBoxSortby;
     }
 }

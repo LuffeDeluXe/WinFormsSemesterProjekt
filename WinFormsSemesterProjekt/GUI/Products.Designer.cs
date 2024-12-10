@@ -42,7 +42,7 @@
             radioButtonAvailable = new RadioButton();
             radioButtonUnavailable = new RadioButton();
             buttonExport = new Button();
-            buttonSortBy = new Button();
+            comboBoxSortby = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -197,17 +197,18 @@
             buttonExport.Text = "Eksporter lagerstatus til .txt";
             buttonExport.UseVisualStyleBackColor = false;
             // 
-            // buttonSortBy
+            // comboBoxSortby
             // 
-            buttonSortBy.BackColor = Color.Black;
-            buttonSortBy.FlatStyle = FlatStyle.Flat;
-            buttonSortBy.ForeColor = SystemColors.ControlLightLight;
-            buttonSortBy.Location = new Point(694, 57);
-            buttonSortBy.Name = "buttonSortBy";
-            buttonSortBy.Size = new Size(94, 29);
-            buttonSortBy.TabIndex = 10;
-            buttonSortBy.Text = "Sorter efter";
-            buttonSortBy.UseVisualStyleBackColor = false;
+            comboBoxSortby.BackColor = Color.Black;
+            comboBoxSortby.FlatStyle = FlatStyle.Flat;
+            comboBoxSortby.ForeColor = SystemColors.ControlLightLight;
+            comboBoxSortby.FormattingEnabled = true;
+            comboBoxSortby.Items.AddRange(new object[] { "Navn: A-Å", "Navn: Å-A", "Kategori: A-Å", "Kategori: Å-A", "Pris: Stigende", "Pris: Faldende" });
+            comboBoxSortby.Location = new Point(670, 58);
+            comboBoxSortby.Name = "comboBoxSortby";
+            comboBoxSortby.Size = new Size(118, 28);
+            comboBoxSortby.TabIndex = 47;
+            comboBoxSortby.Text = "Sorter efter";
             // 
             // Products
             // 
@@ -215,11 +216,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(800, 450);
+            Controls.Add(comboBoxSortby);
             Controls.Add(buttonExport);
             Controls.Add(radioButtonUnavailable);
             Controls.Add(radioButtonAvailable);
             Controls.Add(listBoxCategories);
-            Controls.Add(buttonSortBy);
             Controls.Add(buttonDeleteProduct);
             Controls.Add(buttonEditProduct);
             Controls.Add(buttonNewProduct);
@@ -253,6 +254,6 @@
         private RadioButton radioButtonAvailable;
         private RadioButton radioButtonUnavailable;
         private Button buttonExport;
-        private Button buttonSortBy;
+        private ComboBox comboBoxSortby;
     }
 }
