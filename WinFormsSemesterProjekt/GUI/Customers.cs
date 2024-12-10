@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsSemesterProjekt.GUI.PopUps;
 
 namespace WinFormsSemesterProjekt
 {
@@ -33,6 +34,12 @@ namespace WinFormsSemesterProjekt
                 searchBar.Text = "";
                 searchBar.ForeColor = Color.LightGray;
             }
+        }
+
+        private void buttonDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            ConfirmDeletionCustomer confirmDeletionCustomer = new ConfirmDeletionCustomer();
+            confirmDeletionCustomer.Show();
         }
     }
 }

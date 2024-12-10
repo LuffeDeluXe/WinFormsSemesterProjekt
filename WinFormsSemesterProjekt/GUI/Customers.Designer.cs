@@ -89,6 +89,7 @@
             buttonDeleteCustomer.TabIndex = 39;
             buttonDeleteCustomer.Text = "Slet valgt kunde";
             buttonDeleteCustomer.UseVisualStyleBackColor = false;
+            buttonDeleteCustomer.Click += buttonDeleteCustomer_Click;
             // 
             // buttonEditCustomer
             // 
