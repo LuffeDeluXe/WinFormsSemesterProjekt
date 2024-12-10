@@ -41,6 +41,7 @@ namespace WinFormsSemesterProjekt.DataBase
 			SqlDataReader reader = command.ExecuteReader();
 
 			var product = new Product(
+			Convert.ToInt32(reader["ProductID"]),
 			reader["Name"].ToString(),
 			reader["Category"].ToString(),
 			reader["Desription"].ToString(),
@@ -66,6 +67,7 @@ namespace WinFormsSemesterProjekt.DataBase
 			while (reader.Read())
 			{
 				var product = new Product(
+				Convert.ToInt32(reader["ProductID"]),
 				reader["Name"].ToString(),
 				reader["Category"].ToString(),
 				reader["Desription"].ToString(),
@@ -96,6 +98,7 @@ namespace WinFormsSemesterProjekt.DataBase
 			while (reader.Read())
 			{
 				var product = new Product(
+				Convert.ToInt32(reader["ProductID"]),
 				reader["Name"].ToString(),
 				reader["Category"].ToString(),
 				reader["Desription"].ToString(),
