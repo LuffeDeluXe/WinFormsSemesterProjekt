@@ -13,7 +13,7 @@ namespace WinFormsSemesterProjekt.DataBase
         public static int CreateNewOrder(int customerID, double totalPrice, DateTime deliveryDate, string orderStatus, DateTime orderDate, string shippingMethod)
         {
             string query =
-                "INSERT INTO Order (CustomerID, OrderDate, DeliveryDate, OrderStatus, TotalPrice, ShippingMethod)" +
+                "INSERT INTO Order (CustomerID, OrderDate, DeliveryDate, OrderStatus, TotalPrice, ShippingMethod) " +
                 "VALUES (@CustomerID, @OrderDate, @DeliveryDate, @OrderStatus, @TotalPrice, @ShippingMethod)";
 
             var command = new SqlCommand(query, connection);
@@ -33,7 +33,7 @@ namespace WinFormsSemesterProjekt.DataBase
         public static Order FindOrder(int orderID)
         {
             string query =
-                "SELECT * FROM Order" +
+                "SELECT * FROM Order " +
                 "WHERE OrderID = @OrderID";
 
             var command = new SqlCommand(query, connection);
@@ -88,11 +88,12 @@ namespace WinFormsSemesterProjekt.DataBase
         public static void UpdateOrder(Order order)
         {
             string query =
-                "UPDATE Order SET" +
-                "DeliveryDate = @DeliveryDate" +
-                "OrderStatus = @OrderStatus" +
-                "TotalPrice = @TotalPrice" +
-                "ShippingMethod = @ShippingMethod";
+                "UPDATE Order SET " +
+                "DeliveryDate = @DeliveryDate " +
+                "OrderStatus = @OrderStatus " +
+                "TotalPrice = @TotalPrice " +
+                "ShippingMethod = @ShippingMethod " +
+                "WHERE OrderID = @OrderID";
 
             var command = new SqlCommand(query, connection);
 
@@ -100,6 +101,7 @@ namespace WinFormsSemesterProjekt.DataBase
             command.Parameters.AddWithValue("@OrderStatus", order.OrderStatus);
             command.Parameters.AddWithValue("@TotalPrice", order.TotalPrice);
             command.Parameters.AddWithValue("@ShippingMethod", order.ShippingMethod);
+            command.Parameters.AddWithValue("@OrderID", order.OrderID);
 
             DatabaseManager.ExecuteNonQuery(command);
         }
@@ -107,7 +109,7 @@ namespace WinFormsSemesterProjekt.DataBase
         public static int DeleteOrder(int orderId)
         {
             string query =
-                "DELETE Order" +
+                "DELETE Order " +
                 "WHERE OrderID = @OrderID";
 
             var command = new SqlCommand(query, connection);
