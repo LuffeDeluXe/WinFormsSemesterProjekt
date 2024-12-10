@@ -11,13 +11,14 @@ namespace WinFormsSemesterProjekt.DataBase
     internal class CustomerDatabase : DatabaseManager
     {
         /// <summary>
-        /// Creates a customer in only database.
+        /// Creates a customer in only database and returns the ID on inserted Customer
         /// </summary>
         /// <param name="customer"></param>
         public static int CreateCustomer(string firstName, string lastName, int phoneNumber, string email)
         {
             SqlCommand command = connection.CreateCommand();
 
+            // OUTPUT Inserted.CustomerID just means that the database will return a output which in this case would be CustomerID using the ExecuteScalar method
             string sql =
                 "INSERT INTO Customer (FirstName, LastName, PhoneNumber, Email) " +
                 "OUTPUT INSERTED.CustomerID " +

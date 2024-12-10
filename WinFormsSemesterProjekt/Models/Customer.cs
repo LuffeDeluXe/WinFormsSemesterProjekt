@@ -13,13 +13,13 @@ namespace WinformsSemesterprojekt
     internal class Customer : DatabaseManager
     {
         public int CustomerID { get; private set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int PhoneNumber { get; set; }
-        public string Email { get; set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public int PhoneNumber { get; private set; }
+        public string Email { get; private set; }
 
         /// <summary>
-        /// Use only when reading from database.
+        /// Use only when reading from database
         /// </summary>
         /// <param name="customerID"></param>
         /// <param name="firstName"></param>
@@ -37,7 +37,7 @@ namespace WinformsSemesterprojekt
 
         /// <summary>
         /// Use when creating a new Customer, NOT when reading from database. Constructor uploads the customer to the database. 
-        /// Creates and then retrieves the correct ID.
+        /// Creates and then retrieves the correct ID
         /// </summary>
         /// <param name="firstName"></param>
         /// <param name="lastName"></param>
@@ -52,8 +52,9 @@ namespace WinformsSemesterprojekt
             PhoneNumber = phoneNumber;
             Email = email;
         }
+
         /// <summary>
-        /// This method has the ability to update one or all parameters of the individual customer information.
+        /// This method has the ability to update one or all parameters of the individual customer information and saves the changes in the database
         /// </summary>
         /// <param name="customer"></param>
         /// <param name="firstName"></param>
@@ -70,8 +71,12 @@ namespace WinformsSemesterprojekt
             {
                 customer.PhoneNumber = phoneNumber;   
             }
+
+
             CustomerDatabase.UpdateCustomerInformation(customer);
         }
+
+
         /// <summary>
         /// Checks if phonenumber is exactly 8 long
         /// </summary>
