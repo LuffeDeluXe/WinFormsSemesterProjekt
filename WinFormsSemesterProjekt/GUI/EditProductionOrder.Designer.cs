@@ -91,6 +91,7 @@
             buttonUpdate.TabIndex = 40;
             buttonUpdate.Text = "Opdater ordre";
             buttonUpdate.UseVisualStyleBackColor = true;
+            buttonUpdate.Click += buttonUpdate_Click;
             // 
             // label1
             // 

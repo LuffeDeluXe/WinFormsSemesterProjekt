@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsSemesterProjekt.GUI.PopUps;
 
 namespace WinFormsSemesterProjekt.GUI
 {
@@ -22,6 +23,12 @@ namespace WinFormsSemesterProjekt.GUI
             Orders orders = new Orders();
             orders.Show();
             this.Hide();
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            UpdatedOrder updatedOrder = new UpdatedOrder();
+            updatedOrder.Show();
         }
     }
 }

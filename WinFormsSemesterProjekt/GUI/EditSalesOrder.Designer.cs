@@ -120,6 +120,7 @@
             buttonUpdate.TabIndex = 35;
             buttonUpdate.Text = "Opdater";
             buttonUpdate.UseVisualStyleBackColor = true;
+            buttonUpdate.Click += buttonUpdate_Click;
             // 
             // label1
             // 
