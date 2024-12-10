@@ -43,13 +43,80 @@ namespace WinFormsSemesterProjekt.DataBase
             SqlDataReader reader = command.ExecuteReader();
 
             var order = new Order(
+                Convert.ToInt32(reader["OrderID"]),
                 Convert.ToInt32(reader["CustomerID"]),
-                Convert.ToDateTime(reader["OrderDate"]).ToString("dd/MM/yyyy"),
-                Convert.ToDateTime(reader["DeliveryDate"]).ToString("dd/MM/yyyy"),
+                Convert.ToDateTime(reader["OrderDate"]),
+                Convert.ToDateTime(reader["DeliveryDate"]),
                 reader["OrderStatus"].ToString(),
                 Convert.ToInt32(reader["TotalPrice"]),
-                reader[""].ToString);
+                reader["ShippingMethod"].ToString());
 
+            connection.Close();
+
+            return order;
+        }
+
+        public static List<Order> FindAllOrders()
+        {
+            List<Order> listOfOrders = new List<Order>();
+
+            string query = "SELECT * FROM Order";
+
+            var command = new SqlCommand(query, connection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var order = new Order(
+                Convert.ToInt32(reader["OrderID"]),
+                Convert.ToInt32(reader["CustomerID"]),
+                Convert.ToDateTime(reader["OrderDate"]),
+                Convert.ToDateTime(reader["DeliveryDate"]),
+                reader["OrderStatus"].ToString(),
+                Convert.ToInt32(reader["TotalPrice"]),
+                reader["ShippingMethod"].ToString());
+
+                listOfOrders.Add(order);
+            }
+
+            connection.Close();
+
+            return listOfOrders;
+        }
+
+        public static void UpdateOrder(Order order)
+        {
+            string query =
+                "UPDATE Order SET" +
+                "DeliveryDate = @DeliveryDate" +
+                "OrderStatus = @OrderStatus" +
+                "TotalPrice = @TotalPrice" +
+                "ShippingMethod = @ShippingMethod";
+
+            var command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@DeliveryDate", order.DeliveryDate);
+            command.Parameters.AddWithValue("@OrderStatus", order.OrderStatus);
+            command.Parameters.AddWithValue("@TotalPrice", order.TotalPrice);
+            command.Parameters.AddWithValue("@ShippingMethod", order.ShippingMethod);
+
+            DatabaseManager.ExecuteNonQuery(command);
+        }
+
+        public static int DeleteOrder(int orderId)
+        {
+            string query =
+                "DELETE Order" +
+                "WHERE OrderID = @OrderID";
+
+            var command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@OrderID", orderId);
+
+            int rowsAffected = DatabaseManager.ExecuteNonQuery(command);
+
+            return rowsAffected;
         }
     }
 }
