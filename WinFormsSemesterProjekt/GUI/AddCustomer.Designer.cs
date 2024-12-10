@@ -42,6 +42,8 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            textBoxArea = new TextBox();
+            label7 = new Label();
             SuspendLayout();
             // 
             // buttonReturn
@@ -67,7 +69,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(213, 162);
+            label3.Location = new Point(213, 130);
             label3.Name = "label3";
             label3.Size = new Size(74, 20);
             label3.TabIndex = 20;
@@ -76,7 +78,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(223, 119);
+            label2.Location = new Point(223, 87);
             label2.Name = "label2";
             label2.Size = new Size(64, 20);
             label2.TabIndex = 19;
@@ -84,14 +86,14 @@
             // 
             // textBoxLastName
             // 
-            textBoxLastName.Location = new Point(288, 159);
+            textBoxLastName.Location = new Point(288, 127);
             textBoxLastName.Name = "textBoxLastName";
             textBoxLastName.Size = new Size(233, 27);
             textBoxLastName.TabIndex = 16;
             // 
             // textBoxFirstName
             // 
-            textBoxFirstName.Location = new Point(288, 116);
+            textBoxFirstName.Location = new Point(288, 84);
             textBoxFirstName.Name = "textBoxFirstName";
             textBoxFirstName.Size = new Size(233, 27);
             textBoxFirstName.TabIndex = 15;
@@ -108,14 +110,14 @@
             // 
             // textBoxPhoneNumber
             // 
-            textBoxPhoneNumber.Location = new Point(288, 204);
+            textBoxPhoneNumber.Location = new Point(288, 172);
             textBoxPhoneNumber.Name = "textBoxPhoneNumber";
             textBoxPhoneNumber.Size = new Size(233, 27);
             textBoxPhoneNumber.TabIndex = 27;
             // 
             // textBoxEmail
             // 
-            textBoxEmail.Location = new Point(288, 252);
+            textBoxEmail.Location = new Point(288, 220);
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.Size = new Size(233, 27);
             textBoxEmail.TabIndex = 28;
@@ -123,7 +125,7 @@
             // radioButtonPrivateCustomer
             // 
             radioButtonPrivateCustomer.AutoSize = true;
-            radioButtonPrivateCustomer.Location = new Point(324, 326);
+            radioButtonPrivateCustomer.Location = new Point(324, 339);
             radioButtonPrivateCustomer.Name = "radioButtonPrivateCustomer";
             radioButtonPrivateCustomer.Size = new Size(67, 24);
             radioButtonPrivateCustomer.TabIndex = 29;
@@ -134,7 +136,7 @@
             // radioButtonCompany
             // 
             radioButtonCompany.AutoSize = true;
-            radioButtonCompany.Location = new Point(400, 326);
+            radioButtonCompany.Location = new Point(400, 339);
             radioButtonCompany.Name = "radioButtonCompany";
             radioButtonCompany.Size = new Size(78, 24);
             radioButtonCompany.TabIndex = 30;
@@ -145,7 +147,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(171, 207);
+            label4.Location = new Point(171, 175);
             label4.Name = "label4";
             label4.Size = new Size(116, 20);
             label4.TabIndex = 31;
@@ -154,7 +156,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(182, 255);
+            label5.Location = new Point(182, 223);
             label5.Name = "label5";
             label5.Size = new Size(105, 20);
             label5.TabIndex = 32;
@@ -163,11 +165,27 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(360, 294);
+            label6.Location = new Point(360, 307);
             label6.Name = "label6";
             label6.Size = new Size(83, 20);
             label6.TabIndex = 33;
             label6.Text = "Kundetype:";
+            // 
+            // textBoxArea
+            // 
+            textBoxArea.Location = new Point(288, 264);
+            textBoxArea.Name = "textBoxArea";
+            textBoxArea.Size = new Size(233, 27);
+            textBoxArea.TabIndex = 34;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(221, 267);
+            label7.Name = "label7";
+            label7.Size = new Size(66, 20);
+            label7.TabIndex = 35;
+            label7.Text = "Område:";
             // 
             // AddCustomer
             // 
@@ -175,6 +193,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(800, 450);
+            Controls.Add(label7);
+            Controls.Add(textBoxArea);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -211,5 +231,7 @@
         private Label label4;
         private Label label5;
         private Label label6;
+        private TextBox textBoxArea;
+        private Label label7;
     }
 }
