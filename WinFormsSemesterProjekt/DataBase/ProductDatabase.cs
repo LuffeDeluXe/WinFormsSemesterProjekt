@@ -10,7 +10,7 @@ namespace WinFormsSemesterProjekt.DataBase
 {
 	internal class ProductDatabase : DatabaseManager
 	{
-		public static int CreateNewProduct(string productName, string category, string description, int unitPrice, int stock)
+		public static int CreateNewProduct(string productName, string category, string description, double unitPrice, int stock)
 		{
 			string query =
 				"INSERT INTO Product (Name, Category, Desription, Price, Stock) " +
@@ -29,7 +29,7 @@ namespace WinFormsSemesterProjekt.DataBase
 			return productId;
 		}
 
-		public Product FindProduct(int productID)
+		public static Product FindProduct(int productID)
 		{
 			string query = "SELECT * FROM Product " +
 						   "WHERE ProductID = @ProductID";
@@ -53,7 +53,7 @@ namespace WinFormsSemesterProjekt.DataBase
 			return product;
 		}
 
-		public List<Product> FindAllProducts()
+		public static List<Product> FindAllProducts()
 		{
 			List<Product> listOfProducts = new List<Product>();
 			
@@ -80,7 +80,7 @@ namespace WinFormsSemesterProjekt.DataBase
 			return listOfProducts;
 		}
 
-		public List<Product> SortProductsByCategory(string category)
+		public static List<Product> SortProductsByCategory(string category)
 		{
 			var listOfCategoryProducts = new List<Product>();
 
@@ -108,7 +108,7 @@ namespace WinFormsSemesterProjekt.DataBase
 			return listOfCategoryProducts;
 		}
 
-		public void UpdateProduct(Product product)
+		public static void UpdateProduct(Product product)
 		{
 			string query = "UPDATE Product SET " +
 						   "Name = @Name" +
@@ -128,7 +128,7 @@ namespace WinFormsSemesterProjekt.DataBase
 			DatabaseManager.ExecuteNonQuery(command);
 		}
 
-		public int DeleteProduct(int productID) 
+		public static int DeleteProduct(int productID) 
 		{
 			string query = "DELETE Product WHERE ProductID = @ProductID";
 
