@@ -53,6 +53,16 @@ namespace WinformsSemesterprojekt
             Email = email;
         }
 
+        public static void UpdateWholeCustomer(Customer customer, string firstName, string lastName, int phoneNumber, string email)
+        {
+            customer.FirstName = firstName;
+            customer.LastName = lastName;
+            customer.PhoneNumber = phoneNumber;
+            customer.Email = email;
+
+            CustomerDatabase.UpdateCustomerInformation(customer);
+        }
+
         public static void UpdateCustomerEmail(Customer customer, string newEmail)
         {
             if (newEmail.Contains("@"))
