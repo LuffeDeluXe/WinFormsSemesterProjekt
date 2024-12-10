@@ -10,7 +10,7 @@ namespace WinFormsSemesterProjekt.DataBase
 {
 	internal class ProductDatabase : DatabaseManager
 	{
-		public int CreateNewProduct(Product product)
+		public static int CreateNewProduct(string productName, string category, string description, int unitPrice, int stock)
 		{
 			string query =
 				"INSERT INTO Product (Name, Category, Desription, Price, Stock) " +
@@ -18,11 +18,11 @@ namespace WinFormsSemesterProjekt.DataBase
 
 			var command = new SqlCommand(query, connection);
 
-			command.Parameters.AddWithValue("@Name", product.ProductName);
-			command.Parameters.AddWithValue("@Category", product.Category);
-			command.Parameters.AddWithValue("@Desription", product.Description);
-			command.Parameters.AddWithValue("@Price", product.UnitPrice);
-			command.Parameters.AddWithValue("@Stock", product.Stock);
+			command.Parameters.AddWithValue("@Name", productName);
+			command.Parameters.AddWithValue("@Category", category);
+			command.Parameters.AddWithValue("@Desription", description);
+			command.Parameters.AddWithValue("@Price", unitPrice);
+			command.Parameters.AddWithValue("@Stock", stock);
 
 			int productId = DatabaseManager.ExecuteScalar(command);
 
@@ -48,6 +48,8 @@ namespace WinFormsSemesterProjekt.DataBase
 			Convert.ToInt32(reader["Stock"])
 			);
 
+			connection.Close();
+
 			return product;
 		}
 
@@ -72,6 +74,8 @@ namespace WinFormsSemesterProjekt.DataBase
 				);
 				listOfProducts.Add(product);
 			}
+
+			connection.Close();
 
 			return listOfProducts;
 		}
