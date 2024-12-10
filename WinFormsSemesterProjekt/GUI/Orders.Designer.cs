@@ -102,6 +102,7 @@
             buttonNewOrder.TabIndex = 21;
             buttonNewOrder.Text = "Ny ordre";
             buttonNewOrder.UseVisualStyleBackColor = false;
+            buttonNewOrder.Click += buttonNewOrder_Click;
             // 
             // dataGridView1
             // 
