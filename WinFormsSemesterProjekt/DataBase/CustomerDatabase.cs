@@ -11,7 +11,7 @@ namespace WinFormsSemesterProjekt.DataBase
     internal class CustomerDatabase : DatabaseManager
     {
         /// <summary>
-        /// Creates a customer in the database.
+        /// Creates a customer in only database.
         /// </summary>
         /// <param name="customer"></param>
         public static int CreateCustomer(string firstName, string lastName, int phoneNumber, string email)
@@ -38,7 +38,7 @@ namespace WinFormsSemesterProjekt.DataBase
         /// </summary>
         /// <param name="CustomerID"></param>
         /// <returns></returns>
-        public static Customer RetrieveASingleCustomers(int CustomerID)
+        public static Customer RetrieveASingleCustomersUsingCustomerID(int CustomerID)
         {
             var customers = new List<Customer>();
 
@@ -68,6 +68,39 @@ namespace WinFormsSemesterProjekt.DataBase
 
             return customers[0];
         }
+
+        public static Customer RetrieveASingleCustomersUsingPhoneNumber(int phoneNumber)
+        {
+            var customers = new List<Customer>();
+
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
+
+            string sql =
+                (
+                "SELECT * FROM Customer" +
+                "WHERE PhoneNumber = @PhoneNumber"
+                );
+
+            command.CommandText = sql;
+            command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+
+            using var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                var ReadCustomer = new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
+
+            }
+            // Mangler vi ikke en connection.Close();
+            connection.Close();
+
+            return customers[0];
+        }
+
+
 
         public static List<Customer> RetrieveListOfAllCustomers()
         {

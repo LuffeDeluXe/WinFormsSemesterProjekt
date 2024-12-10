@@ -57,10 +57,33 @@ namespace WinformsSemesterprojekt
         {
             customer.FirstName = firstName;
             customer.LastName = lastName;
-            customer.PhoneNumber = phoneNumber;
             customer.Email = email;
 
+            if (ValidatePhoneNumber(phoneNumber) == true)
+            {
+                customer.PhoneNumber = phoneNumber;   
+            }
+
+
             CustomerDatabase.UpdateCustomerInformation(customer);
+        }
+
+
+        /// <summary>
+        /// Checks if phonenumber is exactly 8 long
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <returns></returns>
+        private static bool ValidatePhoneNumber(int phoneNumber)
+        {
+            char[] phoneNumberAsACharArr = phoneNumber.ToString().ToCharArray();
+
+            if (phoneNumberAsACharArr.Length != 8)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
