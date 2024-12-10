@@ -19,7 +19,7 @@ namespace WinformsSemesterprojekt
         public string Email { get; set; }
 
         /// <summary>
-        /// Use only when reading from database
+        /// Use only when reading from database.
         /// </summary>
         /// <param name="customerID"></param>
         /// <param name="firstName"></param>
@@ -37,7 +37,7 @@ namespace WinformsSemesterprojekt
 
         /// <summary>
         /// Use when creating a new Customer, NOT when reading from database. Constructor uploads the customer to the database. 
-        /// Creates and then retrieves the correct ID
+        /// Creates and then retrieves the correct ID.
         /// </summary>
         /// <param name="firstName"></param>
         /// <param name="lastName"></param>
@@ -52,7 +52,14 @@ namespace WinformsSemesterprojekt
             PhoneNumber = phoneNumber;
             Email = email;
         }
-
+        /// <summary>
+        /// This method has the ability to update one or all parameters of the individual customer information.
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="email"></param>
         public static void UpdateWholeCustomer(Customer customer, string firstName, string lastName, int phoneNumber, string email)
         {
             customer.FirstName = firstName;
@@ -63,12 +70,8 @@ namespace WinformsSemesterprojekt
             {
                 customer.PhoneNumber = phoneNumber;   
             }
-
-
             CustomerDatabase.UpdateCustomerInformation(customer);
         }
-
-
         /// <summary>
         /// Checks if phonenumber is exactly 8 long
         /// </summary>

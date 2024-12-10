@@ -33,11 +33,6 @@ namespace WinFormsSemesterProjekt.DataBase
             return DatabaseManager.ExecuteScalar(command);
         }
 
-        /// <summary>
-        /// Retrieves a list of all current customers in the database.
-        /// </summary>
-        /// <param name="CustomerID"></param>
-        /// <returns></returns>
         public static Customer RetrieveASingleCustomersUsingCustomerID(int CustomerID)
         {
             var customers = new List<Customer>();
@@ -59,16 +54,13 @@ namespace WinFormsSemesterProjekt.DataBase
 
             while (reader.Read())
             {
-
                 var ReadCustomer = new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
-  
             }
-            // Mangler vi ikke en connection.Close();
             connection.Close();
 
             return customers[0];
         }
-
+      
         public static Customer RetrieveASingleCustomersUsingPhoneNumber(int phoneNumber)
         {
             var customers = new List<Customer>();
@@ -94,13 +86,11 @@ namespace WinFormsSemesterProjekt.DataBase
                 var ReadCustomer = new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
 
             }
-            // Mangler vi ikke en connection.Close();
+
             connection.Close();
 
             return customers[0];
         }
-
-
 
         public static List<Customer> RetrieveListOfAllCustomers()
         {
@@ -120,19 +110,14 @@ namespace WinFormsSemesterProjekt.DataBase
 
             while (reader.Read())
             {
-
                 var ReadCustomer = new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
                 customers.Add(ReadCustomer);
-
             }
 
             connection.Close();
 
             return customers;
         }
-
-
-
 
         /// <summary>
         /// Deletes a customer if given the correct CustomerID of said customer.
@@ -150,8 +135,6 @@ namespace WinFormsSemesterProjekt.DataBase
             command.Parameters.AddWithValue("@CustomerID", customer.CustomerID);
 
             DatabaseManager.ExecuteNonQuery(command);
-
-            //Forklar mig lige numberOfAffectedRows > 0???
         }
 
         /// <summary>
@@ -176,7 +159,5 @@ namespace WinFormsSemesterProjekt.DataBase
 
             DatabaseManager.ExecuteNonQuery(command);
         }
-
-
     }
 }
