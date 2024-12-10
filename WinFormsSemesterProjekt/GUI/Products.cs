@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsSemesterProjekt.GUI;
+using WinFormsSemesterProjekt.GUI.PopUps;
 
 namespace WinFormsSemesterProjekt
 {
     public partial class Products : Form
     {
+        public static Panel ProductsPanel;
         public Products()
         {
             InitializeComponent();
@@ -33,6 +36,19 @@ namespace WinFormsSemesterProjekt
                 searchBar.Text = "";
                 searchBar.ForeColor = Color.LightGray;
             }
+        }
+
+        private void buttonNewProduct_Click(object sender, EventArgs e)
+        {
+            AddProduct addProduct = new AddProduct();
+            addProduct.Show();
+            this.Hide();
+        }
+
+        private void buttonDeleteProduct_Click(object sender, EventArgs e)
+        {
+            ConfirmDeletionProduct confirmDeletionProduct = new ConfirmDeletionProduct();
+            confirmDeletionProduct.Show();
         }
     }
 }
