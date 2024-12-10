@@ -31,7 +31,7 @@ namespace WinFormsSemesterProjekt.DataBase
 
             DatabaseManager.ExecuteNonQuery(command);
         }
-        /*
+        
         /// <summary>
         /// Retrieves a list of all current customers in the database.
         /// </summary>
@@ -69,7 +69,7 @@ namespace WinFormsSemesterProjekt.DataBase
             // Mangler vi ikke en connection.Close();
             return customers;
         }
-        */
+        
 
         /// <summary>
         /// Deletes a customer if given the correct CustomerID of said customer.
