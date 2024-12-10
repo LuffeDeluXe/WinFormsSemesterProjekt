@@ -142,6 +142,7 @@
             buttonAdd.TabIndex = 12;
             buttonAdd.Text = "Opret produkt";
             buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // buttonReturn
             // 

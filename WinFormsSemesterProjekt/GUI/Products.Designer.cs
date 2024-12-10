@@ -38,11 +38,11 @@
             buttonNewProduct = new Button();
             buttonEditProduct = new Button();
             buttonDeleteProduct = new Button();
-            buttonSortBy = new Button();
             listBoxCategories = new ListBox();
             radioButtonAvailable = new RadioButton();
             radioButtonUnavailable = new RadioButton();
             buttonExport = new Button();
+            buttonSortBy = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -155,18 +155,6 @@
             buttonDeleteProduct.Text = "Slet valgt produkt";
             buttonDeleteProduct.UseVisualStyleBackColor = false;
             // 
-            // buttonSortBy
-            // 
-            buttonSortBy.BackColor = Color.Black;
-            buttonSortBy.FlatStyle = FlatStyle.Flat;
-            buttonSortBy.ForeColor = SystemColors.ControlLightLight;
-            buttonSortBy.Location = new Point(694, 57);
-            buttonSortBy.Name = "buttonSortBy";
-            buttonSortBy.Size = new Size(94, 29);
-            buttonSortBy.TabIndex = 10;
-            buttonSortBy.Text = "Sorter efter";
-            buttonSortBy.UseVisualStyleBackColor = false;
-            // 
             // listBoxCategories
             // 
             listBoxCategories.FormattingEnabled = true;
@@ -209,6 +197,18 @@
             buttonExport.Text = "Eksporter lagerstatus til .txt";
             buttonExport.UseVisualStyleBackColor = false;
             // 
+            // buttonSortBy
+            // 
+            buttonSortBy.BackColor = Color.Black;
+            buttonSortBy.FlatStyle = FlatStyle.Flat;
+            buttonSortBy.ForeColor = SystemColors.ControlLightLight;
+            buttonSortBy.Location = new Point(694, 57);
+            buttonSortBy.Name = "buttonSortBy";
+            buttonSortBy.Size = new Size(94, 29);
+            buttonSortBy.TabIndex = 10;
+            buttonSortBy.Text = "Sorter efter";
+            buttonSortBy.UseVisualStyleBackColor = false;
+            // 
             // Products
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -249,10 +249,10 @@
         private Button buttonNewProduct;
         private Button buttonEditProduct;
         private Button buttonDeleteProduct;
-        private Button buttonSortBy;
         private ListBox listBoxCategories;
         private RadioButton radioButtonAvailable;
         private RadioButton radioButtonUnavailable;
         private Button buttonExport;
+        private Button buttonSortBy;
     }
 }
