@@ -9,15 +9,22 @@ namespace WinformsSemesterprojekt.Models
     public class Order
     {
         public int OrderID { get; private set; }
-        public int CustomerID { get; private set; }
-        public DateTime OrderDate { get; private set; }
+        public Customer CustomerID { get; set; }
+        public DateTime OrderDate { get; set; }
+        public DateTime DeliveryDate { get; set; }
+        public string OrderStatus { get; set; }
+        public int TotalPrice { get; set; }
+        public string ShippingMethod { get; set; }
 
-
-        public Order(int orderID, int productLineID, int customerID, DateTime orderDate)
+        public Order(int orderID, Customer customerID, DateTime orderDate, DateTime deliveryDate, string orderStatus, int totalPrice, string shippingMethod)
         {
             OrderID = orderID;
             CustomerID = customerID;
             OrderDate = orderDate;
+            DeliveryDate = deliveryDate;
+            OrderStatus = orderStatus;
+            TotalPrice = totalPrice;
+            ShippingMethod = shippingMethod;
         }
     }
 }
