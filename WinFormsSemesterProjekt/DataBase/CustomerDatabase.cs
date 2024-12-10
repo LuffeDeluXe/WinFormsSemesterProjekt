@@ -99,6 +99,8 @@ namespace WinFormsSemesterProjekt.DataBase
         }
 
 
+
+
         /// <summary>
         /// Deletes a customer if given the correct CustomerID of said customer.
         /// </summary>
