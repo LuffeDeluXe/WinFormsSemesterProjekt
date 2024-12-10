@@ -1,52 +1,54 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinformsSemesterprojekt.Models;
+using WinFormsSemesterProjekt.DataBase;
 
 namespace WinformsSemesterprojekt
 {
-    public class Customer
+    internal class Customer : DatabaseManager
     {
         public int CustomerID { get; private set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Email { get; set; }
         public int PhoneNumber { get; set; }
-        public string Address { get; set; }
+        public string Email { get; set; }
 
-        public Customer(int customerID, string firstName, string lastName, string email, int phoneNumber, string address)
+        public Customer (int customerID, string firstName, string lastName, int phoneNumber, string email ,string address)
         {
             CustomerID = customerID;
             FirstName = firstName;
             LastName = lastName;
-            Email = email;
             PhoneNumber = phoneNumber;
-            Address = address;
+            Email = email;
+
         }
+
+       
+
+
 
         public void UpdateEmail(string newEmail)
         {
-            Methods methods = new Methods();
-
             if (newEmail.Contains("@"))
             {
                 Email = newEmail;
             }
             else
             {
-                methods.PrintText("Please enter a valid email");
+                Console.WriteLine("Please, enter a valid email");
             }
         }
 
         public void UpdateFirstName(string newFirstName)
         {
-            Methods methods = new Methods();
-
             if (newFirstName == "Hitler" || newFirstName == "Putin")
             {
-                methods.PrintText("Please enter an appropiate name");
+                Console.WriteLine("Please, enter an appropiate name");
             }
             else
             {
@@ -56,22 +58,18 @@ namespace WinformsSemesterprojekt
 
         public void UpdateLastName(string newLastName)
         {
-            Methods methods = new Methods();
-
             if (newLastName == "Hitler" || newLastName == "Putin")
             {
-                methods.PrintText("Please enter an appropiate name");
+                Console.WriteLine("Please, enter an appropiate name");
             }
             else
             {
                 LastName = newLastName;
             }
         }
-
+        /*
         public void UpdatePhoneNumber(string input)
         {
-            Methods methods = new Methods();
-
             int newPhoneNumber;
             bool result = false;
 
@@ -79,26 +77,27 @@ namespace WinformsSemesterprojekt
 
             while (result == false)
             {
-                methods.PrintText("Please enter a valid number");
+                Console.WriteLine("Please, enter a valid number");
                 input = Console.ReadLine();
                 result = int.TryParse(input, out newPhoneNumber);
             }
 
             PhoneNumber = newPhoneNumber;
         }
+        */
 
+        /*
         public void UpdateAddress(string newAddress)
         {
-            Methods methods = new Methods();
-
             if (newAddress.Contains("Amalienborg Slotsplads"))
             {
-                methods.PrintText("Du er ikke Kongen af Danmark >:(");
+                Console.WriteLine("Du er ikke Kongen af Danmark >:(");
             }
             else
             {
                 Address = newAddress;
             }
         }
+        */
     }
 }

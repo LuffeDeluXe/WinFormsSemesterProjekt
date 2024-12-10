@@ -21,10 +21,9 @@ namespace WinformsSemesterprojekt.Models
             InStock = inStock;
         }
 
+        /*
         public void UpdatePrice(string input)
         {
-            Methods methods = new Methods();
-
             double newPrice;
             bool result = false;
 
@@ -32,18 +31,18 @@ namespace WinformsSemesterprojekt.Models
 
             while (result == false)
             {
-                methods.PrintText("Please enter a valid number");
+                Console.WriteLine("Please enter a valid number");
                 input = Console.ReadLine();
                 result = double.TryParse(input, out newPrice);
             }
 
             UnitPrice = newPrice;
         }
+        */
 
+        /*
         public void UpdateStock(string input)
         {
-            Methods methods = new Methods();
-
             int newStock;
             bool result = false;
 
@@ -51,11 +50,12 @@ namespace WinformsSemesterprojekt.Models
 
             while (result == false)
             {
-                methods.PrintText("Please enter a valid number");
+                Console.WriteLine("Please enter a valid number");
                 input = Console.ReadLine();
                 result = int.TryParse(input, out newStock);
             }
             InStock = newStock;
         }
+        */
     }
 }
