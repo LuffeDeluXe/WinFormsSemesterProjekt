@@ -31,45 +31,94 @@ namespace WinFormsSemesterProjekt.DataBase
 
             DatabaseManager.ExecuteNonQuery(command);
         }
-        
+
+        public static int CreateCustomer(string firstName, string lastName, int phoneNumber, string email)
+        {
+            SqlCommand command = connection.CreateCommand();
+
+            string sql =
+                "INSERT INTO Customer (FirstName, LastName, PhoneNumber, Email) " +
+                "OUTPUT INSERTED.CustomerID " +
+                "VALUES (@FirstName, @LastName, @PhoneNumber, @Email, )";
+
+            command.CommandText = sql;
+
+            command.Parameters.AddWithValue("@FirstName", firstName);
+            command.Parameters.AddWithValue("@LastName", lastName);
+            command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+            command.Parameters.AddWithValue("@Email", email);
+
+            return DatabaseManager.ExecuteScalar(command);
+        }
+
         /// <summary>
         /// Retrieves a list of all current customers in the database.
         /// </summary>
         /// <param name="CustomerID"></param>
         /// <returns></returns>
-        public List<Customer> RetrieveListOfAllCustomers(int CustomerID)
+        public Customer RetrieveASingleCustomers(int CustomerID)
         {
             var customers = new List<Customer>();
 
             connection.Open();
 
             // Jeg kan se at både Christinas klasse "Customer" og "DatabaseManager" er sat til public???
-            SqlCommand command = connection.CreateCommand
+            SqlCommand command = connection.CreateCommand();
+
+            string sql =
                 (
                 "SELECT [*] Customer_ID, FirstName, LastName, PhoneNumber, Email" +
                 "FROM Customer" +
                 "WHERE CustomerID = @CustomerID"
                 );
+
+            command.CommandText = sql;
             command.Parameters.AddWithValue("@CustomerID", CustomerID);
 
             using var reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                customers.Add(new Customer
-                {
-                    // Okay, så fordi vores CustomerIDs set er PRIVATE, kan jeg ikke hente det???
-                    CustomerID = reader.GetInt32(0), 
-                    FirstName = reader.GetString(1),
-                    LastName = reader.GetString(2),
-                    PhoneNumber = reader.GetInt32(3),
-                    Email = reader.GetString(4)
-                });
+
+                var ReadCustomer = new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
+  
             }
             // Mangler vi ikke en connection.Close();
+            connection.Close();
+
+            return customers[0];
+        }
+
+        public List<Customer> RetrieveListOfAllCustomers()
+        {
+            var customers = new List<Customer>();
+
+            connection.Open();
+
+            // Jeg kan se at både Christinas klasse "Customer" og "DatabaseManager" er sat til public???
+            SqlCommand command = connection.CreateCommand();
+
+            string sql =
+                (
+                "SELECT * FROM Customer" 
+                );
+
+            command.CommandText = sql;
+
+            using var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                var ReadCustomer = new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
+
+            }
+            // Mangler vi ikke en connection.Close();
+            connection.Close();
+
             return customers;
         }
-        
+
 
         /// <summary>
         /// Deletes a customer if given the correct CustomerID of said customer.

@@ -12,9 +12,9 @@ namespace WinFormsSemesterProjekt
         static void Main()
         {
             var method = new CustomerDatabase();
-            var customer = new Customer(1, "Anders", "Jensen", 25252525, "aj@pp.dk", "Helvedesvej 666");
+            var anders = new Customer("Anders", "Jensen", 25252525, "aj@pp.dk");
             
-            method.CreateCustomer(customer);
+            method.CreateCustomer(anders);
     
 
         }

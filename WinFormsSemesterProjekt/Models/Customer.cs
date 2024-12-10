@@ -18,19 +18,23 @@ namespace WinformsSemesterprojekt
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
 
-        public Customer (int customerID, string firstName, string lastName, int phoneNumber, string email ,string address)
+        public Customer (int customerID, string firstName, string lastName, int phoneNumber, string email)
         {
             CustomerID = customerID;
             FirstName = firstName;
             LastName = lastName;
             PhoneNumber = phoneNumber;
             Email = email;
-
         }
 
-       
-
-
+        public Customer(string firstName, string lastName, int phoneNumber, string email)
+        {
+            CustomerID = CustomerDatabase.CreateCustomer(firstName, lastName, phoneNumber, email);
+            FirstName = firstName;
+            LastName = lastName;
+            PhoneNumber = phoneNumber;
+            Email = email;
+        }
 
         public void UpdateEmail(string newEmail)
         {
