@@ -41,5 +41,11 @@ namespace WinFormsSemesterProjekt
             OrderTypeSelection orderTypeSelection = new OrderTypeSelection();
             orderTypeSelection.Show();
         }
+
+        private void buttonDeleteOrder_Click(object sender, EventArgs e)
+        {
+            ConfirmDeletionOrder confirmDeletionOrder = new ConfirmDeletionOrder();
+            confirmDeletionOrder.Show();
+        }
     }
 }

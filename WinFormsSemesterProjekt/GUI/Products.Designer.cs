@@ -154,6 +154,7 @@
             buttonDeleteProduct.TabIndex = 9;
             buttonDeleteProduct.Text = "Slet valgt produkt";
             buttonDeleteProduct.UseVisualStyleBackColor = false;
+            buttonDeleteProduct.Click += buttonDeleteProduct_Click;
             // 
             // listBoxCategories
             // 

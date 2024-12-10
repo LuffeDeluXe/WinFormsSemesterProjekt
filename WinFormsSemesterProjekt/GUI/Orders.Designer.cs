@@ -78,6 +78,7 @@
             buttonDeleteOrder.TabIndex = 23;
             buttonDeleteOrder.Text = "Slet valgt ordre";
             buttonDeleteOrder.UseVisualStyleBackColor = false;
+            buttonDeleteOrder.Click += buttonDeleteOrder_Click;
             // 
             // buttonEditOrder
             // 
