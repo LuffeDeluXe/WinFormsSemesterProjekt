@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsSemesterProjekt
+namespace WinFormsSemesterProjekt.GUI.PopUps
 {
-    public partial class Products : Form
+    public partial class DeletedCustomer : Form
     {
-        public Products()
+        public DeletedCustomer()
         {
             InitializeComponent();
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
