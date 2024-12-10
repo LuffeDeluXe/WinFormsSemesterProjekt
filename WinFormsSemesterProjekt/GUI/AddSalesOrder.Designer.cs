@@ -58,6 +58,7 @@
             buttonAdd.TabIndex = 25;
             buttonAdd.Text = "Sælg";
             buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // label1
             // 

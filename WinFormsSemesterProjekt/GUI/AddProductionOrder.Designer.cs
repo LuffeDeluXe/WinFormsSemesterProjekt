@@ -89,6 +89,7 @@
             buttonAdd.TabIndex = 33;
             buttonAdd.Text = "Send til produktion";
             buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // label1
             // 
