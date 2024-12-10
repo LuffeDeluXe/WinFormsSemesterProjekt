@@ -61,6 +61,7 @@
             buttonEdit.TabIndex = 25;
             buttonEdit.Text = "Ændr oplysninger";
             buttonEdit.UseVisualStyleBackColor = true;
+            buttonEdit.Click += buttonEdit_Click;
             // 
             // label6
             // 
