@@ -32,6 +32,8 @@ namespace WinFormsSemesterProjekt.DataBase
 
         public static Order FindOrder(int orderID)
         {
+            connection.Open();
+
             string query =
                 "SELECT * FROM Order " +
                 "WHERE OrderID = @OrderID";
@@ -58,6 +60,8 @@ namespace WinFormsSemesterProjekt.DataBase
 
         public static List<Order> FindAllOrders()
         {
+            connection.Open();
+
             List<Order> listOfOrders = new List<Order>();
 
             string query = "SELECT * FROM Order";
