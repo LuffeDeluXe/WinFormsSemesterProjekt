@@ -10,7 +10,7 @@ namespace WinFormsSemesterProjekt.DataBase
 {
     internal class OrderDB : DatabaseManager
     {
-        public static int CreateNewOrder(int customerID, double totalPrice, DateTime deliveryDate, string orderStatus, DateTime orderDate, string shippingMethod)
+        public static int CreateNewOrder(int customerID, DateTime orderDate, DateTime deliveryDate, string orderStatus, double totalPrice, string shippingMethod)
         {
             string query =
                 "INSERT INTO Order (CustomerID, OrderDate, DeliveryDate, OrderStatus, TotalPrice, ShippingMethod) " +
@@ -48,7 +48,7 @@ namespace WinFormsSemesterProjekt.DataBase
                 Convert.ToDateTime(reader["OrderDate"]),
                 Convert.ToDateTime(reader["DeliveryDate"]),
                 reader["OrderStatus"].ToString(),
-                Convert.ToInt32(reader["TotalPrice"]),
+                Convert.ToDouble(reader["TotalPrice"]),
                 reader["ShippingMethod"].ToString());
 
             connection.Close();
@@ -74,7 +74,7 @@ namespace WinFormsSemesterProjekt.DataBase
                 Convert.ToDateTime(reader["OrderDate"]),
                 Convert.ToDateTime(reader["DeliveryDate"]),
                 reader["OrderStatus"].ToString(),
-                Convert.ToInt32(reader["TotalPrice"]),
+                Convert.ToDouble(reader["TotalPrice"]),
                 reader["ShippingMethod"].ToString());
 
                 listOfOrders.Add(order);
