@@ -10,10 +10,15 @@ namespace WinFormsSemesterProjekt.DataBase
 {
     internal abstract class DatabaseManager
     {
+        
         protected const string _ConnectionString = "Data Source=localhost;" +
-                                  "Initial Catalog=ProProduction;" +
+                                  "Initial Catalog=ProductionPro;" +
                                   "Integrated Security=SSPI;" +
                                   "TrustServerCertificate=true";
+        
+        /*
+        protected const string _ConnectionString = "Server=Djamo;Database=ProProduction;Integrated Security=True;Encrypt=False";
+        */
 
         protected static SqlConnection connection = new SqlConnection(_ConnectionString);
 
