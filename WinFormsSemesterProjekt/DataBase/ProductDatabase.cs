@@ -113,13 +113,13 @@ namespace WinFormsSemesterProjekt.DataBase
 
 		public static void UpdateProduct(Product product, string name, string category, string desription, int unitPrice, int stock)
 		{
-			string query = "UPDATE Product SET " +
-						   "WHERE ProductID = @ProductID " +
-						   "Name = @Name " +
+			string query = "UPDATE Product " +
+						   "SET Name = @Name " +
 						   "Category = @Category " +
 						   "Desription = @Desription " +
 						   "Price = @Price " +
-						   "Stock = @Stock ";
+						   "Stock = @Stock " +
+						   "WHERE ProductID = @ProductID";
 
 			var command = new SqlCommand(query, connection);
 
