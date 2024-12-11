@@ -1,3 +1,6 @@
+using WinformsSemesterprojekt;
+using WinFormsSemesterProjekt.DataBase;
+
 namespace WinFormsSemesterProjekt
 {
     internal static class Program
@@ -8,10 +11,14 @@ namespace WinFormsSemesterProjekt
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new MainMenu());
+            var method = new CustomerDatabase();
+            var anders = new Customer("Anders", "Jensen", 25252525, "aj@pp.dk");
+            CustomerDatabase.UpdateCustomerInformation(anders);
+            //anders.UpdateEmail("123");
+            
+            //method.CreateCustomer(anders);
+    
+
         }
     }
 }
