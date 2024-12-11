@@ -99,6 +99,7 @@
             buttonMainMenu.TabIndex = 4;
             buttonMainMenu.Text = "Hovedmenu";
             buttonMainMenu.UseVisualStyleBackColor = false;
+            buttonMainMenu.Click += buttonMainMenu_Click;
             // 
             // searchBar
             // 

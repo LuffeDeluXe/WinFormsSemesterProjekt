@@ -149,7 +149,7 @@ namespace WinFormsSemesterProjekt.DataBase
 
             string sql =
                 "UPDATE Customer " +
-                "SET (FirstName = @FirstName, LastName = @LastName, PhoneNumber = @PhoneNumber, Email = @Email) " +
+                "SET FirstName = @FirstName, LastName = @LastName, PhoneNumber = @PhoneNumber, Email = @Email " +
                 "WHERE CustomerID = @CustomerID";
 
             command.CommandText = sql;
@@ -158,6 +158,7 @@ namespace WinFormsSemesterProjekt.DataBase
             command.Parameters.AddWithValue("@LastName", customer.LastName);
             command.Parameters.AddWithValue("@PhoneNumber", customer.PhoneNumber);
             command.Parameters.AddWithValue("@Email", customer.Email);
+            command.Parameters.AddWithValue("@CustomerID", customer.CustomerID);
 
             DatabaseManager.ExecuteNonQuery(command);
         }

@@ -47,5 +47,12 @@ namespace WinFormsSemesterProjekt
             ConfirmDeletionOrder confirmDeletionOrder = new ConfirmDeletionOrder();
             confirmDeletionOrder.Show();
         }
+
+        private void buttonMainMenu_Click(object sender, EventArgs e)
+        {
+            MainMenu mainMenu = new MainMenu();
+            mainMenu.Show();
+            this.Hide();
+        }
     }
 }

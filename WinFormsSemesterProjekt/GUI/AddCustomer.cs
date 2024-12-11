@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinformsSemesterprojekt;
 using WinFormsSemesterProjekt.GUI.PopUps;
+using WinformsSemesterprojekt.Models;
+using WinFormsSemesterProjekt.DataBase;
 
 namespace WinFormsSemesterProjekt.GUI
 {
@@ -27,20 +30,23 @@ namespace WinFormsSemesterProjekt.GUI
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            int id = 0;
             string firstName = textBoxFirstName.Text;
             string lastName = textBoxLastName.Text;
+
             try
             {
                 Convert.ToInt32(textBoxPhoneNumber.Text);
             }
             catch
             {
-
+                InvalidPhoneNumber invalidPhoneNumber = new InvalidPhoneNumber();
+                invalidPhoneNumber.Show();
             }
 
-            //A new customer will be created
-            Customers newCustomer = new Customers();
+            int phoneNumber = Convert.ToInt32(textBoxPhoneNumber.Text);
 
+            string email = textBoxEmail.Text;
 
             CreatedCustomer createdCustomer = new CreatedCustomer();
             createdCustomer.Show();

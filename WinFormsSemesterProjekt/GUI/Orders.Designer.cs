@@ -134,6 +134,7 @@
             buttonMainMenu.TabIndex = 18;
             buttonMainMenu.Text = "Hovedmenu";
             buttonMainMenu.UseVisualStyleBackColor = false;
+            buttonMainMenu.Click += buttonMainMenu_Click;
             // 
             // buttonSearch
             // 

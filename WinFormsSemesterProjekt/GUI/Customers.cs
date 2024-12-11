@@ -41,5 +41,12 @@ namespace WinFormsSemesterProjekt
             ConfirmDeletionCustomer confirmDeletionCustomer = new ConfirmDeletionCustomer();
             confirmDeletionCustomer.Show();
         }
+
+        private void buttonMainMenu_Click(object sender, EventArgs e)
+        {
+            MainMenu menu = new MainMenu();
+            menu.Show();
+            this.Hide();
+        }
     }
 }
