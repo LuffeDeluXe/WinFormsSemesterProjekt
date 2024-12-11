@@ -44,7 +44,7 @@ namespace WinFormsSemesterProjekt.DataBase
 
             string sql =
                 (
-                "SELECT * FROM Customer" +
+                "SELECT * FROM Customer " +
                 "WHERE CustomerID = @CustomerID"
                 );
 
@@ -56,6 +56,7 @@ namespace WinFormsSemesterProjekt.DataBase
             while (reader.Read())
             {
                 var ReadCustomer = new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
+                customers.Add(ReadCustomer);
             }
             connection.Close();
 
@@ -72,7 +73,7 @@ namespace WinFormsSemesterProjekt.DataBase
 
             string sql =
                 (
-                "SELECT * FROM Customer" +
+                "SELECT * FROM Customer " +
                 "WHERE PhoneNumber = @PhoneNumber"
                 );
 
@@ -85,7 +86,7 @@ namespace WinFormsSemesterProjekt.DataBase
             {
 
                 var ReadCustomer = new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetString(4));
-
+                customers.Add(ReadCustomer);
             }
 
             connection.Close();
@@ -129,7 +130,7 @@ namespace WinFormsSemesterProjekt.DataBase
             SqlCommand command = connection.CreateCommand();
 
             string sql =
-                "DELETE Customer" +
+                "DELETE Customer " +
                 "WHERE CustomerID = @CustomerID";
 
             command.CommandText = sql;
@@ -147,8 +148,8 @@ namespace WinFormsSemesterProjekt.DataBase
             SqlCommand command = connection.CreateCommand();
 
             string sql =
-                "UPDATE Customer" +
-                "SET (FirstName = @FirstName, LastName = @LastName, PhoneNumber = @PhoneNumber, Email = @Email)" +
+                "UPDATE Customer " +
+                "SET (FirstName = @FirstName, LastName = @LastName, PhoneNumber = @PhoneNumber, Email = @Email) " +
                 "WHERE CustomerID = @CustomerID";
 
             command.CommandText = sql;
