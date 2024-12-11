@@ -13,12 +13,11 @@ namespace WinformsSemesterprojekt.Models
         public DateTime OrderDate { get; set; }
         public DateTime DeliveryDate { get; set; }
         public string OrderStatus { get; set; }
-        public int TotalPrice { get; set; }
+        public double TotalPrice { get; set; }
         public string ShippingMethod { get; set; }
 
-        public Order(int orderID, int customerID, DateTime orderDate, DateTime deliveryDate, string orderStatus, int totalPrice, string shippingMethod)
+        public Order(int customerID, DateTime orderDate, DateTime deliveryDate, string orderStatus, int totalPrice, string shippingMethod)
         {
-            OrderID = orderID;
             CustomerID = customerID;
             OrderDate = orderDate;
             DeliveryDate = deliveryDate;
@@ -26,5 +25,7 @@ namespace WinformsSemesterprojekt.Models
             TotalPrice = totalPrice;
             ShippingMethod = shippingMethod;
         }
+
+
     }
 }
