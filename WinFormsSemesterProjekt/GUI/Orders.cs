@@ -7,14 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinformsSemesterprojekt.Models;
+using WinFormsSemesterProjekt.DataBase;
 using WinFormsSemesterProjekt.GUI.PopUps;
 
 namespace WinFormsSemesterProjekt
 {
     public partial class Orders : Form
     {
+        public BindingList<Order> orderList {  get; set; } = new BindingList<Order>();
         public Orders()
         {
+            List<Order> listOfOrders = OrderDB.FindAllOrders();
+
+            foreach (Order order in listOfOrders)
+            {
+                orderList.Add(order);
+            }
+
             InitializeComponent();
         }
 
