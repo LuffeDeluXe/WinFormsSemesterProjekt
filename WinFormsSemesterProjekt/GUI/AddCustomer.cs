@@ -27,6 +27,21 @@ namespace WinFormsSemesterProjekt.GUI
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            string firstName = textBoxFirstName.Text;
+            string lastName = textBoxLastName.Text;
+            try
+            {
+                Convert.ToInt32(textBoxPhoneNumber.Text);
+            }
+            catch
+            {
+
+            }
+
+            //A new customer will be created
+            Customers newCustomer = new Customers();
+
+
             CreatedCustomer createdCustomer = new CreatedCustomer();
             createdCustomer.Show();
         }
