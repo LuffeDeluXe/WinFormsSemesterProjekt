@@ -12,7 +12,7 @@ namespace WinFormsSemesterProjekt.DataBase
     {
         
         protected const string _ConnectionString = "Data Source=localhost;" +
-                                  "Initial Catalog=ProProduction;" +
+                                  "Initial Catalog=ProductionPro;" +
                                   "Integrated Security=SSPI;" +
                                   "TrustServerCertificate=true";
         
