@@ -13,14 +13,14 @@ namespace WinFormsSemesterProjekt.DataBase
 		public static int CreateNewProduct(string productName, string category, string description, double unitPrice, int stock)
 		{
 			string query =
-				"INSERT INTO Product (Name, Category, Desription, Price, Stock) " +
-				"VALUES (@Name, @Category, @Desription, @Price, @Stock)";
+				"INSERT INTO Product (Name, Category, Description, Price, Stock) " +
+				"VALUES (@Name, @Category, @Description, @Price, @Stock)";
 
 			var command = new SqlCommand(query, connection);
 
 			command.Parameters.AddWithValue("@Name", productName);
 			command.Parameters.AddWithValue("@Category", category);
-			command.Parameters.AddWithValue("@Desription", description);
+			command.Parameters.AddWithValue("@Description", description);
 			command.Parameters.AddWithValue("@Price", unitPrice);
 			command.Parameters.AddWithValue("@Stock", stock);
 
@@ -44,7 +44,7 @@ namespace WinFormsSemesterProjekt.DataBase
 			Convert.ToInt32(reader["ProductID"]),
 			reader["Name"].ToString(),
 			reader["Category"].ToString(),
-			reader["Desription"].ToString(),
+			reader["Description"].ToString(),
 			Convert.ToInt32(reader["Price"]),
 			Convert.ToInt32(reader["Stock"])
 			);
@@ -70,7 +70,7 @@ namespace WinFormsSemesterProjekt.DataBase
 				Convert.ToInt32(reader["ProductID"]),
 				reader["Name"].ToString(),
 				reader["Category"].ToString(),
-				reader["Desription"].ToString(),
+				reader["Description"].ToString(),
 				Convert.ToInt32(reader["Price"]),
 				Convert.ToInt32(reader["Stock"])
 				);
@@ -101,7 +101,7 @@ namespace WinFormsSemesterProjekt.DataBase
 				Convert.ToInt32(reader["ProductID"]),
 				reader["Name"].ToString(),
 				reader["Category"].ToString(),
-				reader["Desription"].ToString(),
+				reader["Description"].ToString(),
 				Convert.ToInt32(reader["Price"]),
 				Convert.ToInt32(reader["Stock"])
 				);
@@ -113,20 +113,20 @@ namespace WinFormsSemesterProjekt.DataBase
 
 		public static void UpdateProduct(Product product, string name, string category, string desription, int unitPrice, int stock)
 		{
-			string query = "UPDATE Product SET " +
-						   "WHERE ProductID = @ProductID " +
-						   "Name = @Name " +
-						   "Category = @Category " +
-						   "Desription = @Desription " +
-						   "Price = @Price " +
-						   "Stock = @Stock ";
+			string query = "UPDATE Product " +
+						   "SET Name = @Name, " +
+						   "Category = @Category, " +
+						   "Description = @Description, " +
+						   "Price = @Price, " +
+						   "Stock = @Stock " +
+						   "WHERE ProductID = @ProductID";
 
 			var command = new SqlCommand(query, connection);
 
 			command.Parameters.AddWithValue("@ProductID", product.ProductID);
 			command.Parameters.AddWithValue("@Name", name);
 			command.Parameters.AddWithValue("@Category", category);
-			command.Parameters.AddWithValue("@Desription", desription);
+			command.Parameters.AddWithValue("@Description", desription);
 			command.Parameters.AddWithValue("@Price", unitPrice);
 			command.Parameters.AddWithValue("@Stock", stock);
 
