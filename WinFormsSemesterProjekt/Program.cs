@@ -11,10 +11,16 @@ namespace WinFormsSemesterProjekt
         [STAThread]
         static void Main()
         {
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			Application.SetHighDpiMode(HighDpiMode.SystemAware);
-			Application.Run(new MainMenu());
-		}
+            Initialize();
+            Application.Run(new MainMenu());
+        }
+
+
+        private static void Initialize()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+        }
     }
 }
