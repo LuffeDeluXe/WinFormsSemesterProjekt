@@ -73,6 +73,7 @@ namespace WinFormsSemesterProjekt.GUI
 				ProductDatabase.CreateNewProduct(name, category, description, unitPrice, stock);
 				CreatedProduct createdProduct = new CreatedProduct();
 				createdProduct.Show();
+				this.Hide();
 			}
 			catch
 			{
