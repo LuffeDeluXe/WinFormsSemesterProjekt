@@ -43,8 +43,9 @@
             pLProductNameBox = new TextBox();
             label6 = new Label();
             pLAddProductButton = new Button();
-            pLProductAmountBox = new TextBox();
+            pLProductQuantityNumeric = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)pLProductView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pLProductQuantityNumeric).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -184,12 +185,12 @@
             pLAddProductButton.UseVisualStyleBackColor = true;
             pLAddProductButton.Click += pLAddProductButton_Click;
             // 
-            // pLProductAmountBox
+            // pLProductQuantityNumeric
             // 
-            pLProductAmountBox.Location = new Point(626, 105);
-            pLProductAmountBox.Name = "pLProductAmountBox";
-            pLProductAmountBox.Size = new Size(62, 23);
-            pLProductAmountBox.TabIndex = 4;
+            pLProductQuantityNumeric.Location = new Point(626, 107);
+            pLProductQuantityNumeric.Name = "pLProductQuantityNumeric";
+            pLProductQuantityNumeric.Size = new Size(62, 23);
+            pLProductQuantityNumeric.TabIndex = 10;
             // 
             // WinAddProductLine
             // 
@@ -197,13 +198,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(700, 338);
+            Controls.Add(pLProductQuantityNumeric);
             Controls.Add(pLProductNameBox);
             Controls.Add(label6);
             Controls.Add(pLAddProductButton);
             Controls.Add(productLineCreateButton);
             Controls.Add(pLSearchProductButton);
             Controls.Add(pLProductDescriptionBox);
-            Controls.Add(pLProductAmountBox);
             Controls.Add(pLPricePrUnitTextBox);
             Controls.Add(plProductSearchBar);
             Controls.Add(pLProductIDTextBox);
@@ -216,6 +217,7 @@
             Name = "WinAddProductLine";
             Text = "WinAddProductLine";
             ((System.ComponentModel.ISupportInitialize)pLProductView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pLProductQuantityNumeric).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -237,6 +239,6 @@
         private TextBox pLProductNameBox;
         private Label label6;
         private Button pLAddProductButton;
-        private TextBox pLProductAmountBox;
+        private NumericUpDown pLProductQuantityNumeric;
     }
 }

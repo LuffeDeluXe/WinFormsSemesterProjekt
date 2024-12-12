@@ -44,7 +44,8 @@ namespace WinFormsSemesterProjekt.DataBase
                 {
                     var productLine = new ProductLine((int)reader[0],
                                                       (int)reader[1],
-                                                      (int)reader[2]);
+                                                      (int)reader[2],
+                                                      (double)reader[3]);
 
                     ProductLineList.Add(productLine);
                 }
@@ -68,7 +69,8 @@ namespace WinFormsSemesterProjekt.DataBase
                 {
                     var productLine = new ProductLine((int)reader[0],
                                                       (int)reader[1],
-                                                      (int)reader[2]);
+                                                      (int)reader[2],
+                                                      (double)reader[3]);
 
                     ProductLineList.Add(productLine);
                 }
