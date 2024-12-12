@@ -10,19 +10,20 @@ namespace WinFormsSemesterProjekt.DataBase
 {
     internal class ProductLineDatabase : DatabaseManager
     {
-        public static int UploadToDatabase(int orderID, int productID, int amount)
+        public static int UploadToDatabase(int orderID, int productID, int amount, double pricePerUnit)
         {
             SqlCommand command = connection.CreateCommand();
             // Command is inheret from DatabaseManager.cs as a protected field
             string sql =
-                "INSERT INTO ProductLine (OrderID, ProductID, Quantity) " +
+                "INSERT INTO ProductLine (OrderID, ProductID, Quantity, PricePerUnit) " +
                 "OUTPUT INSERTED.ProductLineID " +
-                "VALUES (@OrderID, @ProductID, @Quantity)";
+                "VALUES (@OrderID, @ProductID, @Quantity, @PricePerUnit)";
 
             command.CommandText = sql;
             command.Parameters.AddWithValue("@OrderID", orderID);
             command.Parameters.AddWithValue("@ProductID", productID);
             command.Parameters.AddWithValue("@Quantity", amount);
+            command.Parameters.AddWithValue("@PricePerUnit", pricePerUnit);
 
             return DatabaseManager.ExecuteScalar(command);
         }
