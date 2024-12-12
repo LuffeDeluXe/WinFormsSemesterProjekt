@@ -16,12 +16,12 @@ namespace WinFormsSemesterProjekt
 {
     public partial class Customers : Form
     {
-        internal List<Customer> CustomerList { get; set; } = CustomerDatabase.RetrieveListOfAllCustomers();
+        internal BindingList<Customer> BindingCustomerList = new BindingList<Customer>(CustomerDatabase.RetrieveListOfAllCustomers());
         public Customers()
         {
             InitializeComponent();
 
-            customerView.DataSource = CustomerList;
+            customerView.DataSource = BindingCustomerList;
         }
 
         private void searchBar_Leave(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace WinFormsSemesterProjekt
         private void buttonDeleteCustomer_Click(object sender, EventArgs e)
         {
             int customerId = Convert.ToInt32(customerView.CurrentRow.Cells[0].Value.ToString());
-            ConfirmDeletionCustomer confirmDeletionCustomer = new ConfirmDeletionCustomer(customerId);
+            ConfirmDeletionCustomer confirmDeletionCustomer = new ConfirmDeletionCustomer(customerId, BindingCustomerList);
             confirmDeletionCustomer.Show();
         }
 
@@ -65,25 +65,47 @@ namespace WinFormsSemesterProjekt
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            //List <Customer> searchResults = new List <Customer>();
-            //int number = 0;
-            //if (int.TryParse(searchBar.Text, out number)){
-            //    number = int.Parse(searchBar.Text);
-            //    Customer idResult = CustomerDatabase.RetrieveASingleCustomersUsingCustomerID(number);
-            //    if (Customer.ValidatePhoneNumber) { }
-            //    Customer phoneNumberResult = CustomerDatabase.RetrieveASingleCustomersUsingPhoneNumber(number);
-                
-            //    searchResults.Add(idResult);
-            //    searchResults.Add(phoneNumberResult);
+            List<Customer> searchResults = new List<Customer>();
+            int number = 0;
+            if (int.TryParse(searchBar.Text, out number))
+            {
+                number = int.Parse(searchBar.Text);
+                bool noMatchById = false;
+                bool noMatchByPhoneNumber = false;
 
-            //    customerView.DataSource = searchResults;
-            //    customerView.Update();
-            //}
-            //else
-            //{
-            //    customerView.DataSource = searchResults;
-            //    customerView.Update();
-            //}
+                try
+                {
+                    Customer idResult = CustomerDatabase.RetrieveASingleCustomersUsingCustomerID(number);
+                    searchResults.Add(idResult);
+                }
+                catch
+                {
+                    noMatchById = true;
+                }
+
+                try
+                {
+                    Customer phoneNumberResult = CustomerDatabase.RetrieveASingleCustomersUsingPhoneNumber(number);
+                    searchResults.Add(phoneNumberResult);
+                }
+                catch
+                {
+                    noMatchByPhoneNumber = true;
+                }
+
+                customerView.DataSource = searchResults;
+                customerView.Update();
+            }
+            else
+            {
+                customerView.DataSource = searchResults;
+                customerView.Update();
+            }
+            if (searchBar.Text == "")
+            {
+                customerView.DataSource = BindingCustomerList;
+                customerView.Update();
+            }
         }
 
         private void buttonEditCustomer_Click(object sender, EventArgs e)

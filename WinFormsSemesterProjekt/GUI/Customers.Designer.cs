@@ -122,7 +122,6 @@
             searchBar.Name = "searchBar";
             searchBar.Size = new Size(375, 27);
             searchBar.TabIndex = 35;
-            searchBar.Leave += searchBar_Leave;
             // 
             // buttonMainMenu
             // 
@@ -235,7 +234,6 @@
         private Button buttonDeleteCustomer;
         private Button buttonEditCustomer;
         private Button buttonNewCustomer;
-        private DataGridView customerView;
         private TextBox searchBar;
         private Button buttonMainMenu;
         private Button buttonSearch;
@@ -244,5 +242,6 @@
         private Label label1;
         private ListBox listBox1;
         private ComboBox comboBoxSortby;
+        public DataGridView customerView;
     }
 }
