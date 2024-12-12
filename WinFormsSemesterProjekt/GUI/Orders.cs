@@ -15,7 +15,7 @@ namespace WinFormsSemesterProjekt
 {
     public partial class Orders : Form
     {
-        public BindingList<Order> orderList {  get; set; } = new BindingList<Order>();
+        public BindingList<Order> orderList { get; set; } = new BindingList<Order>();
         public Orders()
         {
             List<Order> listOfOrders = OrderDB.FindAllOrders();
@@ -59,6 +59,13 @@ namespace WinFormsSemesterProjekt
         {
             ConfirmDeletionOrder confirmDeletionOrder = new ConfirmDeletionOrder();
             confirmDeletionOrder.Show();
+        }
+
+        private void buttonMainMenu_Click(object sender, EventArgs e)
+        {
+            MainMenu menu = new MainMenu();
+            menu.Show();
+            this.Close();
         }
     }
 }
