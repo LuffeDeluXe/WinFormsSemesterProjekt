@@ -84,11 +84,11 @@ namespace WinFormsSemesterProjekt.GUI
 
                 pLProductNameBox.Text = productName;
 
-                double unitPrice = Convert.ToDouble(pLProductView.CurrentRow.Cells[3].Value);
+                double unitPrice = Convert.ToDouble(pLProductView.CurrentRow.Cells[4].Value);
 
                 pLPricePrUnitTextBox.Text = unitPrice.ToString();
 
-                string productDescription = pLProductView.CurrentRow.Cells[4].Value.ToString();
+                string productDescription = pLProductView.CurrentRow.Cells[3].Value.ToString();
             }
 
         }
