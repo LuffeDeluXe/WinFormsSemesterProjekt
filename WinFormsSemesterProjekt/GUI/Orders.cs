@@ -26,6 +26,8 @@ namespace WinFormsSemesterProjekt
             }
 
             InitializeComponent();
+
+            dataGridView1.DataSource = orderList;
         }
 
         private void searchBar_Leave(object sender, EventArgs e)

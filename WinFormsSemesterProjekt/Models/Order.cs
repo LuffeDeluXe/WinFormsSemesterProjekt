@@ -19,6 +19,7 @@ namespace WinformsSemesterprojekt.Models
 
         public Order(int customerID, DateTime orderDate, DateTime deliveryDate, string orderStatus, double totalPrice, string shippingMethod)
         {
+            OrderID = OrderDB.CreateNewOrder(customerID, orderDate, deliveryDate, orderStatus, totalPrice, shippingMethod);
             CustomerID = customerID;
             OrderDate = orderDate;
             DeliveryDate = deliveryDate;
@@ -29,7 +30,7 @@ namespace WinformsSemesterprojekt.Models
 
         public Order(int orderID, int customerID, DateTime orderDate, DateTime deliveryDate, string orderStatus, double totalPrice, string shippingMethod)
         {
-            OrderID = OrderDB.CreateNewOrder(customerID, orderDate, deliveryDate, orderStatus, totalPrice, shippingMethod);
+            OrderID = orderID;
             CustomerID = customerID;
             OrderDate = orderDate;
             DeliveryDate = deliveryDate;

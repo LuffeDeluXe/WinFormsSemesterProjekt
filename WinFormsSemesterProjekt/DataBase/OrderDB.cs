@@ -13,7 +13,8 @@ namespace WinFormsSemesterProjekt.DataBase
         public static int CreateNewOrder(int customerID, DateTime orderDate, DateTime deliveryDate, string orderStatus, double totalPrice, string shippingMethod)
         {
             string query =
-                "INSERT INTO Order (CustomerID, OrderDate, DeliveryDate, OrderStatus, TotalPrice, ShippingMethod) " +
+                "INSERT INTO [Order] (CustomerID, OrderDate, DeliveryDate, OrderStatus, TotalPrice, ShippingMethod) " +
+                "OUTPUT INSERTED.OrderID " +
                 "VALUES (@CustomerID, @OrderDate, @DeliveryDate, @OrderStatus, @TotalPrice, @ShippingMethod)";
 
             var command = new SqlCommand(query, connection);
@@ -35,7 +36,7 @@ namespace WinFormsSemesterProjekt.DataBase
             connection.Open();
 
             string query =
-                "SELECT * FROM Order " +
+                "SELECT * FROM [Order] " +
                 "WHERE OrderID = @OrderID";
 
             var command = new SqlCommand(query, connection);
@@ -64,7 +65,7 @@ namespace WinFormsSemesterProjekt.DataBase
 
             List<Order> listOfOrders = new List<Order>();
 
-            string query = "SELECT * FROM Order";
+            string query = "SELECT * FROM [Order]";
 
             var command = new SqlCommand(query, connection);
 
@@ -92,7 +93,7 @@ namespace WinFormsSemesterProjekt.DataBase
         public static void UpdateOrder(Order order)
         {
             string query =
-                "UPDATE Order SET " +
+                "UPDATE [Order] SET " +
                 "DeliveryDate = @DeliveryDate " +
                 "OrderStatus = @OrderStatus " +
                 "TotalPrice = @TotalPrice " +
@@ -113,7 +114,7 @@ namespace WinFormsSemesterProjekt.DataBase
         public static int DeleteOrder(int orderId)
         {
             string query =
-                "DELETE Order " +
+                "DELETE [Order] " +
                 "WHERE OrderID = @OrderID";
 
             var command = new SqlCommand(query, connection);
