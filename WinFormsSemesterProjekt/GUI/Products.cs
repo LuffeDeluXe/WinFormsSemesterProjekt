@@ -23,17 +23,7 @@ namespace WinFormsSemesterProjekt
 
 		public BindingList<Product> FilteredList { get; set; }
 
-		public int ProductId { get; set; }
-
-		public string Name { get; set; }
-
-		public string Category { get; set; }
-
-		public string Description { get; set; }
-
-		public double Price { get; set; }
-
-		public int Stock { get; set; }
+		public int ProductID { get; set; }
 
 		public Products()
 		{
@@ -81,9 +71,9 @@ namespace WinFormsSemesterProjekt
 
 		private void buttonDeleteProduct_Click(object sender, EventArgs e)
 		{
-			if(ProductId != 0 && Name != null)
+			if(ProductID != 0)
 			{
-				ConfirmDeletionProduct confirmDeletionProduct = new ConfirmDeletionProduct(ProductId, Name);
+				ConfirmDeletionProduct confirmDeletionProduct = new ConfirmDeletionProduct(ProductID);
 				confirmDeletionProduct.Show();
 				this.Close();
 			}
@@ -113,9 +103,9 @@ namespace WinFormsSemesterProjekt
 
 		private void buttonEditProduct_Click(object sender, EventArgs e)
 		{
-			if (ProductId != 0 && Name != null)
+			if (Name != null)
 			{
-				EditProduct editProduct = new EditProduct(ProductId, Name, Category, Description, Price, Stock);
+				EditProduct editProduct = new EditProduct(ProductID);
 				editProduct.Show();
 				this.Close();
 			}
@@ -128,12 +118,7 @@ namespace WinFormsSemesterProjekt
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-			ProductId = Convert.ToInt32(selectedRow.Cells[0].Value);
-			Name = selectedRow.Cells[1].Value.ToString();
-			Category = selectedRow.Cells[2].Value.ToString();
-			Description = selectedRow.Cells[3].Value.ToString();
-			Price = Convert.ToDouble(selectedRow.Cells[4].Value);
-			Stock = Convert.ToInt32(selectedRow.Cells[5].Value);
+			ProductID = Convert.ToInt32(selectedRow.Cells[0].Value);
 		}
 	}
 }

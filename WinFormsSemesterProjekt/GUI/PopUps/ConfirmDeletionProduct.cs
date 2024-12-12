@@ -7,37 +7,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinformsSemesterprojekt.Models;
 using WinFormsSemesterProjekt.DataBase;
 
 namespace WinFormsSemesterProjekt.GUI.PopUps
 {
     public partial class ConfirmDeletionProduct : Form
     {
-        public int ProductID { get; set; }
-
-        public string Name { get; set; }
+        private Product Product { get; set; }
         
         public ConfirmDeletionProduct()
         {
             InitializeComponent();
         }
 
-        public ConfirmDeletionProduct(int productId, string name)
+        public ConfirmDeletionProduct(int productId)
         {
 			InitializeComponent();
 
-            ProductID = productId;
+            Product = ProductDatabase.FindProduct(productId);
 
-            Name = name;
-
-            label1.Text = $"Er du sikker på, at du\r\nvil slette {name}?";
+            label1.Text = $"Er du sikker på, at du\r\nvil slette {Product.ProductName}?";
 		}
 
         private void buttonYes_Click(object sender, EventArgs e)
         {
             this.Close();
-            ProductDatabase.DeleteProduct(ProductID);
-            DeletedProduct deletedProduct = new DeletedProduct(Name);
+            ProductDatabase.DeleteProduct(Product.ProductID);
+            DeletedProduct deletedProduct = new DeletedProduct(Product.ProductName);
             deletedProduct.Show();
         }
 

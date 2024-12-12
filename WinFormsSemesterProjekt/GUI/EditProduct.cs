@@ -15,43 +15,23 @@ namespace WinFormsSemesterProjekt.GUI
 {
 	public partial class EditProduct : Form
 	{
-		public int ProductId { get; set; }
-
-		public string Name { get; set; }
-
-		public string Category { get; set; }
-
-		public string Description { get; set; }
-
-		public double Price { get; set; }
-
-		public int Stock { get; set; }
+		private Product Product { get; set; }
 
 		public EditProduct()
 		{
 			InitializeComponent();
 		}
 
-		public EditProduct(int id, string name, string category, string description, double price, int stock)
+		public EditProduct(int id)
 		{
 			InitializeComponent();
 
-			ProductId = id;
-
-			Name = name;
-			textBoxName.Text = name;
-
-			Category = category;
-			textBoxCategory.Text = category;
-
-			Description = description;
-			richTextBoxDescription.Text = description;
-
-			Price = price;
-			textBoxPrice.Text = price.ToString();
-
-			Stock = stock;
-			textBoxQuantity.Text = stock.ToString();
+			Product = ProductDatabase.FindProduct(id);
+			textBoxName.Text = Product.ProductName;
+			textBoxCategory.Text = Product.Category;
+			richTextBoxDescription.Text = Product.Description;
+			textBoxPrice.Text = Product.Price.ToString();
+			textBoxQuantity.Text = Product.Stock.ToString();
 		}
 
 		private void buttonReturn_Click(object sender, EventArgs e)
@@ -65,13 +45,13 @@ namespace WinFormsSemesterProjekt.GUI
 		{
 			UpdatedProduct updatedProduct = new UpdatedProduct();
 
-			Name = textBoxName.Text;
-			Category = textBoxCategory.Text;
-			Description = richTextBoxDescription.Text;
-			Price = Convert.ToInt32(textBoxPrice.Text);
-			Stock = Convert.ToInt32(textBoxQuantity.Text);
+			string newName = textBoxName.Text;
+			string newCategory = textBoxCategory.Text;
+			string newDescription = richTextBoxDescription.Text;
+			double newPrice = Convert.ToDouble(textBoxPrice.Text);
+			int newStock = Convert.ToInt32(textBoxQuantity.Text);
 
-			ProductDatabase.UpdateProduct(ProductId, Name, Category, Description, Price, Stock);
+			ProductDatabase.UpdateProduct(Product.ProductID, newName, newCategory, newDescription, newPrice, newStock);
 			updatedProduct.Show();
 			this.Hide();
 		}
