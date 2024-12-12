@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            pLProductAmountNumeric = new NumericUpDown();
             pLProductView = new DataGridView();
             pLProductIDTextBox = new TextBox();
             pLPricePrUnitTextBox = new TextBox();
@@ -44,7 +43,7 @@
             pLProductNameBox = new TextBox();
             label6 = new Label();
             pLAddProductButton = new Button();
-            ((System.ComponentModel.ISupportInitialize)pLProductAmountNumeric).BeginInit();
+            pLProductAmountBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pLProductView).BeginInit();
             SuspendLayout();
             // 
@@ -57,13 +56,6 @@
             label1.Size = new Size(79, 21);
             label1.TabIndex = 0;
             label1.Text = "Produkter";
-            // 
-            // pLProductAmountNumeric
-            // 
-            pLProductAmountNumeric.Location = new Point(626, 105);
-            pLProductAmountNumeric.Name = "pLProductAmountNumeric";
-            pLProductAmountNumeric.Size = new Size(62, 23);
-            pLProductAmountNumeric.TabIndex = 1;
             // 
             // pLProductView
             // 
@@ -192,6 +184,13 @@
             pLAddProductButton.UseVisualStyleBackColor = true;
             pLAddProductButton.Click += pLAddProductButton_Click;
             // 
+            // pLProductAmountBox
+            // 
+            pLProductAmountBox.Location = new Point(626, 105);
+            pLProductAmountBox.Name = "pLProductAmountBox";
+            pLProductAmountBox.Size = new Size(62, 23);
+            pLProductAmountBox.TabIndex = 4;
+            // 
             // WinAddProductLine
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -204,11 +203,11 @@
             Controls.Add(productLineCreateButton);
             Controls.Add(pLSearchProductButton);
             Controls.Add(pLProductDescriptionBox);
+            Controls.Add(pLProductAmountBox);
             Controls.Add(pLPricePrUnitTextBox);
             Controls.Add(plProductSearchBar);
             Controls.Add(pLProductIDTextBox);
             Controls.Add(pLProductView);
-            Controls.Add(pLProductAmountNumeric);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label5);
@@ -216,7 +215,6 @@
             Controls.Add(label1);
             Name = "WinAddProductLine";
             Text = "WinAddProductLine";
-            ((System.ComponentModel.ISupportInitialize)pLProductAmountNumeric).EndInit();
             ((System.ComponentModel.ISupportInitialize)pLProductView).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -225,7 +223,6 @@
         #endregion
 
         private Label label1;
-        private NumericUpDown pLProductAmountNumeric;
         private DataGridView pLProductView;
         private TextBox pLProductIDTextBox;
         private TextBox pLPricePrUnitTextBox;
@@ -240,5 +237,6 @@
         private TextBox pLProductNameBox;
         private Label label6;
         private Button pLAddProductButton;
+        private TextBox pLProductAmountBox;
     }
 }
