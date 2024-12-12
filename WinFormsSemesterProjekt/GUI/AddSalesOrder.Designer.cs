@@ -172,6 +172,6 @@
         private Button buttonAddProducts;
         private TextBox kundeOrderTextBox;
         private Label totalPriceLabel;
-        private DataGridView productLineDataView;
+        internal DataGridView productLineDataView;
     }
 }

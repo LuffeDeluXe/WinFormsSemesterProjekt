@@ -14,12 +14,12 @@ namespace WinFormsSemesterProjekt.GUI
 {
     public partial class AddSalesOrder : Form
     {
-        public BindingList<ProductLine> Lines {  get; set; } = new BindingList<ProductLine>();
+        public BindingList<ProductLine> orderProductLines {  get; set; } = new BindingList<ProductLine>();
         public AddSalesOrder()
         {
             InitializeComponent();
 
-            productLineDataView.DataSource = Lines;
+            productLineDataView.DataSource = orderProductLines;
         }
 
         private void buttonReturn_Click(object sender, EventArgs e)
