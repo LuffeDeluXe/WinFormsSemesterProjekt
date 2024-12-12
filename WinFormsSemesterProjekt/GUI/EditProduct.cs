@@ -13,9 +13,9 @@ using WinFormsSemesterProjekt.GUI.PopUps;
 
 namespace WinFormsSemesterProjekt.GUI
 {
-    public partial class EditProduct : Form
-    {   
-        public int ProductId { get; set; }
+	public partial class EditProduct : Form
+	{
+		public int ProductId { get; set; }
 
 		public string Name { get; set; }
 
@@ -28,52 +28,84 @@ namespace WinFormsSemesterProjekt.GUI
 		public int Stock { get; set; }
 
 		public EditProduct()
-        {
-            InitializeComponent();
-        }
+		{
+			InitializeComponent();
+		}
 
-        public EditProduct(int id, string name, string category, string description, double price, int stock)
-        {
-            InitializeComponent();
+		public EditProduct(int id, string name, string category, string description, double price, int stock)
+		{
+			InitializeComponent();
 
-            ProductId = id;
+			ProductId = id;
 
-            Name = name;
-            textBoxName.Text = name;
+			Name = name;
+			textBoxName.Text = name;
 
-            Category = category;
+			Category = category;
 			textBoxCategory.Text = category;
 
-            Description = description;
-            richTextBoxDescription.Text = description;
+			Description = description;
+			richTextBoxDescription.Text = description;
 
-            Price = price;
-            textBoxPrice.Text = price.ToString();
+			Price = price;
+			textBoxPrice.Text = price.ToString();
 
-            Stock = stock;
+			Stock = stock;
 			textBoxQuantity.Text = stock.ToString();
 		}
 
-        private void buttonReturn_Click(object sender, EventArgs e)
-        {
-            Products products = new Products();
-            products.Show();
-            this.Hide();
-        }
+		private void buttonReturn_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			Products products = new Products();
+			products.Show();
+		}
 
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            UpdatedProduct updatedProduct = new UpdatedProduct();
+		private void buttonEdit_Click(object sender, EventArgs e)
+		{
+			UpdatedProduct updatedProduct = new UpdatedProduct();
 
-            Name = textBoxName.Text;
-            Category = textBoxCategory.Text;
-            Description = richTextBoxDescription.Text;
-            Price = Convert.ToInt32(textBoxPrice.Text);
-            Stock = Convert.ToInt32(textBoxQuantity.Text);
+			Name = textBoxName.Text;
+			Category = textBoxCategory.Text;
+			Description = richTextBoxDescription.Text;
+			Price = Convert.ToInt32(textBoxPrice.Text);
+			Stock = Convert.ToInt32(textBoxQuantity.Text);
 
-            ProductDatabase.UpdateProduct(ProductId, Name, Category, Description, Price, Stock);
-            updatedProduct.Show();
-            this.Hide();
-        }
-    }
+			ProductDatabase.UpdateProduct(ProductId, Name, Category, Description, Price, Stock);
+			updatedProduct.Show();
+			this.Hide();
+		}
+
+		private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+			{
+				e.Handled = true;
+			}
+		}
+
+		private void textBoxCategory_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+			{
+				e.Handled = true;
+			}
+		}
+
+		private void textBoxQuantity_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+			{
+				e.Handled = true;
+			}
+		}
+
+		private void textBoxPrice_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsPunctuation(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+			{
+				e.Handled = true;
+			}
+		}
+	}
 }

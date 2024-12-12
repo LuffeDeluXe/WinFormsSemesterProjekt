@@ -95,5 +95,21 @@ namespace WinFormsSemesterProjekt.GUI
 				e.Handled = true;
 			}
 		}
+
+		private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+			{
+				e.Handled = true;
+			}
+		}
+
+		private void textBoxCategory_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+			{
+				e.Handled = true;
+			}
+		}
 	}
 }

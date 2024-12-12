@@ -81,9 +81,16 @@ namespace WinFormsSemesterProjekt
 
 		private void buttonDeleteProduct_Click(object sender, EventArgs e)
 		{
-			ConfirmDeletionProduct confirmDeletionProduct = new ConfirmDeletionProduct(ProductId, Name);
-			confirmDeletionProduct.Show();
-			this.Close();
+			if(ProductId != 0 && Name != null)
+			{
+				ConfirmDeletionProduct confirmDeletionProduct = new ConfirmDeletionProduct(ProductId, Name);
+				confirmDeletionProduct.Show();
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("Please pick a product");
+			}
 		}
 
 		private void buttonSearch_Click(object sender, EventArgs e)
@@ -106,9 +113,16 @@ namespace WinFormsSemesterProjekt
 
 		private void buttonEditProduct_Click(object sender, EventArgs e)
 		{
-			EditProduct editProduct = new EditProduct(ProductId, Name, Category, Description, Price, Stock);
-			editProduct.Show();
-			this.Close();
+			if (ProductId != 0 && Name != null)
+			{
+				EditProduct editProduct = new EditProduct(ProductId, Name, Category, Description, Price, Stock);
+				editProduct.Show();
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("Please pick a product");
+			}
 		}
 
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
