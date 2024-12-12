@@ -47,7 +47,10 @@ namespace WinFormsSemesterProjekt
             searchBar.Text = "Søg efter et produkt...";
             searchBar.ForeColor = Color.LightGray;
 
-            CategoryHelpingMethod.FilterProductsByCategory
+            List<string> filteringCategories = CategoryHelpingMethod.FilterProductsByCategory(ProductList);
+            listBoxCategories.DataSource = filteringCategories;
+            
+            listBoxCategories.SelectedIndex = 0;
         }
 
         private void searchBar_Leave(object sender, EventArgs e)
@@ -130,6 +133,15 @@ namespace WinFormsSemesterProjekt
         {
             int Index = listBoxCategories.SelectedIndex;
             label1.Text = Index.ToString();
+
+            CategoryHelpingMethod.SelectedCategoryInstances(ProductList, listBoxCategories.SelectedIndex);
+                listBoxCategories.SelectedIndex
         }
+
+        private void searchBar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

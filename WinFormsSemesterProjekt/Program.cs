@@ -11,6 +11,8 @@ namespace WinFormsSemesterProjekt
         [STAThread]
         static void Main()
         {
+            ProductDatabase.CreateNewProduct("Ajax", "Stol", "Standhaftig", 10, 10);
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.SetHighDpiMode(HighDpiMode.SystemAware);

@@ -108,6 +108,7 @@
             searchBar.Name = "searchBar";
             searchBar.Size = new Size(375, 27);
             searchBar.TabIndex = 5;
+            searchBar.TextChanged += searchBar_TextChanged;
             searchBar.Enter += searchBar_Enter;
             searchBar.Leave += searchBar_Leave;
             // 
