@@ -22,7 +22,7 @@ namespace WinFormsSemesterProjekt.DataBase
             command.CommandText = sql;
             command.Parameters.AddWithValue("@OrderID", orderID);
             command.Parameters.AddWithValue("@ProductID", productID);
-            command.Parameters.AddWithValue("@Quantity", amount);
+            command.Parameters.AddWithValue("@Amount", amount);
 
             return DatabaseManager.ExecuteScalar(command);
         }

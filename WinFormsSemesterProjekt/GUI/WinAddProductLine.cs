@@ -93,11 +93,11 @@ namespace WinFormsSemesterProjekt.GUI
 
         private void productLineCreateButton_Click(object sender, EventArgs e)
         {
-            ProductLine product = new ProductLine(0, Convert.ToInt32(pLProductIDTextBox.Text), Convert.ToInt32(pLProductAmountBox.Text));
+            ProductLine productLine = new ProductLine(0, Convert.ToInt32(pLProductIDTextBox.Text), Convert.ToInt32(pLProductAmountBox.Text));
 
             AddSalesOrder addSalesOrder = new AddSalesOrder();
 
-            addSalesOrder.orderProductLines.Add(product);
+            addSalesOrder.orderProductLines.Add(productLine);
 
             addSalesOrder.productLineDataView.Refresh();
 
