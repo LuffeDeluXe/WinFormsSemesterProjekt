@@ -13,26 +13,26 @@ namespace WinformsSemesterprojekt.Models
         public string ProductName { get; set; }
         public string Category { get; set; }
         public string Description { get; set; }
-        public double UnitPrice { get; set; }
+        public double Price { get; set; }
         public int Stock { get; set; }
 
-		public Product(int productID, string productName, string category, string description, double unitPrice, int stock)
+		public Product(int productID, string productName, string category, string description, double price, int stock)
 		{
 			ProductID = productID;
 			ProductName = productName;
 			Category = category;
 			Description = description;
-			UnitPrice = unitPrice;
+			Price = price;
 			Stock = stock;
 		}
 
-		public Product(string productName, string category, string description, double unitPrice, int stock)
+		public Product(string productName, string category, string description, double price, int stock)
 		{
-			ProductID = ProductDatabase.CreateNewProduct(productName, category, description, unitPrice, stock);
+			ProductID = ProductDatabase.CreateNewProduct(productName, category, description, price, stock);
 			ProductName = productName;
 			Category = category;
 			Description = description;
-			UnitPrice = unitPrice;
+			Price = price;
 			Stock = stock;
 		}
 

@@ -26,7 +26,7 @@ namespace WinformsSemesterprojekt
         /// <param name="lastName"></param>
         /// <param name="phoneNumber"></param>
         /// <param name="email"></param>
-        public Customer (int customerID, string firstName, string lastName, int phoneNumber, string email)
+        public Customer(int customerID, string firstName, string lastName, int phoneNumber, string email)
         {
             CustomerID = customerID;
             FirstName = firstName;
@@ -69,7 +69,7 @@ namespace WinformsSemesterprojekt
 
             if (ValidatePhoneNumber(phoneNumber) == true)
             {
-                customer.PhoneNumber = phoneNumber;   
+                customer.PhoneNumber = phoneNumber;
             }
 
 
