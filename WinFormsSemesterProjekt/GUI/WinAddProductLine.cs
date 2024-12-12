@@ -89,6 +89,22 @@ namespace WinFormsSemesterProjekt.GUI
             string productDescription = pLProductView.CurrentRow.Cells[3].Value.ToString();
 
             pLProductDescriptionBox.Text = productDescription;
+
+            pLProductAmountNumeric.Value = 1;
+        }
+
+        private void productLineCreateButton_Click(object sender, EventArgs e)
+        {
+            ProductLine product = new ProductLine(0, Convert.ToInt32(pLProductIDTextBox.Text), Convert.ToInt32(pLProductAmountNumeric.Value));
+
+            AddSalesOrder addSalesOrder = new AddSalesOrder();
+
+            addSalesOrder.orderProductLines.Add(product);
+
+            addSalesOrder.productLineDataView.Refresh();
+
+            addSalesOrder.Show();
+            this.Hide();
         }
     }
 }

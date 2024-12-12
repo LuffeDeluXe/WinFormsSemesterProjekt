@@ -163,6 +163,7 @@
             productLineCreateButton.TabIndex = 7;
             productLineCreateButton.Text = "Tilføj produkt til ordre";
             productLineCreateButton.UseVisualStyleBackColor = true;
+            productLineCreateButton.Click += productLineCreateButton_Click;
             // 
             // pLProductNameBox
             // 
