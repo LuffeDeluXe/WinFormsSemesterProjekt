@@ -12,20 +12,16 @@ namespace WinFormsSemesterProjekt
         [STAThread]
         static void Main()
         {
-            //var method = new Order(11, DateTime.Now, DateTime.Now, "Packed", 9123, "PNDK");
+            Initialize();
+            Application.Run(new MainMenu());
+        }
 
 
-            //var method = new CustomerDatabase();
-            //var anders = new Customer("Anders", "Jensen", 25252525, "aj@pp.dk");
-            //CustomerDatabase.UpdateCustomerInformation(anders);
+        private static void Initialize()
+        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu());
-            //anders.UpdateEmail("123");
-
-            //method.CreateCustomer(anders);
-
-
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
         }
     }
 }

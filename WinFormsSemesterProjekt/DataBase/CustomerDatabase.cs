@@ -62,7 +62,7 @@ namespace WinFormsSemesterProjekt.DataBase
 
             return customers[0];
         }
-      
+
         public static Customer RetrieveASingleCustomersUsingPhoneNumber(int phoneNumber)
         {
             var customers = new List<Customer>();
@@ -102,7 +102,7 @@ namespace WinFormsSemesterProjekt.DataBase
 
             string sql =
                 (
-                "SELECT * FROM Customer" 
+                "SELECT * FROM Customer"
                 );
 
             command.CommandText = sql;
