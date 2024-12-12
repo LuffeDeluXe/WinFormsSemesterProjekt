@@ -31,13 +31,14 @@
             buttonReturn = new Button();
             buttonAdd = new Button();
             label1 = new Label();
-            listBoxProducts = new ListBox();
             label2 = new Label();
-            label3 = new Label();
-            textBoxCustomerPhoneNumber = new TextBox();
+            kundeOrderLabel = new Label();
+            totalPriceTextBox = new TextBox();
             buttonAddProducts = new Button();
-            textBox1 = new TextBox();
-            label4 = new Label();
+            kundeOrderTextBox = new TextBox();
+            totalPriceLabel = new Label();
+            productLineDataView = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)productLineDataView).BeginInit();
             SuspendLayout();
             // 
             // buttonReturn
@@ -58,7 +59,7 @@
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(81, 22);
             buttonAdd.TabIndex = 25;
-            buttonAdd.Text = "Sælg";
+            buttonAdd.Text = "Færdig";
             buttonAdd.UseVisualStyleBackColor = true;
             buttonAdd.Click += buttonAdd_Click;
             // 
@@ -72,70 +73,69 @@
             label1.TabIndex = 14;
             label1.Text = "Opret salgsordre";
             // 
-            // listBoxProducts
-            // 
-            listBoxProducts.FormattingEnabled = true;
-            listBoxProducts.ItemHeight = 15;
-            listBoxProducts.Location = new Point(268, 93);
-            listBoxProducts.Margin = new Padding(3, 2, 3, 2);
-            listBoxProducts.Name = "listBoxProducts";
-            listBoxProducts.Size = new Size(207, 79);
-            listBoxProducts.TabIndex = 27;
-            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(196, 93);
+            label2.Location = new Point(125, 59);
             label2.Name = "label2";
             label2.Size = new Size(62, 15);
             label2.TabIndex = 28;
             label2.Text = "Produkter:";
             // 
-            // label3
+            // kundeOrderLabel
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(200, 204);
-            label3.Name = "label3";
-            label3.Size = new Size(58, 15);
-            label3.TabIndex = 29;
-            label3.Text = "Kunde ID:";
+            kundeOrderLabel.AutoSize = true;
+            kundeOrderLabel.Location = new Point(129, 224);
+            kundeOrderLabel.Name = "kundeOrderLabel";
+            kundeOrderLabel.Size = new Size(58, 15);
+            kundeOrderLabel.TabIndex = 29;
+            kundeOrderLabel.Text = "Kunde ID:";
             // 
-            // textBoxCustomerPhoneNumber
+            // totalPriceTextBox
             // 
-            textBoxCustomerPhoneNumber.BorderStyle = BorderStyle.FixedSingle;
-            textBoxCustomerPhoneNumber.Location = new Point(268, 202);
-            textBoxCustomerPhoneNumber.Margin = new Padding(3, 2, 3, 2);
-            textBoxCustomerPhoneNumber.Name = "textBoxCustomerPhoneNumber";
-            textBoxCustomerPhoneNumber.Size = new Size(207, 23);
-            textBoxCustomerPhoneNumber.TabIndex = 30;
+            totalPriceTextBox.BorderStyle = BorderStyle.FixedSingle;
+            totalPriceTextBox.Location = new Point(193, 248);
+            totalPriceTextBox.Margin = new Padding(3, 2, 3, 2);
+            totalPriceTextBox.Name = "totalPriceTextBox";
+            totalPriceTextBox.Size = new Size(303, 23);
+            totalPriceTextBox.TabIndex = 30;
             // 
             // buttonAddProducts
             // 
-            buttonAddProducts.Location = new Point(480, 149);
+            buttonAddProducts.Location = new Point(502, 59);
             buttonAddProducts.Margin = new Padding(3, 2, 3, 2);
             buttonAddProducts.Name = "buttonAddProducts";
             buttonAddProducts.Size = new Size(116, 22);
             buttonAddProducts.TabIndex = 31;
             buttonAddProducts.Text = "Tilføj produkter";
             buttonAddProducts.UseVisualStyleBackColor = true;
+            buttonAddProducts.Click += buttonAddProducts_Click;
             // 
-            // textBox1
+            // kundeOrderTextBox
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(268, 176);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(207, 23);
-            textBox1.TabIndex = 32;
+            kundeOrderTextBox.BorderStyle = BorderStyle.FixedSingle;
+            kundeOrderTextBox.Location = new Point(193, 222);
+            kundeOrderTextBox.Margin = new Padding(3, 2, 3, 2);
+            kundeOrderTextBox.Name = "kundeOrderTextBox";
+            kundeOrderTextBox.Size = new Size(303, 23);
+            kundeOrderTextBox.TabIndex = 32;
             // 
-            // label4
+            // totalPriceLabel
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(220, 178);
-            label4.Name = "label4";
-            label4.Size = new Size(38, 15);
-            label4.TabIndex = 33;
-            label4.Text = "Antal:";
+            totalPriceLabel.AutoSize = true;
+            totalPriceLabel.Location = new Point(119, 250);
+            totalPriceLabel.Name = "totalPriceLabel";
+            totalPriceLabel.Size = new Size(68, 15);
+            totalPriceLabel.TabIndex = 33;
+            totalPriceLabel.Text = "Samlet Pris:";
+            // 
+            // productLineDataView
+            // 
+            productLineDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            productLineDataView.Location = new Point(193, 59);
+            productLineDataView.Name = "productLineDataView";
+            productLineDataView.Size = new Size(303, 150);
+            productLineDataView.TabIndex = 34;
             // 
             // AddSalesOrder
             // 
@@ -143,19 +143,20 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(700, 338);
-            Controls.Add(label4);
-            Controls.Add(textBox1);
+            Controls.Add(productLineDataView);
+            Controls.Add(totalPriceLabel);
+            Controls.Add(kundeOrderTextBox);
             Controls.Add(buttonAddProducts);
-            Controls.Add(textBoxCustomerPhoneNumber);
-            Controls.Add(label3);
+            Controls.Add(totalPriceTextBox);
+            Controls.Add(kundeOrderLabel);
             Controls.Add(label2);
-            Controls.Add(listBoxProducts);
             Controls.Add(buttonReturn);
             Controls.Add(buttonAdd);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "AddSalesOrder";
             Text = "AddSalesOrder";
+            ((System.ComponentModel.ISupportInitialize)productLineDataView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -165,12 +166,12 @@
         private Button buttonReturn;
         private Button buttonAdd;
         private Label label1;
-        private ListBox listBoxProducts;
         private Label label2;
-        private Label label3;
-        private TextBox textBoxCustomerPhoneNumber;
+        private Label kundeOrderLabel;
+        private TextBox totalPriceTextBox;
         private Button buttonAddProducts;
-        private TextBox textBox1;
-        private Label label4;
+        private TextBox kundeOrderTextBox;
+        private Label totalPriceLabel;
+        private DataGridView productLineDataView;
     }
 }

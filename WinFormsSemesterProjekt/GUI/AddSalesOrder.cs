@@ -7,15 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinformsSemesterprojekt.Models;
 using WinFormsSemesterProjekt.GUI.PopUps;
 
 namespace WinFormsSemesterProjekt.GUI
 {
     public partial class AddSalesOrder : Form
     {
+        public BindingList<ProductLine> Lines {  get; set; } = new BindingList<ProductLine>();
         public AddSalesOrder()
         {
             InitializeComponent();
+
+            productLineDataView.DataSource = Lines;
         }
 
         private void buttonReturn_Click(object sender, EventArgs e)
@@ -29,6 +33,11 @@ namespace WinFormsSemesterProjekt.GUI
         {
             CreatedOrder createdOrder = new CreatedOrder();
             createdOrder.Show();
+        }
+
+        private void buttonAddProducts_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
