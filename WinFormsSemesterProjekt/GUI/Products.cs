@@ -20,11 +20,11 @@ namespace WinFormsSemesterProjekt
 	{
 		public static Panel ProductsPanel;
 
-		public BindingList<Product> ProductList { get; set; }
+		private BindingList<Product> ProductList { get; set; }
 
-		public BindingList<Product> FilteredList { get; set; }
+		private BindingList<Product> FilteredList { get; set; }
 
-		public int ProductID { get; set; }
+		private int ProductID { get; set; }
 
 		public Products()
 		{
