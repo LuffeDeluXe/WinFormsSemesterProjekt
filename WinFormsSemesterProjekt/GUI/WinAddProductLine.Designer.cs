@@ -40,9 +40,10 @@
             pLProductDescriptionBox = new TextBox();
             plProductSearchBar = new TextBox();
             pLSearchProductButton = new Button();
-            productLineAddButton = new Button();
+            productLineCreateButton = new Button();
             pLProductNameBox = new TextBox();
             label6 = new Label();
+            pLAddProductButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pLProductAmountNumeric).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pLProductView).BeginInit();
             SuspendLayout();
@@ -59,7 +60,7 @@
             // 
             // pLProductAmountNumeric
             // 
-            pLProductAmountNumeric.Location = new Point(545, 105);
+            pLProductAmountNumeric.Location = new Point(626, 105);
             pLProductAmountNumeric.Name = "pLProductAmountNumeric";
             pLProductAmountNumeric.Size = new Size(62, 23);
             pLProductAmountNumeric.TabIndex = 1;
@@ -72,18 +73,17 @@
             pLProductView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             pLProductView.Size = new Size(240, 245);
             pLProductView.TabIndex = 2;
-            pLProductView.RowEnter += pLProductView_RowEnter;
             // 
             // pLProductIDTextBox
             // 
-            pLProductIDTextBox.Location = new Point(258, 105);
+            pLProductIDTextBox.Location = new Point(339, 105);
             pLProductIDTextBox.Name = "pLProductIDTextBox";
             pLProductIDTextBox.Size = new Size(100, 23);
             pLProductIDTextBox.TabIndex = 3;
             // 
             // pLPricePrUnitTextBox
             // 
-            pLPricePrUnitTextBox.Location = new Point(470, 105);
+            pLPricePrUnitTextBox.Location = new Point(551, 105);
             pLPricePrUnitTextBox.Name = "pLPricePrUnitTextBox";
             pLPricePrUnitTextBox.Size = new Size(69, 23);
             pLPricePrUnitTextBox.TabIndex = 4;
@@ -92,7 +92,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(258, 81);
+            label2.Location = new Point(339, 81);
             label2.Name = "label2";
             label2.Size = new Size(84, 21);
             label2.TabIndex = 0;
@@ -102,7 +102,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(470, 80);
+            label3.Location = new Point(551, 80);
             label3.Name = "label3";
             label3.Size = new Size(58, 21);
             label3.TabIndex = 0;
@@ -112,7 +112,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(545, 80);
+            label4.Location = new Point(626, 80);
             label4.Name = "label4";
             label4.Size = new Size(46, 21);
             label4.TabIndex = 0;
@@ -122,7 +122,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(258, 135);
+            label5.Location = new Point(339, 135);
             label5.Name = "label5";
             label5.Size = new Size(87, 21);
             label5.TabIndex = 0;
@@ -130,10 +130,10 @@
             // 
             // pLProductDescriptionBox
             // 
-            pLProductDescriptionBox.Location = new Point(258, 159);
+            pLProductDescriptionBox.Location = new Point(339, 159);
             pLProductDescriptionBox.Multiline = true;
             pLProductDescriptionBox.Name = "pLProductDescriptionBox";
-            pLProductDescriptionBox.Size = new Size(349, 167);
+            pLProductDescriptionBox.Size = new Size(349, 138);
             pLProductDescriptionBox.TabIndex = 5;
             // 
             // plProductSearchBar
@@ -155,18 +155,18 @@
             pLSearchProductButton.UseVisualStyleBackColor = true;
             pLSearchProductButton.Click += pLSearchProductButton_Click;
             // 
-            // productLineAddButton
+            // productLineCreateButton
             // 
-            productLineAddButton.Location = new Point(613, 106);
-            productLineAddButton.Name = "productLineAddButton";
-            productLineAddButton.Size = new Size(75, 23);
-            productLineAddButton.TabIndex = 7;
-            productLineAddButton.Text = "Tilføj";
-            productLineAddButton.UseVisualStyleBackColor = true;
+            productLineCreateButton.Location = new Point(548, 303);
+            productLineCreateButton.Name = "productLineCreateButton";
+            productLineCreateButton.Size = new Size(140, 23);
+            productLineCreateButton.TabIndex = 7;
+            productLineCreateButton.Text = "Tilføj produkt til ordre";
+            productLineCreateButton.UseVisualStyleBackColor = true;
             // 
             // pLProductNameBox
             // 
-            pLProductNameBox.Location = new Point(364, 105);
+            pLProductNameBox.Location = new Point(445, 105);
             pLProductNameBox.Name = "pLProductNameBox";
             pLProductNameBox.Size = new Size(100, 23);
             pLProductNameBox.TabIndex = 9;
@@ -175,11 +175,21 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(364, 81);
+            label6.Location = new Point(445, 81);
             label6.Name = "label6";
             label6.Size = new Size(47, 21);
             label6.TabIndex = 8;
             label6.Text = "Navn";
+            // 
+            // pLAddProductButton
+            // 
+            pLAddProductButton.Location = new Point(258, 105);
+            pLAddProductButton.Name = "pLAddProductButton";
+            pLAddProductButton.Size = new Size(75, 23);
+            pLAddProductButton.TabIndex = 7;
+            pLAddProductButton.Text = "Tilføj";
+            pLAddProductButton.UseVisualStyleBackColor = true;
+            pLAddProductButton.Click += pLAddProductButton_Click;
             // 
             // WinAddProductLine
             // 
@@ -189,7 +199,8 @@
             ClientSize = new Size(700, 338);
             Controls.Add(pLProductNameBox);
             Controls.Add(label6);
-            Controls.Add(productLineAddButton);
+            Controls.Add(pLAddProductButton);
+            Controls.Add(productLineCreateButton);
             Controls.Add(pLSearchProductButton);
             Controls.Add(pLProductDescriptionBox);
             Controls.Add(pLPricePrUnitTextBox);
@@ -224,8 +235,9 @@
         private TextBox pLProductDescriptionBox;
         private TextBox plProductSearchBar;
         private Button pLSearchProductButton;
-        private Button productLineAddButton;
+        private Button productLineCreateButton;
         private TextBox pLProductNameBox;
         private Label label6;
+        private Button pLAddProductButton;
     }
 }

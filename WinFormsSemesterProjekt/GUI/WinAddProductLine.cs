@@ -72,25 +72,21 @@ namespace WinFormsSemesterProjekt.GUI
             }
         }
 
-        private void pLProductView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void pLAddProductButton_Click(object sender, EventArgs e)
         {
-            if (pLProductView.CurrentRow != null)
-            {
-                string productID = pLProductView.CurrentRow.Cells[0].Value.ToString();
+            string productID = pLProductView.CurrentRow.Cells[0].Value.ToString();
 
-                pLProductIDTextBox.Text = productID;
+            pLProductIDTextBox.Text = productID;
 
-                string productName = pLProductView.CurrentRow.Cells[1].Value.ToString();
+            string productName = pLProductView.CurrentRow.Cells[1].Value.ToString();
 
-                pLProductNameBox.Text = productName;
+            pLProductNameBox.Text = productName;
 
-                double unitPrice = Convert.ToDouble(pLProductView.CurrentRow.Cells[4].Value);
+            double unitPrice = Convert.ToDouble(pLProductView.CurrentRow.Cells[4].Value);
 
-                pLPricePrUnitTextBox.Text = unitPrice.ToString();
+            pLPricePrUnitTextBox.Text = unitPrice.ToString();
 
-                string productDescription = pLProductView.CurrentRow.Cells[3].Value.ToString();
-            }
-
+            string productDescription = pLProductView.CurrentRow.Cells[3].Value.ToString();
         }
     }
 }
