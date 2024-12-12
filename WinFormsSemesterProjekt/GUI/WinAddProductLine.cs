@@ -60,7 +60,15 @@ namespace WinFormsSemesterProjekt.GUI
 
             if (int.TryParse(searchInput, out int convertedInput))
             {
+                Product foundProduct = ProductDatabase.FindProduct(convertedInput);
 
+                FilteredList.Clear();
+
+                FilteredList.Add(foundProduct);
+
+                pLProductView.DataSource = FilteredList;
+
+                pLProductView.Refresh();
             }
         }
     }
