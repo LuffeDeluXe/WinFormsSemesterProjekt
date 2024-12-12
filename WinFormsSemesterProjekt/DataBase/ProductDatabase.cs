@@ -52,7 +52,7 @@ namespace WinFormsSemesterProjekt.DataBase
 				reader["Name"].ToString(),
 				reader["Category"].ToString(),
 				reader["Description"].ToString(),
-				Convert.ToInt32(reader["Price"]),
+				Convert.ToDouble(reader["Price"]),
 				Convert.ToInt32(reader["Stock"])
 				);
 				listOfProducts.Add(product);
@@ -82,7 +82,7 @@ namespace WinFormsSemesterProjekt.DataBase
 				reader["Name"].ToString(),
 				reader["Category"].ToString(),
 				reader["Description"].ToString(),
-				Convert.ToInt32(reader["Price"]),
+				Convert.ToDouble(reader["Price"]),
 				Convert.ToInt32(reader["Stock"])
 				);
 				listOfProducts.Add(product);
@@ -113,7 +113,7 @@ namespace WinFormsSemesterProjekt.DataBase
 				reader["Name"].ToString(),
 				reader["Category"].ToString(),
 				reader["Description"].ToString(),
-				Convert.ToInt32(reader["Price"]),
+				Convert.ToDouble(reader["Price"]),
 				Convert.ToInt32(reader["Stock"])
 				);
 				listOfCategoryProducts.Add(product);
