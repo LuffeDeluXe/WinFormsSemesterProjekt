@@ -71,5 +71,22 @@ namespace WinFormsSemesterProjekt.GUI
                 pLProductView.Refresh();
             }
         }
+
+        private void pLProductView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            string productID = pLProductView.CurrentRow.Cells[0].ToString();
+
+            pLProductIDTextBox.Text = productID;
+
+            string productName = pLProductView.CurrentRow.Cells[1].ToString();
+
+            pLProductNameBox.Text = productName;
+
+            double unitPrice = Convert.ToDouble(pLProductView.CurrentRow.Cells[3]);
+
+            pLPricePrUnitTextBox.Text = unitPrice.ToString();
+
+            string productDescription = pLProductView.CurrentRow.Cells[4].ToString();
+        }
     }
 }
