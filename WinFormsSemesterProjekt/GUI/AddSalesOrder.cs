@@ -33,6 +33,7 @@ namespace WinFormsSemesterProjekt.GUI
         {
             CreatedOrder createdOrder = new CreatedOrder();
             createdOrder.Show();
+            this.Close();
         }
 
         private void buttonAddProducts_Click(object sender, EventArgs e)
