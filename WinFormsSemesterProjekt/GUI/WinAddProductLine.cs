@@ -32,7 +32,7 @@ namespace WinFormsSemesterProjekt.GUI
         {
             if (plProductSearchBar.Text == "Indtast produkt id..." || String.IsNullOrEmpty(plProductSearchBar.Text))
             {
-                plProductSearchBar.Text = "";
+                plProductSearchBar.Text = "Indtast produkt id...";
                 plProductSearchBar.ForeColor = Color.LightGray;
 
                 pLProductView.DataSource = ProductList;
@@ -58,7 +58,10 @@ namespace WinFormsSemesterProjekt.GUI
         {
             string searchInput = plProductSearchBar.Text;
 
-            if (int)
+            if (int.TryParse(searchInput, out int convertedInput))
+            {
+
+            }
         }
     }
 }
