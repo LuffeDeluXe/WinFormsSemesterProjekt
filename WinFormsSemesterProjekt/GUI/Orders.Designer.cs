@@ -73,6 +73,7 @@
             // buttonDeleteOrder
             // 
             buttonDeleteOrder.BackColor = Color.Black;
+            buttonDeleteOrder.FlatStyle = FlatStyle.Flat;
             buttonDeleteOrder.ForeColor = SystemColors.ControlLightLight;
             buttonDeleteOrder.Location = new Point(560, 308);
             buttonDeleteOrder.Margin = new Padding(3, 2, 3, 2);

@@ -29,19 +29,21 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            numericUpDown1 = new NumericUpDown();
+            pLProductAmountNumeric = new NumericUpDown();
             pLProductView = new DataGridView();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            pLProductIDTextBox = new TextBox();
+            pLPricePrUnitTextBox = new TextBox();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            textBox3 = new TextBox();
+            pLProductDescriptionBox = new TextBox();
             plProductSearchBar = new TextBox();
             pLSearchProductButton = new Button();
             productLineAddButton = new Button();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            pLProductNameBox = new TextBox();
+            label6 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pLProductAmountNumeric).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pLProductView).BeginInit();
             SuspendLayout();
             // 
@@ -55,12 +57,12 @@
             label1.TabIndex = 0;
             label1.Text = "Produkter";
             // 
-            // numericUpDown1
+            // pLProductAmountNumeric
             // 
-            numericUpDown1.Location = new Point(487, 106);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(120, 23);
-            numericUpDown1.TabIndex = 1;
+            pLProductAmountNumeric.Location = new Point(545, 105);
+            pLProductAmountNumeric.Name = "pLProductAmountNumeric";
+            pLProductAmountNumeric.Size = new Size(62, 23);
+            pLProductAmountNumeric.TabIndex = 1;
             // 
             // pLProductView
             // 
@@ -70,20 +72,21 @@
             pLProductView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             pLProductView.Size = new Size(240, 245);
             pLProductView.TabIndex = 2;
+            pLProductView.RowEnter += pLProductView_RowEnter;
             // 
-            // textBox1
+            // pLProductIDTextBox
             // 
-            textBox1.Location = new Point(258, 105);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 3;
+            pLProductIDTextBox.Location = new Point(258, 105);
+            pLProductIDTextBox.Name = "pLProductIDTextBox";
+            pLProductIDTextBox.Size = new Size(100, 23);
+            pLProductIDTextBox.TabIndex = 3;
             // 
-            // textBox2
+            // pLPricePrUnitTextBox
             // 
-            textBox2.Location = new Point(364, 105);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(117, 23);
-            textBox2.TabIndex = 4;
+            pLPricePrUnitTextBox.Location = new Point(470, 105);
+            pLPricePrUnitTextBox.Name = "pLPricePrUnitTextBox";
+            pLPricePrUnitTextBox.Size = new Size(69, 23);
+            pLPricePrUnitTextBox.TabIndex = 4;
             // 
             // label2
             // 
@@ -99,7 +102,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(364, 81);
+            label3.Location = new Point(470, 80);
             label3.Name = "label3";
             label3.Size = new Size(58, 21);
             label3.TabIndex = 0;
@@ -109,7 +112,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(487, 81);
+            label4.Location = new Point(545, 80);
             label4.Name = "label4";
             label4.Size = new Size(46, 21);
             label4.TabIndex = 0;
@@ -125,13 +128,13 @@
             label5.TabIndex = 0;
             label5.Text = "Beskrivelse";
             // 
-            // textBox3
+            // pLProductDescriptionBox
             // 
-            textBox3.Location = new Point(258, 159);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(349, 167);
-            textBox3.TabIndex = 5;
+            pLProductDescriptionBox.Location = new Point(258, 159);
+            pLProductDescriptionBox.Multiline = true;
+            pLProductDescriptionBox.Name = "pLProductDescriptionBox";
+            pLProductDescriptionBox.Size = new Size(349, 167);
+            pLProductDescriptionBox.TabIndex = 5;
             // 
             // plProductSearchBar
             // 
@@ -161,20 +164,39 @@
             productLineAddButton.Text = "Tilføj";
             productLineAddButton.UseVisualStyleBackColor = true;
             // 
+            // pLProductNameBox
+            // 
+            pLProductNameBox.Location = new Point(364, 105);
+            pLProductNameBox.Name = "pLProductNameBox";
+            pLProductNameBox.Size = new Size(100, 23);
+            pLProductNameBox.TabIndex = 9;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(364, 81);
+            label6.Name = "label6";
+            label6.Size = new Size(47, 21);
+            label6.TabIndex = 8;
+            label6.Text = "Navn";
+            // 
             // WinAddProductLine
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(700, 338);
+            Controls.Add(pLProductNameBox);
+            Controls.Add(label6);
             Controls.Add(productLineAddButton);
             Controls.Add(pLSearchProductButton);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
+            Controls.Add(pLProductDescriptionBox);
+            Controls.Add(pLPricePrUnitTextBox);
             Controls.Add(plProductSearchBar);
-            Controls.Add(textBox1);
+            Controls.Add(pLProductIDTextBox);
             Controls.Add(pLProductView);
-            Controls.Add(numericUpDown1);
+            Controls.Add(pLProductAmountNumeric);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label5);
@@ -182,7 +204,7 @@
             Controls.Add(label1);
             Name = "WinAddProductLine";
             Text = "WinAddProductLine";
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pLProductAmountNumeric).EndInit();
             ((System.ComponentModel.ISupportInitialize)pLProductView).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -191,17 +213,19 @@
         #endregion
 
         private Label label1;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown pLProductAmountNumeric;
         private DataGridView pLProductView;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox pLProductIDTextBox;
+        private TextBox pLPricePrUnitTextBox;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
-        private TextBox textBox3;
+        private TextBox pLProductDescriptionBox;
         private TextBox plProductSearchBar;
         private Button pLSearchProductButton;
         private Button productLineAddButton;
+        private TextBox pLProductNameBox;
+        private Label label6;
     }
 }
