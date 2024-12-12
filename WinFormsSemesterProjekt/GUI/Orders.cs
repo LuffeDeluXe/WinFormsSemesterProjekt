@@ -52,6 +52,7 @@ namespace WinFormsSemesterProjekt
         {
             OrderTypeSelection orderTypeSelection = new OrderTypeSelection();
             orderTypeSelection.Show();
+            this.Hide();
         }
 
         private void buttonDeleteOrder_Click(object sender, EventArgs e)
