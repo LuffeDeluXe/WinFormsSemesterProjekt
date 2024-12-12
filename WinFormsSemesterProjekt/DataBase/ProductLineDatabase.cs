@@ -15,14 +15,14 @@ namespace WinFormsSemesterProjekt.DataBase
             SqlCommand command = connection.CreateCommand();
             // Command is inheret from DatabaseManager.cs as a protected field
             string sql =
-                "INSERT INTO ProductLine (OrderID, ProductID, Amount) " +
+                "INSERT INTO ProductLine (OrderID, ProductID, Quantity) " +
                 "OUTPUT INSERTED.ProductLine.ID " +
-                "VALUES (@OrderID, @ProductID, @Amount)";
+                "VALUES (@OrderID, @ProductID, @Quantity)";
 
             command.CommandText = sql;
             command.Parameters.AddWithValue("@OrderID", orderID);
             command.Parameters.AddWithValue("@ProductID", productID);
-            command.Parameters.AddWithValue("@Amount", amount);
+            command.Parameters.AddWithValue("@Quantity", amount);
 
             return DatabaseManager.ExecuteScalar(command);
         }
