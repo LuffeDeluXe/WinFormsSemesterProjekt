@@ -30,7 +30,7 @@
         {
             label1 = new Label();
             numericUpDown1 = new NumericUpDown();
-            dataGridView1 = new DataGridView();
+            pLProductView = new DataGridView();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             label2 = new Label();
@@ -38,11 +38,11 @@
             label4 = new Label();
             label5 = new Label();
             textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            plProductSearchBar = new TextBox();
             pLSearchProductButton = new Button();
             productLineAddButton = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pLProductView).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -62,14 +62,14 @@
             numericUpDown1.Size = new Size(120, 23);
             numericUpDown1.TabIndex = 1;
             // 
-            // dataGridView1
+            // pLProductView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 81);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(240, 245);
-            dataGridView1.TabIndex = 2;
+            pLProductView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            pLProductView.Location = new Point(12, 81);
+            pLProductView.Name = "pLProductView";
+            pLProductView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            pLProductView.Size = new Size(240, 245);
+            pLProductView.TabIndex = 2;
             // 
             // textBox1
             // 
@@ -133,12 +133,12 @@
             textBox3.Size = new Size(349, 167);
             textBox3.TabIndex = 5;
             // 
-            // textBox4
+            // plProductSearchBar
             // 
-            textBox4.Location = new Point(12, 52);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(159, 23);
-            textBox4.TabIndex = 3;
+            plProductSearchBar.Location = new Point(12, 52);
+            plProductSearchBar.Name = "plProductSearchBar";
+            plProductSearchBar.Size = new Size(159, 23);
+            plProductSearchBar.TabIndex = 3;
             // 
             // pLSearchProductButton
             // 
@@ -168,9 +168,9 @@
             Controls.Add(pLSearchProductButton);
             Controls.Add(textBox3);
             Controls.Add(textBox2);
-            Controls.Add(textBox4);
+            Controls.Add(plProductSearchBar);
             Controls.Add(textBox1);
-            Controls.Add(dataGridView1);
+            Controls.Add(pLProductView);
             Controls.Add(numericUpDown1);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -180,7 +180,7 @@
             Name = "WinAddProductLine";
             Text = "WinAddProductLine";
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pLProductView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -189,7 +189,7 @@
 
         private Label label1;
         private NumericUpDown numericUpDown1;
-        private DataGridView dataGridView1;
+        private DataGridView pLProductView;
         private TextBox textBox1;
         private TextBox textBox2;
         private Label label2;
@@ -197,7 +197,7 @@
         private Label label4;
         private Label label5;
         private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox plProductSearchBar;
         private Button pLSearchProductButton;
         private Button productLineAddButton;
     }
