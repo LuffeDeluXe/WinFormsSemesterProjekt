@@ -33,7 +33,7 @@
             buttonDeleteCustomer = new Button();
             buttonEditCustomer = new Button();
             buttonNewCustomer = new Button();
-            dataGridView1 = new DataGridView();
+            customerView = new DataGridView();
             searchBar = new TextBox();
             buttonMainMenu = new Button();
             buttonSearch = new Button();
@@ -42,7 +42,7 @@
             label1 = new Label();
             listBox1 = new ListBox();
             comboBoxSortby = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)customerView).BeginInit();
             SuspendLayout();
             // 
             // radioButtonCompany
@@ -90,6 +90,7 @@
             buttonEditCustomer.TabIndex = 38;
             buttonEditCustomer.Text = "Ændr valgt kunde";
             buttonEditCustomer.UseVisualStyleBackColor = false;
+            buttonEditCustomer.Click += buttonEditCustomer_Click;
             // 
             // buttonNewCustomer
             // 
@@ -102,15 +103,17 @@
             buttonNewCustomer.TabIndex = 37;
             buttonNewCustomer.Text = "Ny kunde";
             buttonNewCustomer.UseVisualStyleBackColor = false;
+            buttonNewCustomer.Click += buttonNewCustomer_Click;
             // 
-            // dataGridView1
+            // customerView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(313, 93);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(475, 304);
-            dataGridView1.TabIndex = 36;
+            customerView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            customerView.Location = new Point(313, 93);
+            customerView.Name = "customerView";
+            customerView.RowHeadersWidth = 51;
+            customerView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            customerView.Size = new Size(475, 304);
+            customerView.TabIndex = 36;
             // 
             // searchBar
             // 
@@ -145,6 +148,7 @@
             buttonSearch.TabIndex = 33;
             buttonSearch.Text = "Søg";
             buttonSearch.UseVisualStyleBackColor = false;
+            buttonSearch.Click += buttonSearch_Click;
             // 
             // label3
             // 
@@ -210,7 +214,7 @@
             Controls.Add(buttonDeleteCustomer);
             Controls.Add(buttonEditCustomer);
             Controls.Add(buttonNewCustomer);
-            Controls.Add(dataGridView1);
+            Controls.Add(customerView);
             Controls.Add(searchBar);
             Controls.Add(buttonMainMenu);
             Controls.Add(buttonSearch);
@@ -219,7 +223,7 @@
             Controls.Add(label1);
             Name = "Customers";
             Text = "Customers";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)customerView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -231,7 +235,7 @@
         private Button buttonDeleteCustomer;
         private Button buttonEditCustomer;
         private Button buttonNewCustomer;
-        private DataGridView dataGridView1;
+        private DataGridView customerView;
         private TextBox searchBar;
         private Button buttonMainMenu;
         private Button buttonSearch;

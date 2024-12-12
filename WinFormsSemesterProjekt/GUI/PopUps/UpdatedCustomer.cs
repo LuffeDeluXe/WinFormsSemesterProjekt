@@ -12,9 +12,10 @@ namespace WinFormsSemesterProjekt.GUI.PopUps
 {
     public partial class UpdatedCustomer : Form
     {
-        public UpdatedCustomer()
+        public UpdatedCustomer(string customerName)
         {
             InitializeComponent();
+            labelText.Text = $"Oplysninger for kunden {customerName} er opdateret.";
         }
 
         private void buttonOk_Click(object sender, EventArgs e)

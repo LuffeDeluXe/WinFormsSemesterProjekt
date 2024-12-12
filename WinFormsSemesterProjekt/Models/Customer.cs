@@ -17,6 +17,8 @@ namespace WinformsSemesterprojekt
         public string LastName { get; private set; }
         public int PhoneNumber { get; private set; }
         public string Email { get; private set; }
+        public string CustomerType { get; private set; }
+        public string Area { get; set; }
 
         /// <summary>
         /// Use only when reading from database
@@ -26,13 +28,17 @@ namespace WinformsSemesterprojekt
         /// <param name="lastName"></param>
         /// <param name="phoneNumber"></param>
         /// <param name="email"></param>
-        public Customer (int customerID, string firstName, string lastName, int phoneNumber, string email)
+        /// <param name="customerType"></param>
+        /// <param name="area"></param>
+        public Customer (int customerID, string firstName, string lastName, int phoneNumber, string email, string customerType, string area)
         {
             CustomerID = customerID;
             FirstName = firstName;
             LastName = lastName;
             PhoneNumber = phoneNumber;
             Email = email;
+            CustomerType = customerType;
+            Area = area;
         }
 
         /// <summary>
@@ -43,14 +49,18 @@ namespace WinformsSemesterprojekt
         /// <param name="lastName"></param>
         /// <param name="phoneNumber"></param>
         /// <param name="email"></param>
-        public Customer(string firstName, string lastName, int phoneNumber, string email)
+        /// <param name="customerType"></param>
+        /// <param name="area"></param>
+        public Customer(string firstName, string lastName, int phoneNumber, string email, string customerType, string area)
         {
             //CustomerID is created and retrived from databasen using the CreateCustomer Method
-            CustomerID = CustomerDatabase.CreateCustomer(firstName, lastName, phoneNumber, email);
+            CustomerID = CustomerDatabase.CreateCustomer(firstName, lastName, phoneNumber, email, customerType, area);
             FirstName = firstName;
             LastName = lastName;
             PhoneNumber = phoneNumber;
             Email = email;
+            CustomerType = customerType;
+            Area = area;
         }
 
         /// <summary>
@@ -61,11 +71,15 @@ namespace WinformsSemesterprojekt
         /// <param name="lastName"></param>
         /// <param name="phoneNumber"></param>
         /// <param name="email"></param>
-        public static void UpdateWholeCustomer(Customer customer, string firstName, string lastName, int phoneNumber, string email)
+        /// <param name="customerType"></param>
+        /// <param name="area"></param>
+        public static void UpdateWholeCustomer(Customer customer, string firstName, string lastName, int phoneNumber, string email, string customerType, string area)
         {
             customer.FirstName = firstName;
             customer.LastName = lastName;
             customer.Email = email;
+            customer.CustomerType = customerType;
+            customer.Area = area;
 
             if (ValidatePhoneNumber(phoneNumber) == true)
             {
@@ -82,7 +96,7 @@ namespace WinformsSemesterprojekt
         /// </summary>
         /// <param name="phoneNumber"></param>
         /// <returns></returns>
-        private static bool ValidatePhoneNumber(int phoneNumber)
+        public static bool ValidatePhoneNumber(int phoneNumber)
         {
             char[] phoneNumberAsACharArr = phoneNumber.ToString().ToCharArray();
 

@@ -10,18 +10,16 @@ using System.Windows.Forms;
 
 namespace WinFormsSemesterProjekt.GUI.PopUps
 {
-    public partial class CreatedCustomer : Form
+    public partial class InvalidCustomerType : Form
     {
-        public CreatedCustomer(string customerName)
+        public InvalidCustomerType()
         {
             InitializeComponent();
-            labelText.Text = $"Kunden {customerName} er oprettet.";
         }
+
         private void buttonOk_Click(object sender, EventArgs e)
         {
             this.Close();
-            Customers customers = new Customers();
-            customers.Show();
         }
     }
 }
