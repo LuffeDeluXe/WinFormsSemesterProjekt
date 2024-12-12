@@ -12,14 +12,31 @@ namespace WinformsSemesterprojekt.Models
         public int ProductLineID { get; set; }
         public int OrderID { get; set; }
         public int ProductID { get; set; }
-        public int Amount { get; set; }
+        public int Quantity { get; set; }
+        public double PricePerUnit { get; set; }
 
-        public ProductLine(int orderID, int productID, int amount)
+        public ProductLine(int productLineID, int orderID, int productID, int quantity, double pricePerUnit)
         {
-            ProductLineID = ProductLineDatabase.UploadToDatabase(orderID, productID, amount);
+            ProductLineID = productLineID;
             OrderID = orderID;
             ProductID = productID;
-            Amount = amount;
+            Quantity = quantity;
+            PricePerUnit = pricePerUnit;
+        }
+
+        public ProductLine(int orderID, int productID, int quantity, double pricePerUnit)
+        {
+            ProductLineID = ProductLineDatabase.UploadToDatabase(orderID, productID, quantity, pricePerUnit);
+            OrderID = orderID;
+            ProductID = productID;
+            Quantity = quantity;
+            PricePerUnit = pricePerUnit;
+        }
+
+        public void UpdateQuantity(int newQuantity)
+        {
+            Quantity = newQuantity;
+            ProductLineDatabase.UpdateQuantity(ProductLineID, Quantity);
         }
     }
 }
