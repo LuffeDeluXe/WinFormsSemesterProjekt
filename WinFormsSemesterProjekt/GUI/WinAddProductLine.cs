@@ -53,5 +53,12 @@ namespace WinFormsSemesterProjekt.GUI
                 pLProductView.Refresh();
             }
         }
+
+        private void pLSearchProductButton_Click(object sender, EventArgs e)
+        {
+            string searchInput = plProductSearchBar.Text;
+
+            if (int)
+        }
     }
 }

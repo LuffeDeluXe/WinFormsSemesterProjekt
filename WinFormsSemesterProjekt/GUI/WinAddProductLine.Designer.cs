@@ -139,6 +139,8 @@
             plProductSearchBar.Name = "plProductSearchBar";
             plProductSearchBar.Size = new Size(159, 23);
             plProductSearchBar.TabIndex = 3;
+            plProductSearchBar.Enter += PLSearchBar_Enter;
+            plProductSearchBar.Leave += PLSearchBar_Enter;
             // 
             // pLSearchProductButton
             // 
@@ -148,6 +150,7 @@
             pLSearchProductButton.TabIndex = 6;
             pLSearchProductButton.Text = "Søg";
             pLSearchProductButton.UseVisualStyleBackColor = true;
+            pLSearchProductButton.Click += pLSearchProductButton_Click;
             // 
             // productLineAddButton
             // 
