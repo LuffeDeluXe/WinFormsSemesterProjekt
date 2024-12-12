@@ -54,9 +54,9 @@ namespace WinFormsSemesterProjekt.GUI
 					throw new Exception();
 				}
 
-				double unitPrice = Convert.ToInt32(textBoxPrice.Text);
+				double price = Convert.ToDouble(textBoxPrice.Text);
 
-				if (Double.IsNegative(unitPrice) && Double.IsNaN(unitPrice))
+				if (Double.IsNegative(price))
 				{
 					MessageBox.Show("Please type a correct value");
 					throw new Exception();
@@ -70,7 +70,7 @@ namespace WinFormsSemesterProjekt.GUI
 					throw new Exception();
 				}
 
-				ProductDatabase.CreateNewProduct(name, category, description, unitPrice, stock);
+				ProductDatabase.CreateNewProduct(name, category, description, price, stock);
 				CreatedProduct createdProduct = new CreatedProduct();
 				createdProduct.Show();
 				this.Hide();
