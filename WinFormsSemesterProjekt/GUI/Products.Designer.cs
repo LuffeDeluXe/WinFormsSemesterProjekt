@@ -121,6 +121,7 @@
             dataGridView1.Size = new Size(475, 304);
             dataGridView1.TabIndex = 6;
             dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // buttonNewProduct
             // 

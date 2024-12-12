@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinformsSemesterprojekt;
 using WinformsSemesterprojekt.Models;
 using WinFormsSemesterProjekt.DataBase;
 using WinFormsSemesterProjekt.GUI;
@@ -19,6 +20,8 @@ namespace WinFormsSemesterProjekt
 {
     public partial class Products : Form
     {
+        private List<string> _Categories { get; set; }
+
         public static Panel ProductsPanel;
 
         public BindingList<Product> ProductList { get; set; }
@@ -47,10 +50,8 @@ namespace WinFormsSemesterProjekt
             searchBar.Text = "Søg efter et produkt...";
             searchBar.ForeColor = Color.LightGray;
 
-            List<string> filteringCategories = CategoryHelpingMethod.FilterProductsByCategory(ProductList);
-            listBoxCategories.DataSource = filteringCategories;
-            
-            listBoxCategories.SelectedIndex = 0;
+            _Categories = CategoryHelpingMethod.FilterProductsByCategory(ProductList);
+            listBoxCategories.DataSource = _Categories;
         }
 
         private void searchBar_Leave(object sender, EventArgs e)
@@ -134,14 +135,30 @@ namespace WinFormsSemesterProjekt
             int Index = listBoxCategories.SelectedIndex;
             label1.Text = Index.ToString();
 
-            CategoryHelpingMethod.SelectedCategoryInstances(ProductList, listBoxCategories.SelectedIndex);
-                listBoxCategories.SelectedIndex
+            if (listBoxCategories.SelectedIndex != 0)
+            {
+                BindingList<Product> catogoryResultsDisplayed = CategoryHelpingMethod.SelectedCategoryInstances(ProductList, _Categories[listBoxCategories.SelectedIndex]);
+                dataGridView1.DataSource = catogoryResultsDisplayed;
+                dataGridView1.Refresh();
+
+
+            }
+            else
+            {
+                dataGridView1.DataSource = ProductList;
+                dataGridView1.Refresh();
+            }
+
         }
 
         private void searchBar_TextChanged(object sender, EventArgs e)
         {
 
         }
-        
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
