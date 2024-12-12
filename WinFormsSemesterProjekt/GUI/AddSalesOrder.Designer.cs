@@ -107,7 +107,7 @@
             buttonAddProducts.Name = "buttonAddProducts";
             buttonAddProducts.Size = new Size(116, 22);
             buttonAddProducts.TabIndex = 31;
-            buttonAddProducts.Text = "Tilføj produkter";
+            buttonAddProducts.Text = "Tilføj produkt";
             buttonAddProducts.UseVisualStyleBackColor = true;
             buttonAddProducts.Click += buttonAddProducts_Click;
             // 

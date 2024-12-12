@@ -37,7 +37,8 @@ namespace WinFormsSemesterProjekt.GUI
 
         private void buttonAddProducts_Click(object sender, EventArgs e)
         {
-
+            WinAddProductLine productLine = new WinAddProductLine();
+            productLine.Show();
         }
     }
 }
