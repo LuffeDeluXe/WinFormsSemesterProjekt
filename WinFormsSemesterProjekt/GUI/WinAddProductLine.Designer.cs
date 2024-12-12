@@ -140,7 +140,7 @@
             plProductSearchBar.Size = new Size(159, 23);
             plProductSearchBar.TabIndex = 3;
             plProductSearchBar.Enter += PLSearchBar_Enter;
-            plProductSearchBar.Leave += PLSearchBar_Enter;
+            plProductSearchBar.Leave += PLSearchBar_Leave;
             // 
             // pLSearchProductButton
             // 
