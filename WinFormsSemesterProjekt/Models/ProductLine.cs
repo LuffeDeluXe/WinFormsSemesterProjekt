@@ -9,11 +9,11 @@ namespace WinformsSemesterprojekt.Models
 {
     public class ProductLine
     {
-        public int ProductLineID { get; set; }
-        public int OrderID { get; set; }
-        public int ProductID { get; set; }
-        public int Quantity { get; set; }
-        public double PricePerUnit { get; set; }
+        public int ProductLineID { get; private set; }
+        public int OrderID { get; private set; }
+        public int ProductID { get; private set; }
+        public int Quantity { get; private set; }
+        public double PricePerUnit { get; private set; }
 
         public ProductLine(int productLineID, int orderID, int productID, int quantity, double pricePerUnit)
         {
