@@ -97,6 +97,67 @@ namespace WinFormsSemesterProjekt.DataBase
             return customers[0];
         }
 
+        public static List<Customer> RetrieveCustomersByArea(string area)
+        {
+            var customers = new List<Customer>();
+
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
+
+            string sql =
+                (
+                "SELECT * FROM Customer " +
+                "WHERE Area = @Area"
+                );
+
+            command.CommandText = sql;
+            command.Parameters.AddWithValue("@Area", area);
+
+            using var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                var ReadCustomer = new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), Convert.ToInt32(reader.GetString(3)), reader.GetString(4), reader.GetString(5), reader.GetString(6));
+                customers.Add(ReadCustomer);
+            }
+
+            connection.Close();
+
+            return customers;
+        }
+
+        public static List<Customer> RetrieveCustomersByType(string type)
+        {
+            var customers = new List<Customer>();
+
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
+
+            string sql =
+                (
+                "SELECT * FROM Customer " +
+                "WHERE CustomerType = @CustomerType"
+                );
+
+            command.CommandText = sql;
+            command.Parameters.AddWithValue("@CustomerType", type);
+
+            using var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var ReadCustomer = new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), Convert.ToInt32(reader.GetString(3)), reader.GetString(4), reader.GetString(5), reader.GetString(6));
+                customers.Add(ReadCustomer);
+            }
+
+            connection.Close();
+
+            return customers;
+        }
+
         public static List<Customer> RetrieveListOfAllCustomers()
         {
             var customers = new List<Customer>();
@@ -122,6 +183,37 @@ namespace WinFormsSemesterProjekt.DataBase
             connection.Close();
 
             return customers;
+        }
+
+        public static List<string> GetAreas()
+        {
+            var areaList = new List<String>();
+
+            SqlCommand command = connection.CreateCommand();
+
+            string sql =
+                (
+                "SELECT Area FROM Customer"
+                );
+
+            command.CommandText = sql;
+
+            connection.Open();
+            using var reader = command.ExecuteReader();
+
+            areaList.Add("Alle områder");
+
+            while (reader.Read())
+            {
+                string area = reader.GetString(0);
+                if (!areaList.Contains(area))
+                {
+                    areaList.Add(area);
+                }
+            }
+            connection.Close();
+
+            return areaList;
         }
 
         /// <summary>

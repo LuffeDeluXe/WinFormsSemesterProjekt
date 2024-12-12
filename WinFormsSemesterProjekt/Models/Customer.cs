@@ -18,7 +18,7 @@ namespace WinformsSemesterprojekt
         public int PhoneNumber { get; private set; }
         public string Email { get; private set; }
         public string CustomerType { get; private set; }
-        public string Area { get; set; }
+        public string Area { get; private set; }
 
         /// <summary>
         /// Use only when reading from database

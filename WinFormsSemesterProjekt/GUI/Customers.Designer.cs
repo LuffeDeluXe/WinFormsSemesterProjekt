@@ -40,7 +40,7 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            listBox1 = new ListBox();
+            listBoxAreas = new ListBox();
             comboBoxSortby = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)customerView).BeginInit();
             SuspendLayout();
@@ -55,6 +55,7 @@
             radioButtonCompany.TabStop = true;
             radioButtonCompany.Text = "Erhvervskunde";
             radioButtonCompany.UseVisualStyleBackColor = true;
+            radioButtonCompany.Click += radioButtonCompany_Click;
             // 
             // radioButtonPrivateCustomer
             // 
@@ -66,6 +67,7 @@
             radioButtonPrivateCustomer.TabStop = true;
             radioButtonPrivateCustomer.Text = "Privatkunde";
             radioButtonPrivateCustomer.UseVisualStyleBackColor = true;
+            radioButtonPrivateCustomer.Click += radioButtonPrivateCustomer_Click;
             // 
             // buttonDeleteCustomer
             // 
@@ -179,13 +181,14 @@
             label1.TabIndex = 30;
             label1.Text = "Kunder";
             // 
-            // listBox1
+            // listBoxAreas
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(20, 231);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(213, 164);
-            listBox1.TabIndex = 45;
+            listBoxAreas.FormattingEnabled = true;
+            listBoxAreas.Location = new Point(20, 231);
+            listBoxAreas.Name = "listBoxAreas";
+            listBoxAreas.Size = new Size(213, 164);
+            listBoxAreas.TabIndex = 45;
+            listBoxAreas.SelectedIndexChanged += listBoxAreas_SelectedIndexChanged;
             // 
             // comboBoxSortby
             // 
@@ -207,7 +210,7 @@
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(800, 450);
             Controls.Add(comboBoxSortby);
-            Controls.Add(listBox1);
+            Controls.Add(listBoxAreas);
             Controls.Add(radioButtonCompany);
             Controls.Add(radioButtonPrivateCustomer);
             Controls.Add(buttonDeleteCustomer);
@@ -228,9 +231,6 @@
         }
 
         #endregion
-
-        private RadioButton radioButtonCompany;
-        private RadioButton radioButtonPrivateCustomer;
         private Button buttonDeleteCustomer;
         private Button buttonEditCustomer;
         private Button buttonNewCustomer;
@@ -240,8 +240,10 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private ListBox listBox1;
+        private ListBox listBoxAreas;
         private ComboBox comboBoxSortby;
         public DataGridView customerView;
+        public RadioButton radioButtonCompany;
+        public RadioButton radioButtonPrivateCustomer;
     }
 }

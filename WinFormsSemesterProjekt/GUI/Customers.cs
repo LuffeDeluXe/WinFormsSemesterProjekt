@@ -22,6 +22,7 @@ namespace WinFormsSemesterProjekt
             InitializeComponent();
 
             customerView.DataSource = BindingCustomerList;
+            listBoxAreas.DataSource = CustomerDatabase.GetAreas();
         }
 
         private void searchBar_Leave(object sender, EventArgs e)
@@ -115,6 +116,55 @@ namespace WinFormsSemesterProjekt
             EditCustomer editCustomer = new EditCustomer(customerId);
             editCustomer.Show();
             this.Close();
+        }
+
+        private void listBoxAreas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxAreas.GetItemText(listBoxAreas.SelectedItem) != "Alle områder")
+            {
+                List<Customer> customerChecker = CustomerDatabase.RetrieveCustomersByArea(listBoxAreas.GetItemText(listBoxAreas.SelectedItem));
+                
+                customerView.DataSource = GUICustomersMethods.FilterByType(customerChecker, this);
+                customerView.Update();
+            }
+            else if (listBoxAreas.GetItemText(listBoxAreas.SelectedItem) == "Alle områder")
+            {
+                var convertToList = new List<Customer>(BindingCustomerList);
+                customerView.DataSource = GUICustomersMethods.FilterByType(convertToList, this);
+                customerView.Update();
+            }
+        }
+
+        private void radioButtonPrivateCustomer_Click(object sender, EventArgs e)
+        {
+            if (listBoxAreas.GetItemText(listBoxAreas.SelectedItem) != "Alle områder")
+            {
+                List<Customer> customerChecker = CustomerDatabase.RetrieveCustomersByArea(listBoxAreas.GetItemText(listBoxAreas.SelectedItem));
+
+                customerView.DataSource = GUICustomersMethods.FilterByType(customerChecker, this);
+                customerView.Update();
+            }
+            else
+            {
+                customerView.DataSource = CustomerDatabase.RetrieveCustomersByType("Privatkunde");
+                customerView.Update();
+            }
+        }
+
+        private void radioButtonCompany_Click(object sender, EventArgs e)
+        {
+            if (listBoxAreas.GetItemText(listBoxAreas.SelectedItem) != "Alle områder")
+            {
+                List<Customer> customerChecker = CustomerDatabase.RetrieveCustomersByArea(listBoxAreas.GetItemText(listBoxAreas.SelectedItem));
+
+                customerView.DataSource = GUICustomersMethods.FilterByType(customerChecker, this);
+                customerView.Update();
+            }
+            else
+            {
+                customerView.DataSource = CustomerDatabase.RetrieveCustomersByType("Erhvervskunde");
+                customerView.Update();
+            }
         }
     }
 }

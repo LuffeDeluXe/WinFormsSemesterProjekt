@@ -21,5 +21,27 @@ namespace WinFormsSemesterProjekt.GUI
                 }
             }
         }
+
+        public static List<Customer> FilterByType(List<Customer> list, Customers customers)
+        {
+            List<Customer> filterResult = new List<Customer>();
+
+            foreach (Customer customer in list)
+            {
+                if (customers.radioButtonPrivateCustomer.Checked && customer.CustomerType == "Privatkunde")
+                {
+                    filterResult.Add(customer);
+                }
+                if (customers.radioButtonCompany.Checked && customer.CustomerType == "Erhvervskunde")
+                {
+                    filterResult.Add(customer);
+                }
+                if (!customers.radioButtonCompany.Checked && !customers.radioButtonPrivateCustomer.Checked)
+                {
+                    filterResult.Add(customer);
+                }
+            }
+            return filterResult;
+        }
     }
 }
