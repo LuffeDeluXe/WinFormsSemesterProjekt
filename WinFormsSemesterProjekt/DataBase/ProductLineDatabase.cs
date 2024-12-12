@@ -16,7 +16,7 @@ namespace WinFormsSemesterProjekt.DataBase
             // Command is inheret from DatabaseManager.cs as a protected field
             string sql =
                 "INSERT INTO ProductLine (OrderID, ProductID, Quantity) " +
-                "OUTPUT INSERTED.ProductLine.ID " +
+                "OUTPUT INSERTED.ProductLineID " +
                 "VALUES (@OrderID, @ProductID, @Quantity)";
 
             command.CommandText = sql;
