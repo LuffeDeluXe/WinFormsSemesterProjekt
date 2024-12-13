@@ -106,7 +106,6 @@ namespace WinFormsSemesterProjekt.GUI
 
             addSalesOrder.productLineDataView.Refresh();
 
-            addSalesOrder.Show();
             this.Hide();
         }
     }
