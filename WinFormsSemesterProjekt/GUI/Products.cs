@@ -133,7 +133,10 @@ namespace WinFormsSemesterProjekt
 
 			foreach (var product in listOfProducts)
 			{
-				txtContent += $"Produktnavn: {product.ProductName}, Produktkategori: {product.Category}, Produktpris: {product.Price}\n";
+				txtContent += $"Produktnavn: {product.ProductName}, " +
+							  $"Produktkategori: {product.Category}, " +
+							  $"Produktpris: {product.Price}, " +
+							  $"Lagerbeholdning: {product.Stock}\n";
 			}
 
 			SaveFileDialog saveFileDialog = new SaveFileDialog();
