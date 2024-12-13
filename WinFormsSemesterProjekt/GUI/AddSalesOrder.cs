@@ -15,20 +15,13 @@ namespace WinFormsSemesterProjekt.GUI
 {
     public partial class AddSalesOrder : Form
     {
-        public int CurrentOrderID { get; private set; }
         public BindingList<ProductLine> orderProductLines { get; set; } = new BindingList<ProductLine>();
         public List<ProductLine> filteredOrderProductLine { get; set; }
+        public int CurrentOrderID { get; private set; }
         public double TotalPrice { get; private set; }
         public AddSalesOrder()
         {
             InitializeComponent();
-
-            filteredOrderProductLine = ProductLineDatabase.LookInTheDatabase(CurrentOrderID);
-
-            foreach (ProductLine line in filteredOrderProductLine)
-            {
-                orderProductLines.Add(line);
-            }
 
             productLineDataView.DataSource = orderProductLines;
 
@@ -37,6 +30,13 @@ namespace WinFormsSemesterProjekt.GUI
 
         public void UpDateTotalPrice()
         {
+            filteredOrderProductLine = ProductLineDatabase.LookInTheDatabase(CurrentOrderID);
+
+            foreach (ProductLine line in filteredOrderProductLine)
+            {
+                orderProductLines.Add(line);
+            }
+
             foreach (ProductLine line in filteredOrderProductLine)
             {
                 TotalPrice += line.PricePerUnit * line.Quantity;
