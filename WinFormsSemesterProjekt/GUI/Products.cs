@@ -24,25 +24,15 @@ namespace WinFormsSemesterProjekt
 
         public static Panel ProductsPanel;
 
-        public BindingList<Product> ProductList { get; set; }
+		private BindingList<Product> ProductList { get; set; }
 
-        public BindingList<Product> FilteredList { get; set; }
+		private BindingList<Product> FilteredList { get; set; }
 
-        public int ProductId { get; set; }
+		private int ProductID { get; set; }
 
-        public string Name { get; set; }
-
-        public string Category { get; set; }
-
-        public string Description { get; set; }
-
-        public double Price { get; set; }
-
-        public int Stock { get; set; }
-
-        public Products()
-        {
-            InitializeComponent();
+		public Products()
+		{
+			InitializeComponent();
 
             ProductList = new BindingList<Product>(ProductDatabase.FindAllProducts());
             FilteredList = new BindingList<Product>();
@@ -87,12 +77,19 @@ namespace WinFormsSemesterProjekt
             this.Hide();
         }
 
-        private void buttonDeleteProduct_Click(object sender, EventArgs e)
-        {
-            ConfirmDeletionProduct confirmDeletionProduct = new ConfirmDeletionProduct(ProductId, Name);
-            confirmDeletionProduct.Show();
-            this.Close();
-        }
+		private void buttonDeleteProduct_Click(object sender, EventArgs e)
+		{
+			if(ProductID != 0)
+			{
+				ConfirmDeletionProduct confirmDeletionProduct = new ConfirmDeletionProduct(ProductID);
+				confirmDeletionProduct.Show();
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("Please pick a product");
+			}
+		}
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
@@ -112,12 +109,19 @@ namespace WinFormsSemesterProjekt
             }
         }
 
-        private void buttonEditProduct_Click(object sender, EventArgs e)
-        {
-            EditProduct editProduct = new EditProduct(ProductId, Name, Category, Description, Price, Stock);
-            editProduct.Show();
-            this.Close();
-        }
+		private void buttonEditProduct_Click(object sender, EventArgs e)
+		{
+			if (Name != null)
+			{
+				EditProduct editProduct = new EditProduct(ProductID);
+				editProduct.Show();
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("Please pick a product");
+			}
+		}
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

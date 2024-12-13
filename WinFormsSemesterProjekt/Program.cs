@@ -11,13 +11,16 @@ namespace WinFormsSemesterProjekt
         [STAThread]
         static void Main()
         {
-            ProductDatabase.CreateNewProduct("Ajax", "Stol", "Standhaftig", 10, 10);
-            ProductDatabase.CreateNewProduct("Atlas", "Kommode", "Grim", 10, 10);
+            Initialize();
+            Application.Run(new MainMenu());
+        }
 
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			Application.SetHighDpiMode(HighDpiMode.SystemAware);
-			Application.Run(new MainMenu());
-		}
+
+        private static void Initialize()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+        }
     }
 }

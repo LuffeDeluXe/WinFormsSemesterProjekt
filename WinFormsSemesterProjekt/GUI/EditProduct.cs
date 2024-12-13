@@ -13,67 +13,79 @@ using WinFormsSemesterProjekt.GUI.PopUps;
 
 namespace WinFormsSemesterProjekt.GUI
 {
-    public partial class EditProduct : Form
-    {   
-        public int ProductId { get; set; }
-
-		public string Name { get; set; }
-
-		public string Category { get; set; }
-
-		public string Description { get; set; }
-
-		public double Price { get; set; }
-
-		public int Stock { get; set; }
+	public partial class EditProduct : Form
+	{
+		private Product Product { get; set; }
 
 		public EditProduct()
-        {
-            InitializeComponent();
-        }
-
-        public EditProduct(int id, string name, string category, string description, double price, int stock)
-        {
-            InitializeComponent();
-
-            ProductId = id;
-
-            Name = name;
-            textBoxName.Text = name;
-
-            Category = category;
-			textBoxCategory.Text = category;
-
-            Description = description;
-            richTextBoxDescription.Text = description;
-
-            Price = price;
-            textBoxPrice.Text = price.ToString();
-
-            Stock = stock;
-			textBoxQuantity.Text = stock.ToString();
+		{
+			InitializeComponent();
 		}
 
-        private void buttonReturn_Click(object sender, EventArgs e)
-        {
-            Products products = new Products();
-            products.Show();
-            this.Hide();
-        }
+		public EditProduct(int id)
+		{
+			InitializeComponent();
 
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            UpdatedProduct updatedProduct = new UpdatedProduct();
+			Product = ProductDatabase.FindProduct(id);
+			textBoxName.Text = Product.ProductName;
+			textBoxCategory.Text = Product.Category;
+			richTextBoxDescription.Text = Product.Description;
+			textBoxPrice.Text = Product.Price.ToString();
+			textBoxQuantity.Text = Product.Stock.ToString();
+		}
 
-            Name = textBoxName.Text;
-            Category = textBoxCategory.Text;
-            Description = richTextBoxDescription.Text;
-            Price = Convert.ToInt32(textBoxPrice.Text);
-            Stock = Convert.ToInt32(textBoxQuantity.Text);
+		private void buttonReturn_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			Products products = new Products();
+			products.Show();
+		}
 
-            ProductDatabase.UpdateProduct(ProductId, Name, Category, Description, Price, Stock);
-            updatedProduct.Show();
-            this.Hide();
-        }
-    }
+		private void buttonEdit_Click(object sender, EventArgs e)
+		{
+			UpdatedProduct updatedProduct = new UpdatedProduct();
+
+			string newName = textBoxName.Text;
+			string newCategory = textBoxCategory.Text;
+			string newDescription = richTextBoxDescription.Text;
+			double newPrice = Convert.ToDouble(textBoxPrice.Text);
+			int newStock = Convert.ToInt32(textBoxQuantity.Text);
+
+			ProductDatabase.UpdateProduct(Product.ProductID, newName, newCategory, newDescription, newPrice, newStock);
+			updatedProduct.Show();
+			this.Hide();
+		}
+
+		private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+			{
+				e.Handled = true;
+			}
+		}
+
+		private void textBoxCategory_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+			{
+				e.Handled = true;
+			}
+		}
+
+		private void textBoxQuantity_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+			{
+				e.Handled = true;
+			}
+		}
+
+		private void textBoxPrice_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsPunctuation(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+			{
+				e.Handled = true;
+			}
+		}
+	}
 }

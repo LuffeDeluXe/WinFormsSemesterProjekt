@@ -60,6 +60,7 @@
 			textBoxName.Name = "textBoxName";
 			textBoxName.Size = new Size(204, 23);
 			textBoxName.TabIndex = 1;
+			textBoxName.KeyPress += textBoxName_KeyPress;
 			// 
 			// textBoxCategory
 			// 
@@ -68,6 +69,7 @@
 			textBoxCategory.Name = "textBoxCategory";
 			textBoxCategory.Size = new Size(204, 23);
 			textBoxCategory.TabIndex = 2;
+			textBoxCategory.KeyPress += textBoxCategory_KeyPress;
 			// 
 			// textBoxPrice
 			// 
