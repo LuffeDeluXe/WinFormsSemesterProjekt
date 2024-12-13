@@ -41,6 +41,10 @@ namespace WinFormsSemesterProjekt.GUI
             {
                 TotalPrice += line.PricePerUnit * line.Quantity;
             }
+
+            productLineDataView.Refresh();
+
+            totalPriceLabel.Text = TotalPrice.ToString();
         }
 
         private void buttonReturn_Click(object sender, EventArgs e)
