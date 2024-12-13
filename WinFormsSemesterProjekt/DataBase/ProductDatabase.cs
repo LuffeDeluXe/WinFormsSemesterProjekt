@@ -171,8 +171,8 @@ namespace WinFormsSemesterProjekt.DataBase
 						   "Category = @Category, " +
 						   "Description = @Description, " +
 						   "Price = @Price, " +
-						   "Stock = @Stock " +
-						   "MinStock = @MinStock " +
+						   "Stock = @Stock, " +
+						   "MinStock = @MinStock, " +
 						   "MaxStock = @MaxStock " +
 						   "WHERE ProductID = @ProductID";
 
