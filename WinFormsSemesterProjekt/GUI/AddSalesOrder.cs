@@ -30,6 +30,8 @@ namespace WinFormsSemesterProjekt.GUI
 
         public void UpDateTotalPrice()
         {
+            filteredOrderProductLine.Clear();
+
             filteredOrderProductLine = ProductLineDatabase.LookInTheDatabase(CurrentOrderID);
 
             foreach (ProductLine line in filteredOrderProductLine)
