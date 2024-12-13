@@ -35,7 +35,7 @@ namespace WinFormsSemesterProjekt.GUI
             shippingComboBox.SelectedIndex = 0;
         }
 
-        private void UpDateTotalPrice()
+        public void UpDateTotalPrice()
         {
             foreach (ProductLine line in filteredOrderProductLine)
             {

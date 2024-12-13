@@ -102,6 +102,8 @@ namespace WinFormsSemesterProjekt.GUI
 
             //addSalesOrder.orderProductLines.Add(productLine);
 
+            addSalesOrder.UpDateTotalPrice();
+
             addSalesOrder.productLineDataView.Refresh();
 
             addSalesOrder.Show();
