@@ -18,11 +18,11 @@ using WinFormsSemesterProjekt.Models;
 
 namespace WinFormsSemesterProjekt
 {
-    public partial class Products : Form
-    {
-        private List<string> _Categories { get; set; }
+	public partial class Products : Form
+	{
+		private List<string> _Categories { get; set; }
 
-        public static Panel ProductsPanel;
+		public static Panel ProductsPanel;
 
 		private BindingList<Product> ProductList { get; set; }
 
@@ -34,52 +34,52 @@ namespace WinFormsSemesterProjekt
 		{
 			InitializeComponent();
 
-            ProductList = new BindingList<Product>(ProductDatabase.FindAllProducts());
-            FilteredList = new BindingList<Product>();
-            dataGridView1.DataSource = ProductList;
-            searchBar.Text = "Søg efter et produkt...";
-            searchBar.ForeColor = Color.LightGray;
+			ProductList = new BindingList<Product>(ProductDatabase.FindAllProducts());
+			FilteredList = new BindingList<Product>();
+			dataGridView1.DataSource = ProductList;
+			searchBar.Text = "Søg efter et produkt...";
+			searchBar.ForeColor = Color.LightGray;
 
-            _Categories = CategoryHelpingMethod.FilterProductsByCategory(ProductList);
-            listBoxCategories.DataSource = _Categories;
-        }
+			_Categories = CategoryHelpingMethod.FilterProductsByCategory(ProductList);
+			listBoxCategories.DataSource = _Categories;
+		}
 
-        private void searchBar_Leave(object sender, EventArgs e)
-        {
-            if (searchBar.Text == "" || String.IsNullOrEmpty(searchBar.Text))
-            {
-                searchBar.Text = "Søg efter et produkt...";
-                searchBar.ForeColor = Color.LightGray;
+		private void searchBar_Leave(object sender, EventArgs e)
+		{
+			if (searchBar.Text == "" || String.IsNullOrEmpty(searchBar.Text))
+			{
+				searchBar.Text = "Søg efter et produkt...";
+				searchBar.ForeColor = Color.LightGray;
 
-                dataGridView1.DataSource = ProductList;
+				dataGridView1.DataSource = ProductList;
 
-                dataGridView1.Refresh();
-            }
-        }
+				dataGridView1.Refresh();
+			}
+		}
 
-        private void searchBar_Enter(object sender, EventArgs e)
-        {
-            if (searchBar.Text == "Søg efter et produkt..." || String.IsNullOrEmpty(searchBar.Text))
-            {
-                searchBar.Text = "";
-                searchBar.ForeColor = Color.Black;
+		private void searchBar_Enter(object sender, EventArgs e)
+		{
+			if (searchBar.Text == "Søg efter et produkt..." || String.IsNullOrEmpty(searchBar.Text))
+			{
+				searchBar.Text = "";
+				searchBar.ForeColor = Color.Black;
 
-                dataGridView1.DataSource = ProductList;
+				dataGridView1.DataSource = ProductList;
 
-                dataGridView1.Refresh();
-            }
-        }
+				dataGridView1.Refresh();
+			}
+		}
 
-        private void buttonNewProduct_Click(object sender, EventArgs e)
-        {
-            AddProduct addProduct = new AddProduct();
-            addProduct.Show();
-            this.Hide();
-        }
+		private void buttonNewProduct_Click(object sender, EventArgs e)
+		{
+			AddProduct addProduct = new AddProduct();
+			addProduct.Show();
+			this.Hide();
+		}
 
 		private void buttonDeleteProduct_Click(object sender, EventArgs e)
 		{
-			if(ProductID != 0)
+			if (ProductID != 0)
 			{
 				ConfirmDeletionProduct confirmDeletionProduct = new ConfirmDeletionProduct(ProductID);
 				confirmDeletionProduct.Show();
@@ -91,23 +91,23 @@ namespace WinFormsSemesterProjekt
 			}
 		}
 
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            string searchInput = searchBar.Text;
+		private void buttonSearch_Click(object sender, EventArgs e)
+		{
+			string searchInput = searchBar.Text;
 
-            if (int.TryParse(searchInput, out int convertedInput))
-            {
-                Product foundProduct = ProductDatabase.FindProduct(convertedInput);
+			if (int.TryParse(searchInput, out int convertedInput))
+			{
+				Product foundProduct = ProductDatabase.FindProduct(convertedInput);
 
-                FilteredList.Clear();
+				FilteredList.Clear();
 
-                FilteredList.Add(foundProduct);
+				FilteredList.Add(foundProduct);
 
-                dataGridView1.DataSource = FilteredList;
+				dataGridView1.DataSource = FilteredList;
 
-                dataGridView1.Refresh();
-            }
-        }
+				dataGridView1.Refresh();
+			}
+		}
 
 		private void buttonEditProduct_Click(object sender, EventArgs e)
 		{
@@ -123,41 +123,71 @@ namespace WinFormsSemesterProjekt
 			}
 		}
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-            ProductID = Convert.ToInt32(selectedRow.Cells[0].Value);
-        }
+		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+			ProductID = Convert.ToInt32(selectedRow.Cells[0].Value);
+		}
 
-        private void listBoxCategories_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int Index = listBoxCategories.SelectedIndex;
-            label1.Text = Index.ToString();
+		private void listBoxCategories_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (listBoxCategories.SelectedIndex != 0)
+			{
+				BindingList<Product> catogoryResultsDisplayed = CategoryHelpingMethod.SelectedCategoryInstances(ProductList, _Categories[listBoxCategories.SelectedIndex]);
+				dataGridView1.DataSource = catogoryResultsDisplayed;
+				dataGridView1.Refresh();
+			}
+			else
+			{
+				dataGridView1.DataSource = ProductList;
+				dataGridView1.Refresh();
+			}
+		}
 
-            if (listBoxCategories.SelectedIndex != 0)
-            {
-                BindingList<Product> catogoryResultsDisplayed = CategoryHelpingMethod.SelectedCategoryInstances(ProductList, _Categories[listBoxCategories.SelectedIndex]);
-                dataGridView1.DataSource = catogoryResultsDisplayed;
-                dataGridView1.Refresh();
+		private void buttonExport_Click(object sender, EventArgs e)
+		{
+			int index = listBoxCategories.SelectedIndex;
+			WriteToTxt(listBoxCategoriesSelectedList(index));
+		}
 
+		private BindingList<Product> listBoxCategoriesSelectedList(int index)
+		{
+			if (listBoxCategories.SelectedIndex != 0)
+			{
+				BindingList<Product> catogoryResultsDisplayed = CategoryHelpingMethod.SelectedCategoryInstances(ProductList, _Categories[listBoxCategories.SelectedIndex]);
+				dataGridView1.DataSource = catogoryResultsDisplayed;
+				return catogoryResultsDisplayed;
+			}
+			else
+			{
+				dataGridView1.DataSource = ProductList;
+				return ProductList;
+			}
+		}
 
-            }
-            else
-            {
-                dataGridView1.DataSource = ProductList;
-                dataGridView1.Refresh();
-            }
+		private void WriteToTxt(BindingList<Product> listOfProducts)
+		{
+			string txtContent = "";
 
-        }
+			foreach (var product in listOfProducts)
+			{
+				txtContent += $"Produktnavn: {product.ProductName}, " +
+							  $"Produktkategori: {product.Category}, " +
+							  $"Produktpris: {product.Price}, " +
+							  $"Lagerbeholdning: {product.Stock}\n";
+			}
 
-        private void searchBar_TextChanged(object sender, EventArgs e)
-        {
+			SaveFileDialog saveFileDialog = new SaveFileDialog();
+			saveFileDialog.Filter = "Tekstfil|*.txt";
+			saveFileDialog.FileName = $"Lager over {_Categories[listBoxCategories.SelectedIndex]}.txt";
+			saveFileDialog.Title = "Gem din tekstfil";
 
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-    }
+			if (saveFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				File.WriteAllText(saveFileDialog.FileName, txtContent);
+				MessageBox.Show($"Oprettelse af tekstfil succesfuld\n\n" +
+							$"Fil sti: {saveFileDialog.FileName}");
+			}
+		}
+	}
 }
