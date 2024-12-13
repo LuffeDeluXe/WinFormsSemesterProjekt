@@ -21,7 +21,7 @@ namespace WinFormsSemesterProjekt.GUI
 
             productLineDataView.DataSource = orderProductLines;
 
-            shippingComboBox.SelectedItem = 0;
+
         }
 
         private void buttonReturn_Click(object sender, EventArgs e)
@@ -50,6 +50,11 @@ namespace WinFormsSemesterProjekt.GUI
             orderIDLabel.Text = order.OrderID.ToString();
             orderLabel.Visible = true;
             orderIDLabel.Visible = true;
+        }
+
+        private void AddSalesOrder_Load(object sender, EventArgs e)
+        {
+            shippingComboBox.SelectedItem = 0;
         }
     }
 }
