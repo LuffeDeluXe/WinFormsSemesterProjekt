@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Drawing.Design;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -163,6 +164,7 @@ namespace WinFormsSemesterProjekt
 				dataGridView1.DataSource = ProductList;
 				return ProductList;
 			}
+
 		}
 
 		private void WriteToTxt(BindingList<Product> listOfProducts)
@@ -180,6 +182,7 @@ namespace WinFormsSemesterProjekt
 			SaveFileDialog saveFileDialog = new SaveFileDialog();
 			saveFileDialog.Filter = "Tekstfil|*.txt";
 			saveFileDialog.FileName = $"Lager over {_Categories[listBoxCategories.SelectedIndex]}.txt";
+
 			saveFileDialog.Title = "Gem din tekstfil";
 
 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -188,6 +191,7 @@ namespace WinFormsSemesterProjekt
 				MessageBox.Show($"Oprettelse af tekstfil succesfuld\n\n" +
 							$"Fil sti: {saveFileDialog.FileName}");
 			}
+
 		}
 	}
 }
