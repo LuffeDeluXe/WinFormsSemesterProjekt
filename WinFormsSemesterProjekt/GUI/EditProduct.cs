@@ -32,6 +32,8 @@ namespace WinFormsSemesterProjekt.GUI
 			richTextBoxDescription.Text = Product.Description;
 			textBoxPrice.Text = Product.Price.ToString();
 			textBoxQuantity.Text = Product.Stock.ToString();
+			textBoxMinStock.Text = Product.MinStock.ToString();
+			textBoxMaxStock.Text = Product.MaxStock.ToString();
 		}
 
 		private void buttonReturn_Click(object sender, EventArgs e)
@@ -50,8 +52,10 @@ namespace WinFormsSemesterProjekt.GUI
 			string newDescription = richTextBoxDescription.Text;
 			double newPrice = Convert.ToDouble(textBoxPrice.Text);
 			int newStock = Convert.ToInt32(textBoxQuantity.Text);
+			int newMinStock = Convert.ToInt32(textBoxMinStock.Text);
+			int newMaxStock = Convert.ToInt32(textBoxMaxStock.Text);
 
-			ProductDatabase.UpdateProduct(Product.ProductID, newName, newCategory, newDescription, newPrice, newStock);
+			ProductDatabase.UpdateProduct(Product.ProductID, newName, newCategory, newDescription, newPrice, newStock, newMinStock, newMaxStock);
 			updatedProduct.Show();
 			this.Hide();
 		}

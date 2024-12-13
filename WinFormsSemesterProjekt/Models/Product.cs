@@ -15,8 +15,10 @@ namespace WinformsSemesterprojekt.Models
         public string Description { get; set; }
         public double Price { get; set; }
         public int Stock { get; set; }
+        public int MinStock { get; set; }
+        public int MaxStock { get; set; }
 
-		public Product(int productID, string productName, string category, string description, double price, int stock)
+        public Product(int productID, string productName, string category, string description, double price, int stock, int minStock, int maxStock)
 		{
 			ProductID = productID;
 			ProductName = productName;
@@ -24,16 +26,20 @@ namespace WinformsSemesterprojekt.Models
 			Description = description;
 			Price = price;
 			Stock = stock;
+			MinStock = minStock;
+			MaxStock = maxStock;
 		}
 
-		public Product(string productName, string category, string description, double price, int stock)
+		public Product(string productName, string category, string description, double price, int stock, int minStock, int maxStock)
 		{
-			ProductID = ProductDatabase.CreateNewProduct(productName, category, description, price, stock);
+			ProductID = ProductDatabase.CreateNewProduct(productName, category, description, price, stock, minStock, maxStock);
 			ProductName = productName;
 			Category = category;
 			Description = description;
 			Price = price;
 			Stock = stock;
+			MinStock = minStock;
+			MaxStock = maxStock;
 		}
 
 	}

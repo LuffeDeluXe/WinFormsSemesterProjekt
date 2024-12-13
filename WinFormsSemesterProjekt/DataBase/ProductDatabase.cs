@@ -10,12 +10,12 @@ namespace WinFormsSemesterProjekt.DataBase
 {
 	internal class ProductDatabase : DatabaseManager
 	{
-		public static int CreateNewProduct(string productName, string category, string description, double price, int stock)
+		public static int CreateNewProduct(string productName, string category, string description, double price, int stock, int minStock, int maxStock)
 		{
 			string query =
-				"INSERT INTO Product (Name, Category, Description, Price, Stock) " +
+				"INSERT INTO Product (Name, Category, Description, Price, Stock, MinStock, MaxStock) " +
 				"OUTPUT INSERTED.ProductID " +
-				"VALUES (@Name, @Category, @Description, @Price, @Stock)";
+				"VALUES (@Name, @Category, @Description, @Price, @Stock, @MinStock, @MaxStock)";
 
 			var command = new SqlCommand(query, connection);
 
@@ -24,6 +24,8 @@ namespace WinFormsSemesterProjekt.DataBase
 			command.Parameters.AddWithValue("@Description", description);
 			command.Parameters.AddWithValue("@Price", price);
 			command.Parameters.AddWithValue("@Stock", stock);
+			command.Parameters.AddWithValue("@MinStock", minStock);
+			command.Parameters.AddWithValue("@MaxStock", maxStock);
 
 			int productId = DatabaseManager.ExecuteScalar(command);
 
@@ -53,8 +55,10 @@ namespace WinFormsSemesterProjekt.DataBase
 				reader["Category"].ToString(),
 				reader["Description"].ToString(),
 				Convert.ToDouble(reader["Price"]),
-				Convert.ToInt32(reader["Stock"])
-				);
+				Convert.ToInt32(reader["Stock"]),
+                Convert.ToInt32(reader["MinStock"]),
+                Convert.ToInt32(reader["MaxStock"])
+                );
 				listOfProducts.Add(product);
 			}
 
@@ -83,8 +87,10 @@ namespace WinFormsSemesterProjekt.DataBase
 				reader["Category"].ToString(),
 				reader["Description"].ToString(),
 				Convert.ToDouble(reader["Price"]),
-				Convert.ToInt32(reader["Stock"])
-				);
+				Convert.ToInt32(reader["Stock"]),
+                Convert.ToInt32(reader["MinStock"]),
+                Convert.ToInt32(reader["MaxStock"])
+                );
 				listOfProducts.Add(product);
 			}
 
@@ -115,7 +121,9 @@ namespace WinFormsSemesterProjekt.DataBase
                 reader["Category"].ToString(),
                 reader["Description"].ToString(),
                 Convert.ToDouble(reader["Price"]),
-                Convert.ToInt32(reader["Stock"])
+                Convert.ToInt32(reader["Stock"]),
+                Convert.ToInt32(reader["MinStock"]),
+                Convert.ToInt32(reader["MaxStock"])
                 );
                 nameMatches.Add(product);
             }
@@ -146,15 +154,17 @@ namespace WinFormsSemesterProjekt.DataBase
 				reader["Category"].ToString(),
 				reader["Description"].ToString(),
 				Convert.ToDouble(reader["Price"]),
-				Convert.ToInt32(reader["Stock"])
-				);
+				Convert.ToInt32(reader["Stock"]),
+                Convert.ToInt32(reader["MinStock"]),
+                Convert.ToInt32(reader["MaxStock"])
+                );
 				listOfCategoryProducts.Add(product);
 			}
 
 			return listOfCategoryProducts;
 		}
 
-		public static void UpdateProduct(int id, string name, string category, string desription, double price, int stock)
+		public static void UpdateProduct(int id, string name, string category, string desription, double price, int stock, int minStock, int maxStock)
 		{
 			string query = "UPDATE Product " +
 						   "SET Name = @Name, " +
@@ -162,6 +172,8 @@ namespace WinFormsSemesterProjekt.DataBase
 						   "Description = @Description, " +
 						   "Price = @Price, " +
 						   "Stock = @Stock " +
+						   "MinStock = @MinStock " +
+						   "MaxStock = @MaxStock " +
 						   "WHERE ProductID = @ProductID";
 
 			var command = new SqlCommand(query, connection);
@@ -172,8 +184,11 @@ namespace WinFormsSemesterProjekt.DataBase
 			command.Parameters.AddWithValue("@Description", desription);
 			command.Parameters.AddWithValue("@Price", price);
 			command.Parameters.AddWithValue("@Stock", stock);
+            command.Parameters.AddWithValue("@MinStock", minStock);
+            command.Parameters.AddWithValue("@MaxStock", maxStock);
 
-			DatabaseManager.ExecuteNonQuery(command);
+
+            DatabaseManager.ExecuteNonQuery(command);
 		}
 
 		public static int DeleteProduct(int productID)

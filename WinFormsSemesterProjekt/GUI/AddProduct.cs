@@ -70,7 +70,23 @@ namespace WinFormsSemesterProjekt.GUI
 					throw new Exception();
 				}
 
-				ProductDatabase.CreateNewProduct(name, category, description, price, stock);
+                int minStock = Convert.ToInt32(textBoxMinStock.Text);
+
+                if (int.IsNegative(minStock))
+                {
+                    MessageBox.Show("Please type a correct value");
+                    throw new Exception();
+                }
+
+                int maxStock = Convert.ToInt32(textBoxMaxStock.Text);
+
+                if (int.IsNegative(maxStock))
+                {
+                    MessageBox.Show("Please type a correct value");
+                    throw new Exception();
+                }
+
+                ProductDatabase.CreateNewProduct(name, category, description, price, stock, minStock, maxStock);
 				CreatedProduct createdProduct = new CreatedProduct();
 				createdProduct.Show();
 				this.Hide();
@@ -112,5 +128,19 @@ namespace WinFormsSemesterProjekt.GUI
 				e.Handled = true;
 			}
 		}
-	}
+        private void textBoxMinStock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsPunctuation(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+        private void textBoxMaxStock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsPunctuation(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+    }
 }
