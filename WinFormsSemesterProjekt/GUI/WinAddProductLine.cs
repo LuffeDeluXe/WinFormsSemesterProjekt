@@ -17,11 +17,14 @@ namespace WinFormsSemesterProjekt.GUI
         public BindingList<Product> ProductList { get; set; }
         public BindingList<Product> FilteredList { get; private set; } = new BindingList<Product>();
         private int OrderLineID { get; set; }
-        public WinAddProductLine(int orderID)
+        private AddSalesOrder CurrentSalesOrder { get; set; }
+        public WinAddProductLine(int orderID, AddSalesOrder addSalesOrder)
         {
             InitializeComponent();
 
             ProductList = new BindingList<Product>(ProductDatabase.FindAllProducts());
+
+            CurrentSalesOrder = addSalesOrder;
 
             OrderLineID = orderID;
 
@@ -96,15 +99,13 @@ namespace WinFormsSemesterProjekt.GUI
 
         private void productLineCreateButton_Click(object sender, EventArgs e)
         {
-            AddSalesOrder addSalesOrder = new AddSalesOrder();
-
             ProductLine productLine = new ProductLine(OrderLineID, Convert.ToInt32(pLProductIDTextBox.Text), Convert.ToInt32(pLProductQuantityNumeric.Value), Convert.ToDouble(pLPricePrUnitTextBox.Text));
 
             //addSalesOrder.orderProductLines.Add(productLine);
 
-            addSalesOrder.UpDateTotalPrice();
+            CurrentSalesOrder.UpDateTotalPrice();
 
-            addSalesOrder.productLineDataView.Refresh();
+            //CurrentSalesOrder.productLineDataView.Refresh();
 
             this.Hide();
         }

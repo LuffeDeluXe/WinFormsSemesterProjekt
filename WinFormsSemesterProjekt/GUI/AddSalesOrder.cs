@@ -44,7 +44,7 @@ namespace WinFormsSemesterProjekt.GUI
 
             productLineDataView.Refresh();
 
-            totalPriceLabel.Text = TotalPrice.ToString();
+            totalPriceTextBox.Text = TotalPrice.ToString();
         }
 
         private void buttonReturn_Click(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace WinFormsSemesterProjekt.GUI
 
         private void buttonAddProducts_Click(object sender, EventArgs e)
         {
-            WinAddProductLine productLine = new WinAddProductLine(CurrentOrderID);
+            WinAddProductLine productLine = new WinAddProductLine(CurrentOrderID, this);
             productLine.Show();
         }
 
