@@ -14,7 +14,7 @@ namespace WinFormsSemesterProjekt.GUI
 {
     public partial class AddSalesOrder : Form
     {
-        public BindingList<ProductLine> orderProductLines {  get; set; } = new BindingList<ProductLine>();
+        public BindingList<ProductLine> orderProductLines { get; set; } = new BindingList<ProductLine>();
         public AddSalesOrder()
         {
             InitializeComponent();
@@ -40,6 +40,14 @@ namespace WinFormsSemesterProjekt.GUI
         {
             WinAddProductLine productLine = new WinAddProductLine();
             productLine.Show();
+        }
+
+        private void CreateOrderButton_Click(object sender, EventArgs e)
+        {
+            Order order = new Order(Convert.ToInt32(customerIDTextBox.Text), DateTime.Now, DateTime.Now, "Created", 0, "Pickup Point");
+            orderIDLabel.Text = order.OrderID.ToString();
+            orderLabel.Visible = true;
+            orderIDLabel.Visible = true;
         }
     }
 }
