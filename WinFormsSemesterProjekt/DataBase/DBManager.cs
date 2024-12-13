@@ -14,9 +14,10 @@ namespace WinFormsSemesterProjekt.DataBase
         protected const string _ConnectionString = 
             
             /*Askesserver*/
-            "Server=Djamo;Database=ProductionPro;Integrated Security=True;Encrypt=False";
+            //"Server=Djamo;Database=ProductionPro;Integrated Security=True;Encrypt=False";
 
-            //*Lokalserver"Data Source=localhost;Initial Catalog=ProductionPro;Integrated Security=SSPI;TrustServerCertificate=true";
+            /*Lokalserver*/
+            "Data Source=localhost;Initial Catalog=ProductionPro;Integrated Security=SSPI;TrustServerCertificate=true";
 
 
         protected static SqlConnection connection = new SqlConnection(_ConnectionString);

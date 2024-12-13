@@ -147,7 +147,7 @@
 			buttonEditProduct.BackColor = Color.Black;
 			buttonEditProduct.FlatStyle = FlatStyle.Flat;
 			buttonEditProduct.ForeColor = SystemColors.ControlLightLight;
-			buttonEditProduct.Location = new Point(410, 314);
+			buttonEditProduct.Location = new Point(546, 314);
 			buttonEditProduct.Margin = new Padding(3, 2, 3, 2);
 			buttonEditProduct.Name = "buttonEditProduct";
 			buttonEditProduct.Size = new Size(130, 22);
@@ -237,7 +237,7 @@
 			button1.BackColor = Color.Black;
 			button1.FlatStyle = FlatStyle.Flat;
 			button1.ForeColor = SystemColors.ControlLightLight;
-			button1.Location = new Point(546, 314);
+			button1.Location = new Point(410, 314);
 			button1.Margin = new Padding(3, 2, 3, 2);
 			button1.Name = "button1";
 			button1.Size = new Size(130, 22);
