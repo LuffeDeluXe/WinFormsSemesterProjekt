@@ -93,7 +93,39 @@ namespace WinFormsSemesterProjekt.DataBase
 			return listOfProducts;
 		}
 
-		public static List<Product> SortProductsByCategory(string category)
+        public static List<Product> FindProductsByName(string name)
+        {
+            List<Product> nameMatches = new List<Product>();
+
+            string query = "SELECT * FROM Product " +
+						   "WHERE Name = @Name";
+
+            var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Name", name);
+
+            connection.Open();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var product = new Product(
+                Convert.ToInt32(reader["ProductID"]),
+                reader["Name"].ToString(),
+                reader["Category"].ToString(),
+                reader["Description"].ToString(),
+                Convert.ToDouble(reader["Price"]),
+                Convert.ToInt32(reader["Stock"])
+                );
+                nameMatches.Add(product);
+            }
+
+            connection.Close();
+
+            return nameMatches;
+        }
+
+        public static List<Product> SortProductsByCategory(string category)
 		{
 			var listOfCategoryProducts = new List<Product>();
 
