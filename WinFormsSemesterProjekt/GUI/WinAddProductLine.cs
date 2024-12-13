@@ -95,7 +95,7 @@ namespace WinFormsSemesterProjekt.GUI
         {
             AddSalesOrder addSalesOrder = new AddSalesOrder();
 
-            ProductLine productLine = new ProductLine(Convert.ToInt32(addSalesOrder.orderIDLabel), Convert.ToInt32(pLProductIDTextBox.Text), Convert.ToInt32(pLProductQuantityNumeric.Value), Convert.ToDouble(pLPricePrUnitTextBox.Text));
+            ProductLine productLine = new ProductLine(addSalesOrder.CurrentOrderID, Convert.ToInt32(pLProductIDTextBox.Text), Convert.ToInt32(pLProductQuantityNumeric.Value), Convert.ToDouble(pLPricePrUnitTextBox.Text));
 
             //addSalesOrder.orderProductLines.Add(productLine);
 
