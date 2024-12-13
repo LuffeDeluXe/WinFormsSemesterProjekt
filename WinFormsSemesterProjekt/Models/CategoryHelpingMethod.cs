@@ -11,8 +11,6 @@ namespace WinFormsSemesterProjekt.Models
 {
     internal class CategoryHelpingMethod
     {
-        // I parametret; som nu står til "List<Product>" ProductList, men den er egentlig en BindingList.
-
         public static List<string> FilterProductsByCategory(BindingList<Product> ProductList)
         {
             List<string> filteredListOfCategories = new List<string>();
