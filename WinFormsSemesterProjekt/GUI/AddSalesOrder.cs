@@ -82,7 +82,15 @@ namespace WinFormsSemesterProjekt.GUI
         {
             if (productLineIDBox.Text != null && newQuantityBox.Text != null)
             {
-                ProductLine.UpdateQuantity(Convert.ToInt32(productLineIDBox.Text), Convert.ToInt32(newQuantityBox.Text));
+                if (Convert.ToInt32(newQuantityBox.Text) == 0)
+                {
+                    ProductLineDatabase.DeleteProductLine(Convert.ToInt32(productLineIDBox.Text));
+                }
+                else
+                {
+                    ProductLine.UpdateQuantity(Convert.ToInt32(productLineIDBox.Text), Convert.ToInt32(newQuantityBox.Text));
+                }
+
                 UpDateTotalPrice();
             }
 
