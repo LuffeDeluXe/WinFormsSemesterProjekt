@@ -16,11 +16,14 @@ namespace WinFormsSemesterProjekt.GUI
     {
         public BindingList<Product> ProductList { get; set; }
         public BindingList<Product> FilteredList { get; private set; } = new BindingList<Product>();
-        public WinAddProductLine()
+        private int OrderLineID { get; set; }
+        public WinAddProductLine(int orderID)
         {
             InitializeComponent();
 
             ProductList = new BindingList<Product>(ProductDatabase.FindAllProducts());
+
+            OrderLineID = orderID;
 
             pLProductView.DataSource = ProductList;
             plProductSearchBar.Text = "Indtast produkt id...";
@@ -95,7 +98,7 @@ namespace WinFormsSemesterProjekt.GUI
         {
             AddSalesOrder addSalesOrder = new AddSalesOrder();
 
-            ProductLine productLine = new ProductLine(addSalesOrder.CurrentOrderID, Convert.ToInt32(pLProductIDTextBox.Text), Convert.ToInt32(pLProductQuantityNumeric.Value), Convert.ToDouble(pLPricePrUnitTextBox.Text));
+            ProductLine productLine = new ProductLine(OrderLineID, Convert.ToInt32(pLProductIDTextBox.Text), Convert.ToInt32(pLProductQuantityNumeric.Value), Convert.ToDouble(pLPricePrUnitTextBox.Text));
 
             //addSalesOrder.orderProductLines.Add(productLine);
 

@@ -16,14 +16,31 @@ namespace WinFormsSemesterProjekt.GUI
     public partial class AddSalesOrder : Form
     {
         public int CurrentOrderID { get; private set; }
-        //public BindingList<ProductLine> orderProductLines { get; set; } = new BindingList<ProductLine>();
+        public BindingList<ProductLine> orderProductLines { get; set; } = new BindingList<ProductLine>();
+        public List<ProductLine> filteredOrderProductLine { get; set; }
+        public double TotalPrice { get; private set; }
         public AddSalesOrder()
         {
             InitializeComponent();
 
-            productLineDataView.DataSource = ProductLineDatabase.LookInTheDatabase(CurrentOrderID);
+            filteredOrderProductLine = ProductLineDatabase.LookInTheDatabase(CurrentOrderID);
+
+            foreach (ProductLine line in filteredOrderProductLine)
+            {
+                orderProductLines.Add(line);
+            }
+
+            productLineDataView.DataSource = orderProductLines;
 
             shippingComboBox.SelectedIndex = 0;
+        }
+
+        private void UpDateTotalPrice()
+        {
+            foreach (ProductLine line in filteredOrderProductLine)
+            {
+                TotalPrice += line.PricePerUnit * line.Quantity;
+            }
         }
 
         private void buttonReturn_Click(object sender, EventArgs e)
@@ -42,7 +59,7 @@ namespace WinFormsSemesterProjekt.GUI
 
         private void buttonAddProducts_Click(object sender, EventArgs e)
         {
-            WinAddProductLine productLine = new WinAddProductLine();
+            WinAddProductLine productLine = new WinAddProductLine(CurrentOrderID);
             productLine.Show();
         }
 
