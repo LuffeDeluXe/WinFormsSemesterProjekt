@@ -41,8 +41,8 @@ namespace WinFormsSemesterProjekt.DataBase
             {
                 while (reader.Read())
                 {
-                    var productLine = new ProductLine((int)reader[0], 
-                                                      (int)reader[1], 
+                    var productLine = new ProductLine((int)reader[0],
+                                                      (int)reader[1],
                                                       (int)reader[2]);
 
                     ProductLineList.Add(productLine);

@@ -10,18 +10,19 @@ namespace WinFormsSemesterProjekt.DataBase
 {
 	internal class ProductDatabase : DatabaseManager
 	{
-		public static int CreateNewProduct(string productName, string category, string description, double unitPrice, int stock)
+		public static int CreateNewProduct(string productName, string category, string description, double price, int stock)
 		{
 			string query =
-				"INSERT INTO Product (Name, Category, Desription, Price, Stock) " +
-				"VALUES (@Name, @Category, @Desription, @Price, @Stock)";
+				"INSERT INTO Product (Name, Category, Description, Price, Stock) " +
+				"OUTPUT INSERTED.ProductID " +
+				"VALUES (@Name, @Category, @Description, @Price, @Stock)";
 
 			var command = new SqlCommand(query, connection);
 
 			command.Parameters.AddWithValue("@Name", productName);
 			command.Parameters.AddWithValue("@Category", category);
-			command.Parameters.AddWithValue("@Desription", description);
-			command.Parameters.AddWithValue("@Price", unitPrice);
+			command.Parameters.AddWithValue("@Description", description);
+			command.Parameters.AddWithValue("@Price", price);
 			command.Parameters.AddWithValue("@Stock", stock);
 
 			int productId = DatabaseManager.ExecuteScalar(command);
@@ -31,65 +32,46 @@ namespace WinFormsSemesterProjekt.DataBase
 
 		public static Product FindProduct(int productID)
 		{
+			List<Product> listOfProducts = new List<Product>();
+
 			string query = "SELECT * FROM Product " +
 						   "WHERE ProductID = @ProductID";
 
 			var command = new SqlCommand(query, connection);
 
+			connection.Open();
+
 			command.Parameters.AddWithValue("@ProductID", productID);
 
 			SqlDataReader reader = command.ExecuteReader();
 
-			var product = new Product(
-			Convert.ToInt32(reader["ProductID"]),
-			reader["Name"].ToString(),
-			reader["Category"].ToString(),
-			reader["Desription"].ToString(),
-			Convert.ToInt32(reader["Price"]),
-			Convert.ToInt32(reader["Stock"])
-			);
-
-			connection.Close();
-
-			return product;
-		}
-
-		public static List<Product> FindProductByName(string name)
-		{
-            List<Product> productNameMatches = new List<Product>();
-
-            string query = "SELECT * FROM Product " +
-						   "WHERE Name = @Name";
-
-            var command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@Name", name);
-
-            SqlDataReader reader = command.ExecuteReader();
-
 			while (reader.Read())
 			{
 				var product = new Product(
 				Convert.ToInt32(reader["ProductID"]),
 				reader["Name"].ToString(),
 				reader["Category"].ToString(),
-				reader["Desription"].ToString(),
-				Convert.ToInt32(reader["Price"]),
+				reader["Description"].ToString(),
+				Convert.ToDouble(reader["Price"]),
 				Convert.ToInt32(reader["Stock"])
 				);
-				productNameMatches.Add(product);
+				listOfProducts.Add(product);
 			}
-            connection.Close();
 
-			return productNameMatches;
-        }
+			connection.Close();
+
+			return listOfProducts[0];
+		}
 
 		public static List<Product> FindAllProducts()
 		{
 			List<Product> listOfProducts = new List<Product>();
-			
+
 			string query = "SELECT * FROM Product";
 
 			var command = new SqlCommand(query, connection);
+
+			connection.Open();
 
 			SqlDataReader reader = command.ExecuteReader();
 
@@ -99,8 +81,8 @@ namespace WinFormsSemesterProjekt.DataBase
 				Convert.ToInt32(reader["ProductID"]),
 				reader["Name"].ToString(),
 				reader["Category"].ToString(),
-				reader["Desription"].ToString(),
-				Convert.ToInt32(reader["Price"]),
+				reader["Description"].ToString(),
+				Convert.ToDouble(reader["Price"]),
 				Convert.ToInt32(reader["Stock"])
 				);
 				listOfProducts.Add(product);
@@ -130,8 +112,8 @@ namespace WinFormsSemesterProjekt.DataBase
 				Convert.ToInt32(reader["ProductID"]),
 				reader["Name"].ToString(),
 				reader["Category"].ToString(),
-				reader["Desription"].ToString(),
-				Convert.ToInt32(reader["Price"]),
+				reader["Description"].ToString(),
+				Convert.ToDouble(reader["Price"]),
 				Convert.ToInt32(reader["Stock"])
 				);
 				listOfCategoryProducts.Add(product);
@@ -140,29 +122,29 @@ namespace WinFormsSemesterProjekt.DataBase
 			return listOfCategoryProducts;
 		}
 
-		public static void UpdateProduct(Product product, string name, string category, string desription, int unitPrice, int stock)
+		public static void UpdateProduct(int id, string name, string category, string desription, double price, int stock)
 		{
-			string query = "UPDATE Product SET " +
-						   "WHERE ProductID = @ProductID " +
-						   "Name = @Name " +
-						   "Category = @Category " +
-						   "Desription = @Desription " +
-						   "Price = @Price " +
-						   "Stock = @Stock ";
+			string query = "UPDATE Product " +
+						   "SET Name = @Name, " +
+						   "Category = @Category, " +
+						   "Description = @Description, " +
+						   "Price = @Price, " +
+						   "Stock = @Stock " +
+						   "WHERE ProductID = @ProductID";
 
 			var command = new SqlCommand(query, connection);
 
-			command.Parameters.AddWithValue("@ProductID", product.ProductID);
+			command.Parameters.AddWithValue("@ProductID", id);
 			command.Parameters.AddWithValue("@Name", name);
 			command.Parameters.AddWithValue("@Category", category);
-			command.Parameters.AddWithValue("@Desription", desription);
-			command.Parameters.AddWithValue("@Price", unitPrice);
+			command.Parameters.AddWithValue("@Description", desription);
+			command.Parameters.AddWithValue("@Price", price);
 			command.Parameters.AddWithValue("@Stock", stock);
 
 			DatabaseManager.ExecuteNonQuery(command);
 		}
 
-		public static int DeleteProduct(int productID) 
+		public static int DeleteProduct(int productID)
 		{
 			string query = "DELETE Product WHERE ProductID = @ProductID";
 
