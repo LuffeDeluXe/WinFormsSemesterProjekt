@@ -178,6 +178,7 @@
 			listBoxCategories.Name = "listBoxCategories";
 			listBoxCategories.Size = new Size(195, 124);
 			listBoxCategories.TabIndex = 11;
+			listBoxCategories.SelectedIndexChanged += listBoxCategories_SelectedIndexChanged;
 			// 
 			// radioButtonAvailable
 			// 
@@ -215,6 +216,7 @@
 			buttonExport.TabIndex = 14;
 			buttonExport.Text = "Eksporter lagerstatus til .txt";
 			buttonExport.UseVisualStyleBackColor = false;
+			buttonExport.Click += buttonExport_Click;
 			// 
 			// comboBoxSortby
 			// 
