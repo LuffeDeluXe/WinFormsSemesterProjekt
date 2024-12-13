@@ -19,8 +19,6 @@ namespace WinFormsSemesterProjekt
 
         private static void Initialize()
         {
-            ProductLine productLine = new ProductLine(1, 1, 1, 1);
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
