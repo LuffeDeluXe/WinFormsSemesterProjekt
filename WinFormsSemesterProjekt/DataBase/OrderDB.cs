@@ -33,6 +33,8 @@ namespace WinFormsSemesterProjekt.DataBase
 
         public static Order FindOrder(int orderID)
         {
+            List<Order> orders = new List<Order>();
+
             connection.Open();
 
             string query =
@@ -45,18 +47,23 @@ namespace WinFormsSemesterProjekt.DataBase
 
             SqlDataReader reader = command.ExecuteReader();
 
-            var order = new Order(
-                Convert.ToInt32(reader["OrderID"]),
-                Convert.ToInt32(reader["CustomerID"]),
-                Convert.ToDateTime(reader["OrderDate"]),
-                Convert.ToDateTime(reader["DeliveryDate"]),
-                reader["OrderStatus"].ToString(),
-                Convert.ToDouble(reader["TotalPrice"]),
-                reader["ShippingMethod"].ToString());
+            while (reader.Read())
+            {
+                var order = new Order(
+                    Convert.ToInt32(reader["OrderID"]),
+                    Convert.ToInt32(reader["CustomerID"]),
+                    Convert.ToDateTime(reader["OrderDate"]),
+                    Convert.ToDateTime(reader["DeliveryDate"]),
+                    reader["OrderStatus"].ToString(),
+                    Convert.ToDouble(reader["TotalPrice"]),
+                    reader["ShippingMethod"].ToString());
+
+                orders.Add(order);
+            }
 
             connection.Close();
 
-            return order;
+            return orders[0];
         }
 
         public static List<Order> FindAllOrders()
