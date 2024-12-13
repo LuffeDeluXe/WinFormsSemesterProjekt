@@ -126,12 +126,7 @@ namespace WinFormsSemesterProjekt
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-            ProductId = Convert.ToInt32(selectedRow.Cells[0].Value);
-            Name = selectedRow.Cells[1].Value.ToString();
-            Category = selectedRow.Cells[2].Value.ToString();
-            Description = selectedRow.Cells[3].Value.ToString();
-            Price = Convert.ToDouble(selectedRow.Cells[4].Value);
-            Stock = Convert.ToInt32(selectedRow.Cells[5].Value);
+            ProductID = Convert.ToInt32(selectedRow.Cells[0].Value);
         }
 
         private void listBoxCategories_SelectedIndexChanged(object sender, EventArgs e)
