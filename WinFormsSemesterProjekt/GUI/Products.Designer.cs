@@ -50,9 +50,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Trebuchet MS", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(10, 7);
             label1.Name = "label1";
-            label1.Size = new Size(197, 49);
+            label1.Size = new Size(156, 40);
             label1.TabIndex = 0;
             label1.Text = "Produkter";
             // 
@@ -60,9 +60,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Trebuchet MS", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 91);
+            label2.Location = new Point(10, 68);
             label2.Name = "label2";
-            label2.Size = new Size(202, 26);
+            label2.Size = new Size(159, 22);
             label2.TabIndex = 1;
             label2.Text = "Filtrer efter kategori";
             // 
@@ -70,9 +70,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Trebuchet MS", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(12, 284);
+            label3.Location = new Point(10, 213);
             label3.Name = "label3";
-            label3.Size = new Size(227, 26);
+            label3.Size = new Size(175, 22);
             label3.TabIndex = 2;
             label3.Text = "Filtrer efter lagerstatus";
             // 
@@ -81,32 +81,35 @@
             buttonSearch.BackColor = Color.Black;
             buttonSearch.FlatStyle = FlatStyle.Flat;
             buttonSearch.ForeColor = SystemColors.ControlLightLight;
-            buttonSearch.Location = new Point(694, 22);
+            buttonSearch.Location = new Point(607, 16);
+            buttonSearch.Margin = new Padding(3, 2, 3, 2);
             buttonSearch.Name = "buttonSearch";
-            buttonSearch.Size = new Size(94, 29);
+            buttonSearch.Size = new Size(82, 22);
             buttonSearch.TabIndex = 3;
             buttonSearch.Text = "Søg";
             buttonSearch.UseVisualStyleBackColor = false;
+            buttonSearch.Click += buttonSearch_Click;
             // 
             // buttonMainMenu
             // 
             buttonMainMenu.BackColor = Color.Black;
             buttonMainMenu.FlatStyle = FlatStyle.Flat;
             buttonMainMenu.ForeColor = SystemColors.ControlLightLight;
-            buttonMainMenu.Location = new Point(12, 409);
+            buttonMainMenu.Location = new Point(10, 307);
+            buttonMainMenu.Margin = new Padding(3, 2, 3, 2);
             buttonMainMenu.Name = "buttonMainMenu";
-            buttonMainMenu.Size = new Size(123, 29);
+            buttonMainMenu.Size = new Size(108, 22);
             buttonMainMenu.TabIndex = 4;
             buttonMainMenu.Text = "Hovedmenu";
             buttonMainMenu.UseVisualStyleBackColor = false;
-            buttonMainMenu.Click += buttonMainMenu_Click;
             // 
             // searchBar
             // 
             searchBar.BorderStyle = BorderStyle.FixedSingle;
-            searchBar.Location = new Point(313, 24);
+            searchBar.Location = new Point(274, 18);
+            searchBar.Margin = new Padding(3, 2, 3, 2);
             searchBar.Name = "searchBar";
-            searchBar.Size = new Size(375, 27);
+            searchBar.Size = new Size(328, 23);
             searchBar.TabIndex = 5;
             searchBar.Enter += searchBar_Enter;
             searchBar.Leave += searchBar_Leave;
@@ -114,20 +117,23 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(313, 91);
+            dataGridView1.Location = new Point(274, 68);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(475, 304);
+            dataGridView1.Size = new Size(416, 228);
             dataGridView1.TabIndex = 6;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // buttonNewProduct
             // 
             buttonNewProduct.BackColor = Color.Black;
             buttonNewProduct.FlatStyle = FlatStyle.Flat;
             buttonNewProduct.ForeColor = SystemColors.ControlLightLight;
-            buttonNewProduct.Location = new Point(313, 409);
+            buttonNewProduct.Location = new Point(274, 307);
+            buttonNewProduct.Margin = new Padding(3, 2, 3, 2);
             buttonNewProduct.Name = "buttonNewProduct";
-            buttonNewProduct.Size = new Size(148, 29);
+            buttonNewProduct.Size = new Size(130, 22);
             buttonNewProduct.TabIndex = 7;
             buttonNewProduct.Text = "Nyt produkt";
             buttonNewProduct.UseVisualStyleBackColor = false;
@@ -138,20 +144,23 @@
             buttonEditProduct.BackColor = Color.Black;
             buttonEditProduct.FlatStyle = FlatStyle.Flat;
             buttonEditProduct.ForeColor = SystemColors.ControlLightLight;
-            buttonEditProduct.Location = new Point(476, 409);
+            buttonEditProduct.Location = new Point(416, 307);
+            buttonEditProduct.Margin = new Padding(3, 2, 3, 2);
             buttonEditProduct.Name = "buttonEditProduct";
-            buttonEditProduct.Size = new Size(148, 29);
+            buttonEditProduct.Size = new Size(130, 22);
             buttonEditProduct.TabIndex = 8;
             buttonEditProduct.Text = "Ændr valgt produkt";
             buttonEditProduct.UseVisualStyleBackColor = false;
+            buttonEditProduct.Click += buttonEditProduct_Click;
             // 
             // buttonDeleteProduct
             // 
             buttonDeleteProduct.BackColor = Color.Black;
             buttonDeleteProduct.ForeColor = SystemColors.ControlLightLight;
-            buttonDeleteProduct.Location = new Point(640, 409);
+            buttonDeleteProduct.Location = new Point(560, 307);
+            buttonDeleteProduct.Margin = new Padding(3, 2, 3, 2);
             buttonDeleteProduct.Name = "buttonDeleteProduct";
-            buttonDeleteProduct.Size = new Size(148, 29);
+            buttonDeleteProduct.Size = new Size(130, 22);
             buttonDeleteProduct.TabIndex = 9;
             buttonDeleteProduct.Text = "Slet valgt produkt";
             buttonDeleteProduct.UseVisualStyleBackColor = false;
@@ -160,17 +169,20 @@
             // listBoxCategories
             // 
             listBoxCategories.FormattingEnabled = true;
-            listBoxCategories.Location = new Point(20, 117);
+            listBoxCategories.ItemHeight = 15;
+            listBoxCategories.Location = new Point(18, 88);
+            listBoxCategories.Margin = new Padding(3, 2, 3, 2);
             listBoxCategories.Name = "listBoxCategories";
-            listBoxCategories.Size = new Size(222, 164);
+            listBoxCategories.Size = new Size(195, 124);
             listBoxCategories.TabIndex = 11;
             // 
             // radioButtonAvailable
             // 
             radioButtonAvailable.AutoSize = true;
-            radioButtonAvailable.Location = new Point(20, 313);
+            radioButtonAvailable.Location = new Point(18, 235);
+            radioButtonAvailable.Margin = new Padding(3, 2, 3, 2);
             radioButtonAvailable.Name = "radioButtonAvailable";
-            radioButtonAvailable.Size = new Size(83, 24);
+            radioButtonAvailable.Size = new Size(67, 19);
             radioButtonAvailable.TabIndex = 12;
             radioButtonAvailable.TabStop = true;
             radioButtonAvailable.Text = "På lager";
@@ -179,9 +191,10 @@
             // radioButtonUnavailable
             // 
             radioButtonUnavailable.AutoSize = true;
-            radioButtonUnavailable.Location = new Point(20, 343);
+            radioButtonUnavailable.Location = new Point(18, 257);
+            radioButtonUnavailable.Margin = new Padding(3, 2, 3, 2);
             radioButtonUnavailable.Name = "radioButtonUnavailable";
-            radioButtonUnavailable.Size = new Size(115, 24);
+            radioButtonUnavailable.Size = new Size(91, 19);
             radioButtonUnavailable.TabIndex = 13;
             radioButtonUnavailable.TabStop = true;
             radioButtonUnavailable.Text = "Ikke på lager";
@@ -192,9 +205,10 @@
             buttonExport.BackColor = Color.Black;
             buttonExport.FlatStyle = FlatStyle.Flat;
             buttonExport.ForeColor = SystemColors.ControlLightLight;
-            buttonExport.Location = new Point(313, 57);
+            buttonExport.Location = new Point(274, 43);
+            buttonExport.Margin = new Padding(3, 2, 3, 2);
             buttonExport.Name = "buttonExport";
-            buttonExport.Size = new Size(204, 29);
+            buttonExport.Size = new Size(178, 22);
             buttonExport.TabIndex = 14;
             buttonExport.Text = "Eksporter lagerstatus til .txt";
             buttonExport.UseVisualStyleBackColor = false;
@@ -206,18 +220,19 @@
             comboBoxSortby.ForeColor = SystemColors.ControlLightLight;
             comboBoxSortby.FormattingEnabled = true;
             comboBoxSortby.Items.AddRange(new object[] { "Navn: A-Å", "Navn: Å-A", "Kategori: A-Å", "Kategori: Å-A", "Pris: Stigende", "Pris: Faldende" });
-            comboBoxSortby.Location = new Point(670, 58);
+            comboBoxSortby.Location = new Point(586, 44);
+            comboBoxSortby.Margin = new Padding(3, 2, 3, 2);
             comboBoxSortby.Name = "comboBoxSortby";
-            comboBoxSortby.Size = new Size(118, 28);
+            comboBoxSortby.Size = new Size(104, 23);
             comboBoxSortby.TabIndex = 47;
             comboBoxSortby.Text = "Sorter efter";
             // 
             // Products
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(comboBoxSortby);
             Controls.Add(buttonExport);
             Controls.Add(radioButtonUnavailable);
@@ -233,6 +248,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Products";
             Text = "Products";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
