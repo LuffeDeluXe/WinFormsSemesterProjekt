@@ -240,8 +240,8 @@
         internal DataGridView productLineDataView;
         private Button CreateOrderButton;
         private Label orderLabel;
-        private Label orderIDLabel;
         private Label shippingLabel;
         private ComboBox shippingComboBox;
+        internal Label orderIDLabel;
     }
 }
