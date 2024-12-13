@@ -212,6 +212,7 @@
 			buttonExport.TabIndex = 14;
 			buttonExport.Text = "Eksporter lagerstatus til .txt";
 			buttonExport.UseVisualStyleBackColor = false;
+			buttonExport.Click += buttonExport_Click;
 			// 
 			// comboBoxSortby
 			// 

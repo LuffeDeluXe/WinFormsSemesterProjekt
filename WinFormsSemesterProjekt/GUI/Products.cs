@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Metrics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,7 +72,7 @@ namespace WinFormsSemesterProjekt
 
 		private void buttonDeleteProduct_Click(object sender, EventArgs e)
 		{
-			if(ProductID != 0)
+			if (ProductID != 0)
 			{
 				ConfirmDeletionProduct confirmDeletionProduct = new ConfirmDeletionProduct(ProductID);
 				confirmDeletionProduct.Show();
@@ -119,6 +120,37 @@ namespace WinFormsSemesterProjekt
 		{
 			DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
 			ProductID = Convert.ToInt32(selectedRow.Cells[0].Value);
+		}
+
+		private void buttonExport_Click(object sender, EventArgs e)
+		{
+			WriteToTxt(ProductList);
+		}
+
+		private void WriteToTxt(BindingList<Product> listOfProducts)
+		{
+			string txtContent = "";
+
+			foreach (var product in listOfProducts)
+			{
+				txtContent += $"Produktnavn: {product.ProductName}, " +
+							  $"Produktkategori: {product.Category}, " +
+							  $"Produktpris: {product.Price}, " +
+							  $"Lagerbeholdning: {product.Stock}\n";
+			}
+
+			SaveFileDialog saveFileDialog = new SaveFileDialog();
+			saveFileDialog.Filter = "Tekstfil|*.txt";
+			saveFileDialog.FileName = "Lagerstatus over alle produkter.txt";
+			saveFileDialog.Title = "Gem din tekstfil";
+
+			if (saveFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				File.WriteAllText(saveFileDialog.FileName, txtContent);
+			}
+
+			MessageBox.Show($"Oprettelse af tekstfil succesfuld\n\n" +
+							$"Fil sti: {saveFileDialog.FileName}");
 		}
 	}
 }
