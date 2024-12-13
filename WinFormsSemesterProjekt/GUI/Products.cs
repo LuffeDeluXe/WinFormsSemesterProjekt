@@ -134,5 +134,12 @@ namespace WinFormsSemesterProjekt
 			mainMenu.Show();
 			this.Close();
 		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			WinShowProductDetails winShowProductDetails = new WinShowProductDetails(ProductID);
+			winShowProductDetails.Show();
+			this.Close();
+		}
 	}
 }
