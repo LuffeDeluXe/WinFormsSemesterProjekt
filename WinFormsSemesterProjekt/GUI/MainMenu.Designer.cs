@@ -75,6 +75,7 @@
             buttonOrders.TabIndex = 3;
             buttonOrders.Text = "Ordrer";
             buttonOrders.UseVisualStyleBackColor = true;
+            buttonOrders.Click += buttonOrders_Click;
             // 
             // buttonCustomers
             // 
@@ -85,6 +86,7 @@
             buttonCustomers.TabIndex = 4;
             buttonCustomers.Text = "Kunder";
             buttonCustomers.UseVisualStyleBackColor = true;
+            buttonCustomers.Click += buttonCustomers_Click;
             // 
             // MainMenu
             // 

@@ -12,6 +12,7 @@ namespace WinFormsSemesterProjekt.GUI.PopUps
 {
     public partial class DeletedCustomer : Form
     {
+        private readonly Customers _customers;
         public DeletedCustomer()
         {
             InitializeComponent();

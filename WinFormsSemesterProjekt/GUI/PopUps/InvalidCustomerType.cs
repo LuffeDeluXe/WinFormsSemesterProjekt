@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace WinFormsSemesterProjekt.GUI.PopUps
 {
-    public partial class UpdatedCustomer : Form
+    public partial class InvalidCustomerType : Form
     {
-        public UpdatedCustomer(string customerName)
+        public InvalidCustomerType()
         {
             InitializeComponent();
-            labelText.Text = $"Oplysninger for kunden {customerName} er opdateret.";
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
