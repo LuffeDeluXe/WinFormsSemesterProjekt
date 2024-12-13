@@ -32,19 +32,19 @@ namespace WinFormsSemesterProjekt
 
         private void searchBar_Leave(object sender, EventArgs e)
         {
-            if (searchBar.Text == "")
+            if (orderSearchBar.Text == "")
             {
-                searchBar.Text = "Indtast ordrenummer...";
-                searchBar.ForeColor = Color.Black;
+                orderSearchBar.Text = "Indtast ordrenummer...";
+                orderSearchBar.ForeColor = Color.Black;
             }
         }
 
         private void searchBar_Enter(object sender, EventArgs e)
         {
-            if (searchBar.Text == "Indtast ordrenummer...")
+            if (orderSearchBar.Text == "Indtast ordrenummer...")
             {
-                searchBar.Text = "";
-                searchBar.ForeColor = Color.LightGray;
+                orderSearchBar.Text = "";
+                orderSearchBar.ForeColor = Color.LightGray;
             }
         }
 
@@ -66,6 +66,19 @@ namespace WinFormsSemesterProjekt
             MainMenu menu = new MainMenu();
             menu.Show();
             this.Close();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            if (orderSearchBar.Text != null)
+            {
+                int orderID = Convert.ToInt32(orderSearchBar.Text);
+
+                dataGridView1.DataSource = OrderDB.FindOrder(orderID);
+                
+                dataGridView1.Refresh();
+            }
+
         }
     }
 }

@@ -34,7 +34,7 @@
             buttonEditOrder = new Button();
             buttonNewOrder = new Button();
             dataGridView1 = new DataGridView();
-            searchBar = new TextBox();
+            orderSearchBar = new TextBox();
             buttonMainMenu = new Button();
             buttonSearch = new Button();
             label3 = new Label();
@@ -121,15 +121,15 @@
             dataGridView1.Size = new Size(416, 228);
             dataGridView1.TabIndex = 20;
             // 
-            // searchBar
+            // orderSearchBar
             // 
-            searchBar.BorderStyle = BorderStyle.FixedSingle;
-            searchBar.Location = new Point(274, 20);
-            searchBar.Margin = new Padding(3, 2, 3, 2);
-            searchBar.Name = "searchBar";
-            searchBar.Size = new Size(328, 23);
-            searchBar.TabIndex = 19;
-            searchBar.Leave += searchBar_Leave;
+            orderSearchBar.BorderStyle = BorderStyle.FixedSingle;
+            orderSearchBar.Location = new Point(274, 20);
+            orderSearchBar.Margin = new Padding(3, 2, 3, 2);
+            orderSearchBar.Name = "orderSearchBar";
+            orderSearchBar.Size = new Size(328, 23);
+            orderSearchBar.TabIndex = 19;
+            orderSearchBar.Leave += searchBar_Leave;
             // 
             // buttonMainMenu
             // 
@@ -157,6 +157,7 @@
             buttonSearch.TabIndex = 17;
             buttonSearch.Text = "Søg";
             buttonSearch.UseVisualStyleBackColor = false;
+            buttonSearch.Click += buttonSearch_Click;
             // 
             // label3
             // 
@@ -241,7 +242,7 @@
             Controls.Add(buttonEditOrder);
             Controls.Add(buttonNewOrder);
             Controls.Add(dataGridView1);
-            Controls.Add(searchBar);
+            Controls.Add(orderSearchBar);
             Controls.Add(buttonMainMenu);
             Controls.Add(buttonSearch);
             Controls.Add(label3);
@@ -263,7 +264,7 @@
         private Button buttonEditOrder;
         private Button buttonNewOrder;
         private DataGridView dataGridView1;
-        private TextBox searchBar;
+        private TextBox orderSearchBar;
         private Button buttonMainMenu;
         private Button buttonSearch;
         private Label label3;
