@@ -74,7 +74,10 @@ namespace WinFormsSemesterProjekt
             {
                 int orderID = Convert.ToInt32(orderSearchBar.Text);
 
-                dataGridView1.DataSource = OrderDB.FindOrder(orderID);
+                Order order = OrderDB.FindOrder(orderID);
+
+                orderList.Clear();
+                orderList.Add(order);
                 
                 dataGridView1.Refresh();
             }
