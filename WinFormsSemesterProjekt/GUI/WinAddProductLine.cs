@@ -15,7 +15,7 @@ namespace WinFormsSemesterProjekt.GUI
     public partial class WinAddProductLine : Form
     {
         public BindingList<Product> ProductList { get; set; }
-        public BindingList<Product> FilteredList { get; set; } = new BindingList<Product>();
+        public BindingList<Product> FilteredList { get; private set; } = new BindingList<Product>();
         public WinAddProductLine()
         {
             InitializeComponent();
@@ -93,11 +93,11 @@ namespace WinFormsSemesterProjekt.GUI
 
         private void productLineCreateButton_Click(object sender, EventArgs e)
         {
-            ProductLine productLine = new ProductLine(0, Convert.ToInt32(pLProductIDTextBox.Text), Convert.ToInt32(pLProductQuantityNumeric.Value), Convert.ToDouble(pLPricePrUnitTextBox.Text));
-
             AddSalesOrder addSalesOrder = new AddSalesOrder();
 
-            addSalesOrder.orderProductLines.Add(productLine);
+            ProductLine productLine = new ProductLine(addSalesOrder.CurrentOrderID, Convert.ToInt32(pLProductIDTextBox.Text), Convert.ToInt32(pLProductQuantityNumeric.Value), Convert.ToDouble(pLPricePrUnitTextBox.Text));
+
+            //addSalesOrder.orderProductLines.Add(productLine);
 
             addSalesOrder.productLineDataView.Refresh();
 

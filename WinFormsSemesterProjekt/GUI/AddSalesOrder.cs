@@ -8,18 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinformsSemesterprojekt.Models;
+using WinFormsSemesterProjekt.DataBase;
 using WinFormsSemesterProjekt.GUI.PopUps;
 
 namespace WinFormsSemesterProjekt.GUI
 {
     public partial class AddSalesOrder : Form
     {
-        public BindingList<ProductLine> orderProductLines { get; set; } = new BindingList<ProductLine>();
+        public int CurrentOrderID { get; private set; }
+        //public BindingList<ProductLine> orderProductLines { get; set; } = new BindingList<ProductLine>();
         public AddSalesOrder()
         {
             InitializeComponent();
 
-            productLineDataView.DataSource = orderProductLines;
+            productLineDataView.DataSource = ProductLineDatabase.LookInTheDatabase(CurrentOrderID);
 
             shippingComboBox.SelectedIndex = 0;
         }
@@ -48,6 +50,7 @@ namespace WinFormsSemesterProjekt.GUI
         {
             Order order = new Order(Convert.ToInt32(customerIDTextBox.Text), DateTime.Now, DateTime.Now, "Created", 0, shippingComboBox.SelectedItem.ToString());
             orderIDLabel.Text = order.OrderID.ToString();
+            CurrentOrderID = order.OrderID;
             orderLabel.Visible = true;
             orderIDLabel.Visible = true;
         }
