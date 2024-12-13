@@ -91,7 +91,7 @@ namespace WinFormsSemesterProjekt.DataBase
             SqlCommand command = connection.CreateCommand();
             command.CommandText =
                 "UPDATE ProductLine SET " +
-                "Quantity = @Quantity, " +
+                "Quantity = @Quantity " +
                 "WHERE ProductLineID = @ProductLineID";
 
             command.Parameters.AddWithValue("@Quantity", newQuantity);
