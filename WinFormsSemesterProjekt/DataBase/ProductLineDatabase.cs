@@ -50,6 +50,8 @@ namespace WinFormsSemesterProjekt.DataBase
                     ProductLineList.Add(productLine);
                 }
             }
+
+            connection.Close();
             return ProductLineList;
         }
 
@@ -75,6 +77,8 @@ namespace WinFormsSemesterProjekt.DataBase
                     ProductLineList.Add(productLine);
                 }
             }
+
+            connection.Close();
             return ProductLineList;
         }
 
