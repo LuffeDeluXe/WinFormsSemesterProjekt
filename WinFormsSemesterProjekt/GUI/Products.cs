@@ -71,7 +71,7 @@ namespace WinFormsSemesterProjekt
 
 		private void buttonDeleteProduct_Click(object sender, EventArgs e)
 		{
-			if(ProductID != 0)
+			if (ProductID != 0)
 			{
 				ConfirmDeletionProduct confirmDeletionProduct = new ConfirmDeletionProduct(ProductID);
 				confirmDeletionProduct.Show();
@@ -119,6 +119,20 @@ namespace WinFormsSemesterProjekt
 		{
 			DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
 			ProductID = Convert.ToInt32(selectedRow.Cells[0].Value);
+		}
+
+		private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+			WinShowProductDetails winShowProductDetails = new WinShowProductDetails(ProductID);
+			winShowProductDetails.Show();
+			this.Close();
+		}
+
+		private void buttonMainMenu_Click(object sender, EventArgs e)
+		{
+			MainMenu mainMenu = new MainMenu();
+			mainMenu.Show();
+			this.Close();
 		}
 	}
 }

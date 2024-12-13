@@ -102,6 +102,7 @@
 			buttonMainMenu.TabIndex = 4;
 			buttonMainMenu.Text = "Hovedmenu";
 			buttonMainMenu.UseVisualStyleBackColor = false;
+			buttonMainMenu.Click += buttonMainMenu_Click;
 			// 
 			// searchBar
 			// 
@@ -124,6 +125,7 @@
 			dataGridView1.Size = new Size(416, 228);
 			dataGridView1.TabIndex = 6;
 			dataGridView1.CellClick += dataGridView1_CellClick;
+			dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
 			// 
 			// buttonNewProduct
 			// 
