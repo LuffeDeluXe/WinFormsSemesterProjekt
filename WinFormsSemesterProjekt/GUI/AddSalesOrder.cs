@@ -75,5 +75,22 @@ namespace WinFormsSemesterProjekt.GUI
             orderLabel.Visible = true;
             orderIDLabel.Visible = true;
         }
+
+        private void updateProductLineButton_Click(object sender, EventArgs e)
+        {
+            if (productLineIDBox.Text != null && newQuantityBox.Text != null)
+            {
+                ProductLine.UpdateQuantity(Convert.ToInt32(productLineIDBox.Text), Convert.ToInt32(newQuantityBox.Text));
+                UpDateTotalPrice();
+            }
+
+        }
+
+        private void editProductLineButton_Click(object sender, EventArgs e)
+        {
+            string productLineID = productLineDataView.CurrentRow.Cells[0].Value.ToString();
+
+            productLineIDBox.Text = productLineID;
+        }
     }
 }

@@ -33,10 +33,9 @@ namespace WinformsSemesterprojekt.Models
             PricePerUnit = pricePerUnit;
         }
 
-        public void UpdateQuantity(int newQuantity)
+        public static void UpdateQuantity(int productLineID, int newQuantity)
         {
-            Quantity = newQuantity;
-            ProductLineDatabase.UpdateQuantity(ProductLineID, Quantity);
+            ProductLineDatabase.UpdateQuantity(productLineID, newQuantity);
         }
     }
 }

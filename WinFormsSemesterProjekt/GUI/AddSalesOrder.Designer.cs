@@ -43,6 +43,12 @@
             orderIDLabel = new Label();
             shippingLabel = new Label();
             shippingComboBox = new ComboBox();
+            productLineIDBox = new TextBox();
+            productLineIDBlabel = new Label();
+            label3 = new Label();
+            newQuantityBox = new TextBox();
+            updateProductLineButton = new Button();
+            editProductLineButton = new Button();
             ((System.ComponentModel.ISupportInitialize)productLineDataView).BeginInit();
             SuspendLayout();
             // 
@@ -59,10 +65,10 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(607, 305);
+            buttonAdd.Location = new Point(156, 305);
             buttonAdd.Margin = new Padding(3, 2, 3, 2);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(81, 22);
+            buttonAdd.Size = new Size(108, 22);
             buttonAdd.TabIndex = 25;
             buttonAdd.Text = "Færdig";
             buttonAdd.UseVisualStyleBackColor = true;
@@ -109,10 +115,10 @@
             // 
             // buttonAddProducts
             // 
-            buttonAddProducts.Location = new Point(572, 79);
+            buttonAddProducts.Location = new Point(666, 78);
             buttonAddProducts.Margin = new Padding(3, 2, 3, 2);
             buttonAddProducts.Name = "buttonAddProducts";
-            buttonAddProducts.Size = new Size(116, 22);
+            buttonAddProducts.Size = new Size(116, 23);
             buttonAddProducts.TabIndex = 31;
             buttonAddProducts.Text = "Tilføj produkt";
             buttonAddProducts.UseVisualStyleBackColor = true;
@@ -142,7 +148,8 @@
             productLineDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             productLineDataView.Location = new Point(385, 106);
             productLineDataView.Name = "productLineDataView";
-            productLineDataView.Size = new Size(303, 150);
+            productLineDataView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            productLineDataView.Size = new Size(397, 150);
             productLineDataView.TabIndex = 34;
             // 
             // CreateOrderButton
@@ -197,12 +204,70 @@
             shippingComboBox.Size = new Size(167, 23);
             shippingComboBox.TabIndex = 39;
             // 
+            // productLineIDBox
+            // 
+            productLineIDBox.Location = new Point(385, 283);
+            productLineIDBox.Name = "productLineIDBox";
+            productLineIDBox.Size = new Size(65, 23);
+            productLineIDBox.TabIndex = 40;
+            // 
+            // productLineIDBlabel
+            // 
+            productLineIDBlabel.AutoSize = true;
+            productLineIDBlabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            productLineIDBlabel.Location = new Point(385, 259);
+            productLineIDBlabel.Name = "productLineIDBlabel";
+            productLineIDBlabel.Size = new Size(65, 21);
+            productLineIDBlabel.TabIndex = 29;
+            productLineIDBlabel.Text = "Linje ID:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(456, 259);
+            label3.Name = "label3";
+            label3.Size = new Size(99, 21);
+            label3.TabIndex = 29;
+            label3.Text = "Ny mængde:";
+            // 
+            // newQuantityBox
+            // 
+            newQuantityBox.Location = new Point(456, 283);
+            newQuantityBox.Name = "newQuantityBox";
+            newQuantityBox.Size = new Size(110, 23);
+            newQuantityBox.TabIndex = 40;
+            // 
+            // updateProductLineButton
+            // 
+            updateProductLineButton.Location = new Point(572, 282);
+            updateProductLineButton.Name = "updateProductLineButton";
+            updateProductLineButton.Size = new Size(116, 23);
+            updateProductLineButton.TabIndex = 41;
+            updateProductLineButton.Text = "Opdater Linje";
+            updateProductLineButton.UseVisualStyleBackColor = true;
+            updateProductLineButton.Click += updateProductLineButton_Click;
+            // 
+            // editProductLineButton
+            // 
+            editProductLineButton.Location = new Point(544, 77);
+            editProductLineButton.Name = "editProductLineButton";
+            editProductLineButton.Size = new Size(116, 23);
+            editProductLineButton.TabIndex = 42;
+            editProductLineButton.Text = "Rediger Linje";
+            editProductLineButton.UseVisualStyleBackColor = true;
+            editProductLineButton.Click += editProductLineButton_Click;
+            // 
             // AddSalesOrder
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(794, 338);
+            Controls.Add(editProductLineButton);
+            Controls.Add(updateProductLineButton);
+            Controls.Add(newQuantityBox);
+            Controls.Add(productLineIDBox);
             Controls.Add(shippingComboBox);
             Controls.Add(shippingLabel);
             Controls.Add(orderIDLabel);
@@ -213,6 +278,8 @@
             Controls.Add(customerIDTextBox);
             Controls.Add(buttonAddProducts);
             Controls.Add(totalPriceTextBox);
+            Controls.Add(label3);
+            Controls.Add(productLineIDBlabel);
             Controls.Add(kundeOrderLabel);
             Controls.Add(label2);
             Controls.Add(buttonReturn);
@@ -243,5 +310,11 @@
         private Label shippingLabel;
         private ComboBox shippingComboBox;
         internal Label orderIDLabel;
+        private TextBox productLineIDBox;
+        private Label productLineIDBlabel;
+        private Label label3;
+        private TextBox newQuantityBox;
+        private Button updateProductLineButton;
+        private Button editProductLineButton;
     }
 }
