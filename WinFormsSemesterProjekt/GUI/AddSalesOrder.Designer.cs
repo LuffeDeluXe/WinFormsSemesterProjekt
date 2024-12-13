@@ -221,7 +221,6 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "AddSalesOrder";
             Text = "AddSalesOrder";
-            Load += AddSalesOrder_Load;
             ((System.ComponentModel.ISupportInitialize)productLineDataView).EndInit();
             ResumeLayout(false);
             PerformLayout();
