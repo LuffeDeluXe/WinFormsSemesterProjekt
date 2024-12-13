@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinFormsSemesterProjekt.DataBase;
 
 namespace WinformsSemesterprojekt.Models
 {
@@ -10,52 +11,30 @@ namespace WinformsSemesterprojekt.Models
     {
         public int ProductID { get; private set; }
         public string ProductName { get; set; }
-        public double UnitPrice { get; set; }
-        public int InStock { get; set; }
+        public string Category { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; }
+        public int Stock { get; set; }
 
-        public Product(int productID, string productName, int unitPrice, int inStock)
-        {
-            ProductID = productID;
-            ProductName = productName;
-            UnitPrice = unitPrice;
-            InStock = inStock;
-        }
+		public Product(int productID, string productName, string category, string description, double price, int stock)
+		{
+			ProductID = productID;
+			ProductName = productName;
+			Category = category;
+			Description = description;
+			Price = price;
+			Stock = stock;
+		}
 
-        public void UpdatePrice(string input)
-        {
-            Methods methods = new Methods();
+		public Product(string productName, string category, string description, double price, int stock)
+		{
+			ProductID = ProductDatabase.CreateNewProduct(productName, category, description, price, stock);
+			ProductName = productName;
+			Category = category;
+			Description = description;
+			Price = price;
+			Stock = stock;
+		}
 
-            double newPrice;
-            bool result = false;
-
-            result = double.TryParse(input, out newPrice);
-
-            while (result == false)
-            {
-                methods.PrintText("Please enter a valid number");
-                input = Console.ReadLine();
-                result = double.TryParse(input, out newPrice);
-            }
-
-            UnitPrice = newPrice;
-        }
-
-        public void UpdateStock(string input)
-        {
-            Methods methods = new Methods();
-
-            int newStock;
-            bool result = false;
-
-            result = int.TryParse(input, out newStock);
-
-            while (result == false)
-            {
-                methods.PrintText("Please enter a valid number");
-                input = Console.ReadLine();
-                result = int.TryParse(input, out newStock);
-            }
-            InStock = newStock;
-        }
-    }
+	}
 }

@@ -1,3 +1,6 @@
+using WinformsSemesterprojekt;
+using WinFormsSemesterProjekt.DataBase;
+
 namespace WinFormsSemesterProjekt
 {
     internal static class Program
@@ -8,10 +11,16 @@ namespace WinFormsSemesterProjekt
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
+            Initialize();
             Application.Run(new MainMenu());
+        }
+
+
+        private static void Initialize()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
         }
     }
 }

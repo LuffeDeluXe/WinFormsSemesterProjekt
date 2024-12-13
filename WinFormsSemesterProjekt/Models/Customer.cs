@@ -1,104 +1,97 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinformsSemesterprojekt.Models;
+using WinFormsSemesterProjekt.DataBase;
 
 namespace WinformsSemesterprojekt
 {
-    public class Customer
+    internal class Customer : DatabaseManager
     {
         public int CustomerID { get; private set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public int PhoneNumber { get; set; }
-        public string Address { get; set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public int PhoneNumber { get; private set; }
+        public string Email { get; private set; }
 
-        public Customer(int customerID, string firstName, string lastName, string email, int phoneNumber, string address)
+        /// <summary>
+        /// Use only when reading from database
+        /// </summary>
+        /// <param name="customerID"></param>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="email"></param>
+        public Customer(int customerID, string firstName, string lastName, int phoneNumber, string email)
         {
             CustomerID = customerID;
             FirstName = firstName;
             LastName = lastName;
-            Email = email;
             PhoneNumber = phoneNumber;
-            Address = address;
+            Email = email;
         }
 
-        public void UpdateEmail(string newEmail)
+        /// <summary>
+        /// Use when creating a new Customer, NOT when reading from database. Constructor uploads the customer to the database. 
+        /// Creates and then retrieves the correct ID
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="email"></param>
+        public Customer(string firstName, string lastName, int phoneNumber, string email)
         {
-            Methods methods = new Methods();
-
-            if (newEmail.Contains("@"))
-            {
-                Email = newEmail;
-            }
-            else
-            {
-                methods.PrintText("Please enter a valid email");
-            }
+            //CustomerID is created and retrived from databasen using the CreateCustomer Method
+            CustomerID = CustomerDatabase.CreateCustomer(firstName, lastName, phoneNumber, email);
+            FirstName = firstName;
+            LastName = lastName;
+            PhoneNumber = phoneNumber;
+            Email = email;
         }
 
-        public void UpdateFirstName(string newFirstName)
+        /// <summary>
+        /// This method has the ability to update one or all parameters of the individual customer information and saves the changes in the database
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="email"></param>
+        public static void UpdateWholeCustomer(Customer customer, string firstName, string lastName, int phoneNumber, string email)
         {
-            Methods methods = new Methods();
+            customer.FirstName = firstName;
+            customer.LastName = lastName;
+            customer.Email = email;
 
-            if (newFirstName == "Hitler" || newFirstName == "Putin")
+            if (ValidatePhoneNumber(phoneNumber) == true)
             {
-                methods.PrintText("Please enter an appropiate name");
+                customer.PhoneNumber = phoneNumber;
             }
-            else
-            {
-                FirstName = newFirstName;
-            }
+
+
+            CustomerDatabase.UpdateCustomerInformation(customer);
         }
 
-        public void UpdateLastName(string newLastName)
+
+        /// <summary>
+        /// Checks if phonenumber is exactly 8 long
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <returns></returns>
+        private static bool ValidatePhoneNumber(int phoneNumber)
         {
-            Methods methods = new Methods();
+            char[] phoneNumberAsACharArr = phoneNumber.ToString().ToCharArray();
 
-            if (newLastName == "Hitler" || newLastName == "Putin")
+            if (phoneNumberAsACharArr.Length != 8)
             {
-                methods.PrintText("Please enter an appropiate name");
-            }
-            else
-            {
-                LastName = newLastName;
-            }
-        }
-
-        public void UpdatePhoneNumber(string input)
-        {
-            Methods methods = new Methods();
-
-            int newPhoneNumber;
-            bool result = false;
-
-            result = int.TryParse(input, out newPhoneNumber);
-
-            while (result == false)
-            {
-                methods.PrintText("Please enter a valid number");
-                input = Console.ReadLine();
-                result = int.TryParse(input, out newPhoneNumber);
+                return false;
             }
 
-            PhoneNumber = newPhoneNumber;
-        }
-
-        public void UpdateAddress(string newAddress)
-        {
-            Methods methods = new Methods();
-
-            if (newAddress.Contains("Amalienborg Slotsplads"))
-            {
-                methods.PrintText("Du er ikke Kongen af Danmark >:(");
-            }
-            else
-            {
-                Address = newAddress;
-            }
+            return true;
         }
     }
 }
