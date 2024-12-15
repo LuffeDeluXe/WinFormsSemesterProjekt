@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            labelText = new Label();
             buttonOk = new Button();
             SuspendLayout();
             // 
-            // label1
+            // labelText
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(32, 32);
-            label1.Name = "label1";
-            label1.Size = new Size(185, 40);
-            label1.TabIndex = 7;
-            label1.Text = "Oplysninger for kunde\r\n{navn} er blevet opdateret.";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            labelText.AutoSize = true;
+            labelText.Location = new Point(32, 32);
+            labelText.Name = "labelText";
+            labelText.Size = new Size(185, 40);
+            labelText.TabIndex = 7;
+            labelText.Text = "Oplysninger for kunde\r\n{navn} er blevet opdateret.";
+            labelText.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // buttonOk
             // 
@@ -57,7 +57,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(248, 127);
-            Controls.Add(label1);
+            Controls.Add(labelText);
             Controls.Add(buttonOk);
             Name = "UpdatedCustomer";
             Text = "UpdatedCustomer";
@@ -67,7 +67,7 @@
 
         #endregion
 
-        private Label label1;
+        private Label labelText;
         private Button buttonOk;
     }
 }

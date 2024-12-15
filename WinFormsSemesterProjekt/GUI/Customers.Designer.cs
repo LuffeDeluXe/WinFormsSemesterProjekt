@@ -33,16 +33,16 @@
             buttonDeleteCustomer = new Button();
             buttonEditCustomer = new Button();
             buttonNewCustomer = new Button();
-            dataGridView1 = new DataGridView();
+            customerView = new DataGridView();
             searchBar = new TextBox();
             buttonMainMenu = new Button();
             buttonSearch = new Button();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            listBox1 = new ListBox();
+            listBoxAreas = new ListBox();
             comboBoxSortby = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)customerView).BeginInit();
             SuspendLayout();
             // 
             // radioButtonCompany
@@ -55,6 +55,7 @@
             radioButtonCompany.TabStop = true;
             radioButtonCompany.Text = "Erhvervskunde";
             radioButtonCompany.UseVisualStyleBackColor = true;
+            radioButtonCompany.Click += radioButtonCompany_Click;
             // 
             // radioButtonPrivateCustomer
             // 
@@ -66,6 +67,7 @@
             radioButtonPrivateCustomer.TabStop = true;
             radioButtonPrivateCustomer.Text = "Privatkunde";
             radioButtonPrivateCustomer.UseVisualStyleBackColor = true;
+            radioButtonPrivateCustomer.Click += radioButtonPrivateCustomer_Click;
             // 
             // buttonDeleteCustomer
             // 
@@ -90,6 +92,7 @@
             buttonEditCustomer.TabIndex = 38;
             buttonEditCustomer.Text = "Ændr valgt kunde";
             buttonEditCustomer.UseVisualStyleBackColor = false;
+            buttonEditCustomer.Click += buttonEditCustomer_Click;
             // 
             // buttonNewCustomer
             // 
@@ -102,15 +105,17 @@
             buttonNewCustomer.TabIndex = 37;
             buttonNewCustomer.Text = "Ny kunde";
             buttonNewCustomer.UseVisualStyleBackColor = false;
+            buttonNewCustomer.Click += buttonNewCustomer_Click;
             // 
-            // dataGridView1
+            // customerView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(313, 93);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(475, 304);
-            dataGridView1.TabIndex = 36;
+            customerView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            customerView.Location = new Point(313, 93);
+            customerView.Name = "customerView";
+            customerView.RowHeadersWidth = 51;
+            customerView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            customerView.Size = new Size(475, 304);
+            customerView.TabIndex = 36;
             // 
             // searchBar
             // 
@@ -119,7 +124,6 @@
             searchBar.Name = "searchBar";
             searchBar.Size = new Size(375, 27);
             searchBar.TabIndex = 35;
-            searchBar.Leave += searchBar_Leave;
             // 
             // buttonMainMenu
             // 
@@ -132,6 +136,7 @@
             buttonMainMenu.TabIndex = 34;
             buttonMainMenu.Text = "Hovedmenu";
             buttonMainMenu.UseVisualStyleBackColor = false;
+            buttonMainMenu.Click += buttonMainMenu_Click;
             // 
             // buttonSearch
             // 
@@ -144,6 +149,7 @@
             buttonSearch.TabIndex = 33;
             buttonSearch.Text = "Søg";
             buttonSearch.UseVisualStyleBackColor = false;
+            buttonSearch.Click += buttonSearch_Click;
             // 
             // label3
             // 
@@ -175,13 +181,14 @@
             label1.TabIndex = 30;
             label1.Text = "Kunder";
             // 
-            // listBox1
+            // listBoxAreas
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(20, 231);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(213, 164);
-            listBox1.TabIndex = 45;
+            listBoxAreas.FormattingEnabled = true;
+            listBoxAreas.Location = new Point(20, 231);
+            listBoxAreas.Name = "listBoxAreas";
+            listBoxAreas.Size = new Size(213, 164);
+            listBoxAreas.TabIndex = 45;
+            listBoxAreas.SelectedIndexChanged += listBoxAreas_SelectedIndexChanged;
             // 
             // comboBoxSortby
             // 
@@ -203,13 +210,13 @@
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(800, 450);
             Controls.Add(comboBoxSortby);
-            Controls.Add(listBox1);
+            Controls.Add(listBoxAreas);
             Controls.Add(radioButtonCompany);
             Controls.Add(radioButtonPrivateCustomer);
             Controls.Add(buttonDeleteCustomer);
             Controls.Add(buttonEditCustomer);
             Controls.Add(buttonNewCustomer);
-            Controls.Add(dataGridView1);
+            Controls.Add(customerView);
             Controls.Add(searchBar);
             Controls.Add(buttonMainMenu);
             Controls.Add(buttonSearch);
@@ -218,26 +225,25 @@
             Controls.Add(label1);
             Name = "Customers";
             Text = "Customers";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)customerView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private RadioButton radioButtonCompany;
-        private RadioButton radioButtonPrivateCustomer;
         private Button buttonDeleteCustomer;
         private Button buttonEditCustomer;
         private Button buttonNewCustomer;
-        private DataGridView dataGridView1;
         private TextBox searchBar;
         private Button buttonMainMenu;
         private Button buttonSearch;
         private Label label3;
         private Label label2;
         private Label label1;
-        private ListBox listBox1;
+        private ListBox listBoxAreas;
         private ComboBox comboBoxSortby;
+        public DataGridView customerView;
+        public RadioButton radioButtonCompany;
+        public RadioButton radioButtonPrivateCustomer;
     }
 }
