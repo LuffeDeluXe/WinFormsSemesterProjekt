@@ -17,7 +17,14 @@ namespace WinFormsSemesterProjekt.GUI.PopUps
             InitializeComponent();
         }
 
-        private void buttonOk_Click(object sender, EventArgs e)
+		public DeletedProduct(string name)
+		{
+			InitializeComponent();
+
+            label1.Text = $"Produktet {name} er slettet";
+		}
+
+		private void buttonOk_Click(object sender, EventArgs e)
         {
             this.Close();
             Products products = new Products();
