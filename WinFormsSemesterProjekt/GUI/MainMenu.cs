@@ -20,13 +20,5 @@ namespace WinFormsSemesterProjekt
             orders.Show();
             this.Hide();
         }
-
-        private void buttonCustomers_Click(object sender, EventArgs e)
-        {
-            Customers customers = new Customers();
-            customers.Show();
-            this.Hide();
-        }
-
     }
 }

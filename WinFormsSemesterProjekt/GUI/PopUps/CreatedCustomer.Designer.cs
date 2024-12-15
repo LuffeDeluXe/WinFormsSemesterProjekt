@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             buttonOk = new Button();
-            labelText = new Label();
+            label1 = new Label();
             SuspendLayout();
             // 
             // buttonOk
@@ -42,21 +42,21 @@
             buttonOk.UseVisualStyleBackColor = true;
             buttonOk.Click += buttonOk_Click;
             // 
-            // labelText
+            // label1
             // 
-            labelText.AutoSize = true;
-            labelText.Location = new Point(36, 36);
-            labelText.Name = "labelText";
-            labelText.Size = new Size(174, 20);
-            labelText.TabIndex = 3;
-            labelText.Text = "Kunde {navn} er oprettet.";
+            label1.AutoSize = true;
+            label1.Location = new Point(36, 36);
+            label1.Name = "label1";
+            label1.Size = new Size(174, 20);
+            label1.TabIndex = 3;
+            label1.Text = "Kunde {navn} er oprettet.";
             // 
             // CreatedCustomer
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(248, 127);
-            Controls.Add(labelText);
+            Controls.Add(label1);
             Controls.Add(buttonOk);
             Name = "CreatedCustomer";
             Text = "CreatedCustomer";
@@ -67,6 +67,6 @@
         #endregion
 
         private Button buttonOk;
-        private Label labelText;
+        private Label label1;
     }
 }

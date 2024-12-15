@@ -89,7 +89,6 @@
             buttonCustomers.TabIndex = 4;
             buttonCustomers.Text = "Kunder";
             buttonCustomers.UseVisualStyleBackColor = true;
-            buttonCustomers.Click += buttonCustomers_Click;
             // 
             // MainMenu
             // 

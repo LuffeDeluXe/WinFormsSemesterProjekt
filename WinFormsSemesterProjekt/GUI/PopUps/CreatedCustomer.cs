@@ -12,14 +12,16 @@ namespace WinFormsSemesterProjekt.GUI.PopUps
 {
     public partial class CreatedCustomer : Form
     {
-        public CreatedCustomer(string customerName)
+        public CreatedCustomer()
         {
             InitializeComponent();
-            labelText.Text = $"Kunden {customerName} er oprettet.";
         }
+
         private void buttonOk_Click(object sender, EventArgs e)
         {
             this.Close();
+            Customers customers = new Customers();
+            customers.Show();
         }
     }
 }

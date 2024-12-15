@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            labelText = new Label();
+            label1 = new Label();
             buttonYes = new Button();
             buttonNo = new Button();
             SuspendLayout();
             // 
-            // labelText
+            // label1
             // 
-            labelText.AutoSize = true;
-            labelText.Location = new Point(46, 32);
-            labelText.Name = "labelText";
-            labelText.Size = new Size(146, 40);
-            labelText.TabIndex = 9;
-            labelText.Text = "Er du sikker på, at du\r\nvil slette {navn}?";
-            labelText.TextAlign = ContentAlignment.MiddleCenter;
+            label1.AutoSize = true;
+            label1.Location = new Point(46, 32);
+            label1.Name = "label1";
+            label1.Size = new Size(146, 40);
+            label1.TabIndex = 9;
+            label1.Text = "Er du sikker på, at du\r\nvil slette {navn}?";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // buttonYes
             // 
@@ -69,7 +69,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(248, 127);
             Controls.Add(buttonNo);
-            Controls.Add(labelText);
+            Controls.Add(label1);
             Controls.Add(buttonYes);
             Name = "ConfirmDeletionCustomer";
             Text = "ConfirmDeletionCustomer";
@@ -79,7 +79,7 @@
 
         #endregion
 
-        private Label labelText;
+        private Label label1;
         private Button buttonYes;
         private Button buttonNo;
     }
