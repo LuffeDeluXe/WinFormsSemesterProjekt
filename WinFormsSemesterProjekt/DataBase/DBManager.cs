@@ -10,13 +10,13 @@ namespace WinFormsSemesterProjekt.DataBase
 {
     internal abstract class DatabaseManager
     {
-        
-        protected const string _ConnectionString = 
+
+        protected const string _ConnectionString = "Server=Djamo;Database=ProductionPro;Integrated Security=True;Encrypt=False";
             
             /*Askesserver*/
             //"Server=Djamo;Database=ProductionPro;Integrated Security=True;Encrypt=False";
             /*Lokalserver*/
-            "Data Source=localhost;Initial Catalog=ProductionPro;Integrated Security=SSPI;TrustServerCertificate=true";
+            //"Data Source=localhost;Initial Catalog=ProductionPro;Integrated Security=SSPI;TrustServerCertificate=true";
 
 
 
