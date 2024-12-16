@@ -155,6 +155,7 @@ namespace WinFormsSemesterProjekt
             else
             {
                 dataGridView1.DataSource = ProductList;
+                dataGridView1.Refresh();
 
         private void buttonExport_Click(object sender, EventArgs e)
         {
