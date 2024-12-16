@@ -43,6 +43,7 @@
 			radioButtonUnavailable = new RadioButton();
 			buttonExport = new Button();
 			comboBoxSortby = new ComboBox();
+			button1 = new Button();
 			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
 			SuspendLayout();
 			// 
@@ -81,7 +82,7 @@
 			buttonSearch.BackColor = Color.Black;
 			buttonSearch.FlatStyle = FlatStyle.Flat;
 			buttonSearch.ForeColor = SystemColors.ControlLightLight;
-			buttonSearch.Location = new Point(607, 16);
+			buttonSearch.Location = new Point(730, 24);
 			buttonSearch.Margin = new Padding(3, 2, 3, 2);
 			buttonSearch.Name = "buttonSearch";
 			buttonSearch.Size = new Size(82, 22);
@@ -95,21 +96,22 @@
 			buttonMainMenu.BackColor = Color.Black;
 			buttonMainMenu.FlatStyle = FlatStyle.Flat;
 			buttonMainMenu.ForeColor = SystemColors.ControlLightLight;
-			buttonMainMenu.Location = new Point(10, 307);
+			buttonMainMenu.Location = new Point(10, 314);
 			buttonMainMenu.Margin = new Padding(3, 2, 3, 2);
 			buttonMainMenu.Name = "buttonMainMenu";
 			buttonMainMenu.Size = new Size(108, 22);
 			buttonMainMenu.TabIndex = 4;
 			buttonMainMenu.Text = "Hovedmenu";
 			buttonMainMenu.UseVisualStyleBackColor = false;
+			buttonMainMenu.Click += buttonMainMenu_Click;
 			// 
 			// searchBar
 			// 
 			searchBar.BorderStyle = BorderStyle.FixedSingle;
-			searchBar.Location = new Point(274, 18);
+			searchBar.Location = new Point(274, 24);
 			searchBar.Margin = new Padding(3, 2, 3, 2);
 			searchBar.Name = "searchBar";
-			searchBar.Size = new Size(328, 23);
+			searchBar.Size = new Size(450, 23);
 			searchBar.TabIndex = 5;
 			searchBar.Enter += searchBar_Enter;
 			searchBar.Leave += searchBar_Leave;
@@ -117,20 +119,21 @@
 			// dataGridView1
 			// 
 			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridView1.Location = new Point(274, 68);
+			dataGridView1.Location = new Point(274, 82);
 			dataGridView1.Margin = new Padding(3, 2, 3, 2);
 			dataGridView1.Name = "dataGridView1";
 			dataGridView1.RowHeadersWidth = 51;
-			dataGridView1.Size = new Size(416, 228);
+			dataGridView1.Size = new Size(538, 228);
 			dataGridView1.TabIndex = 6;
 			dataGridView1.CellClick += dataGridView1_CellClick;
+			dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
 			// 
 			// buttonNewProduct
 			// 
 			buttonNewProduct.BackColor = Color.Black;
 			buttonNewProduct.FlatStyle = FlatStyle.Flat;
 			buttonNewProduct.ForeColor = SystemColors.ControlLightLight;
-			buttonNewProduct.Location = new Point(274, 307);
+			buttonNewProduct.Location = new Point(274, 314);
 			buttonNewProduct.Margin = new Padding(3, 2, 3, 2);
 			buttonNewProduct.Name = "buttonNewProduct";
 			buttonNewProduct.Size = new Size(130, 22);
@@ -144,7 +147,7 @@
 			buttonEditProduct.BackColor = Color.Black;
 			buttonEditProduct.FlatStyle = FlatStyle.Flat;
 			buttonEditProduct.ForeColor = SystemColors.ControlLightLight;
-			buttonEditProduct.Location = new Point(416, 307);
+			buttonEditProduct.Location = new Point(546, 314);
 			buttonEditProduct.Margin = new Padding(3, 2, 3, 2);
 			buttonEditProduct.Name = "buttonEditProduct";
 			buttonEditProduct.Size = new Size(130, 22);
@@ -157,7 +160,7 @@
 			// 
 			buttonDeleteProduct.BackColor = Color.Black;
 			buttonDeleteProduct.ForeColor = SystemColors.ControlLightLight;
-			buttonDeleteProduct.Location = new Point(560, 307);
+			buttonDeleteProduct.Location = new Point(682, 314);
 			buttonDeleteProduct.Margin = new Padding(3, 2, 3, 2);
 			buttonDeleteProduct.Name = "buttonDeleteProduct";
 			buttonDeleteProduct.Size = new Size(130, 22);
@@ -175,6 +178,7 @@
 			listBoxCategories.Name = "listBoxCategories";
 			listBoxCategories.Size = new Size(195, 124);
 			listBoxCategories.TabIndex = 11;
+			listBoxCategories.SelectedIndexChanged += listBoxCategories_SelectedIndexChanged;
 			// 
 			// radioButtonAvailable
 			// 
@@ -205,7 +209,7 @@
 			buttonExport.BackColor = Color.Black;
 			buttonExport.FlatStyle = FlatStyle.Flat;
 			buttonExport.ForeColor = SystemColors.ControlLightLight;
-			buttonExport.Location = new Point(274, 43);
+			buttonExport.Location = new Point(274, 56);
 			buttonExport.Margin = new Padding(3, 2, 3, 2);
 			buttonExport.Name = "buttonExport";
 			buttonExport.Size = new Size(178, 22);
@@ -221,25 +225,40 @@
 			comboBoxSortby.ForeColor = SystemColors.ControlLightLight;
 			comboBoxSortby.FormattingEnabled = true;
 			comboBoxSortby.Items.AddRange(new object[] { "Navn: A-Å", "Navn: Å-A", "Kategori: A-Å", "Kategori: Å-A", "Pris: Stigende", "Pris: Faldende" });
-			comboBoxSortby.Location = new Point(586, 44);
+			comboBoxSortby.Location = new Point(708, 55);
 			comboBoxSortby.Margin = new Padding(3, 2, 3, 2);
 			comboBoxSortby.Name = "comboBoxSortby";
 			comboBoxSortby.Size = new Size(104, 23);
 			comboBoxSortby.TabIndex = 47;
 			comboBoxSortby.Text = "Sorter efter";
 			// 
+			// button1
+			// 
+			button1.BackColor = Color.Black;
+			button1.FlatStyle = FlatStyle.Flat;
+			button1.ForeColor = SystemColors.ControlLightLight;
+			button1.Location = new Point(410, 314);
+			button1.Margin = new Padding(3, 2, 3, 2);
+			button1.Name = "button1";
+			button1.Size = new Size(130, 22);
+			button1.TabIndex = 8;
+			button1.Text = "Vis produktdetaljer";
+			button1.UseVisualStyleBackColor = false;
+			button1.Click += button1_Click;
+			// 
 			// Products
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.LightGoldenrodYellow;
-			ClientSize = new Size(700, 338);
+			ClientSize = new Size(819, 347);
 			Controls.Add(comboBoxSortby);
 			Controls.Add(buttonExport);
 			Controls.Add(radioButtonUnavailable);
 			Controls.Add(radioButtonAvailable);
 			Controls.Add(listBoxCategories);
 			Controls.Add(buttonDeleteProduct);
+			Controls.Add(button1);
 			Controls.Add(buttonEditProduct);
 			Controls.Add(buttonNewProduct);
 			Controls.Add(dataGridView1);
@@ -274,5 +293,6 @@
         private RadioButton radioButtonUnavailable;
         private Button buttonExport;
         private ComboBox comboBoxSortby;
-    }
+		private Button button1;
+	}
 }
