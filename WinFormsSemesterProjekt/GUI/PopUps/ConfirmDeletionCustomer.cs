@@ -14,13 +14,14 @@ namespace WinFormsSemesterProjekt.GUI.PopUps
 {
     public partial class ConfirmDeletionCustomer : Form
     {
-        private readonly Customer _customerInDeletion = new Customer(0, "", "", 0, "", "", "");
+        private Customer _customerInDeletion { get; set; }
         private readonly BindingList<Customer> _customersList = new BindingList<Customer>();
         internal ConfirmDeletionCustomer(int customerId, BindingList<Customer> list)
         {
             InitializeComponent();
             _customerInDeletion = CustomerDatabase.RetrieveASingleCustomersUsingCustomerID(customerId);
-            labelText.Text = $"Er du sikker på, at du vil slette {_customerInDeletion.FirstName} + {_customerInDeletion.LastName}?";
+            string fullName = _customerInDeletion.FirstName + " " + _customerInDeletion.LastName;
+            labelText.Text = $"Er du sikker på, at du vil slette {fullName}?";
 
             _customersList = list;
         }
