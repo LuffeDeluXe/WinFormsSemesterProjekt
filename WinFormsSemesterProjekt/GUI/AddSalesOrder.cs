@@ -90,7 +90,8 @@ namespace WinFormsSemesterProjekt.GUI
             orderIDLabel.Visible = true;
         }
 
-        /**/
+        /*Updates the Productline corresponding to the input in ProductLineID textbox
+          And changes the quantity to correspond with the input in the NewQuantity textbox*/
         private void updateProductLineButton_Click(object sender, EventArgs e)
         {
             if (productLineIDBox.Text != null && newQuantityBox.Text != null)
@@ -109,6 +110,7 @@ namespace WinFormsSemesterProjekt.GUI
 
         }
 
+        /*Takes the ID of the currently selected ProductLine and puts it into the ProductLineID textbox*/
         private void editProductLineButton_Click(object sender, EventArgs e)
         {
             string productLineID = productLineDataView.CurrentRow.Cells[0].Value.ToString();

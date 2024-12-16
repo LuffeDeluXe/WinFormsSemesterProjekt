@@ -14,7 +14,7 @@ namespace WinFormsSemesterProjekt.GUI.PopUps
 {
     public partial class ConfirmDeletionOrder : Form
     {
-        private Orders CurrentOrders {  get; set; }
+        private Orders CurrentOrders { get; set; }
         private int CurrentOrderID { get; set; }
         public ConfirmDeletionOrder(int orderID, Orders orders)
         {
@@ -24,6 +24,7 @@ namespace WinFormsSemesterProjekt.GUI.PopUps
             InitializeComponent();
         }
 
+        /*First deletes all ProductLines associated with the Order and then deletes the Order*/
         private void buttonYes_Click(object sender, EventArgs e)
         {
             List<ProductLine> lines = ProductLineDatabase.LookInTheDatabase(CurrentOrderID);
