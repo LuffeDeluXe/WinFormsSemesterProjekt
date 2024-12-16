@@ -49,10 +49,9 @@
             // radioButtonFinished
             // 
             radioButtonFinished.AutoSize = true;
-            radioButtonFinished.Location = new Point(18, 196);
-            radioButtonFinished.Margin = new Padding(3, 2, 3, 2);
+            radioButtonFinished.Location = new Point(21, 261);
             radioButtonFinished.Name = "radioButtonFinished";
-            radioButtonFinished.Size = new Size(89, 19);
+            radioButtonFinished.Size = new Size(109, 24);
             radioButtonFinished.TabIndex = 27;
             radioButtonFinished.TabStop = true;
             radioButtonFinished.Text = "Gennemført";
@@ -61,10 +60,9 @@
             // radioButtonUnfinished
             // 
             radioButtonUnfinished.AutoSize = true;
-            radioButtonUnfinished.Location = new Point(18, 173);
-            radioButtonUnfinished.Margin = new Padding(3, 2, 3, 2);
+            radioButtonUnfinished.Location = new Point(21, 231);
             radioButtonUnfinished.Name = "radioButtonUnfinished";
-            radioButtonUnfinished.Size = new Size(112, 19);
+            radioButtonUnfinished.Size = new Size(138, 24);
             radioButtonUnfinished.TabIndex = 26;
             radioButtonUnfinished.TabStop = true;
             radioButtonUnfinished.Text = "Ikke gennemført";
@@ -75,10 +73,9 @@
             buttonDeleteOrder.BackColor = Color.Black;
             buttonDeleteOrder.FlatStyle = FlatStyle.Flat;
             buttonDeleteOrder.ForeColor = SystemColors.ControlLightLight;
-            buttonDeleteOrder.Location = new Point(560, 308);
-            buttonDeleteOrder.Margin = new Padding(3, 2, 3, 2);
+            buttonDeleteOrder.Location = new Point(640, 411);
             buttonDeleteOrder.Name = "buttonDeleteOrder";
-            buttonDeleteOrder.Size = new Size(130, 22);
+            buttonDeleteOrder.Size = new Size(149, 29);
             buttonDeleteOrder.TabIndex = 23;
             buttonDeleteOrder.Text = "Slet valgt ordre";
             buttonDeleteOrder.UseVisualStyleBackColor = false;
@@ -89,10 +86,9 @@
             buttonEditOrder.BackColor = Color.Black;
             buttonEditOrder.FlatStyle = FlatStyle.Flat;
             buttonEditOrder.ForeColor = SystemColors.ControlLightLight;
-            buttonEditOrder.Location = new Point(416, 308);
-            buttonEditOrder.Margin = new Padding(3, 2, 3, 2);
+            buttonEditOrder.Location = new Point(475, 411);
             buttonEditOrder.Name = "buttonEditOrder";
-            buttonEditOrder.Size = new Size(130, 22);
+            buttonEditOrder.Size = new Size(149, 29);
             buttonEditOrder.TabIndex = 22;
             buttonEditOrder.Text = "Ændr valgt ordre";
             buttonEditOrder.UseVisualStyleBackColor = false;
@@ -102,10 +98,9 @@
             buttonNewOrder.BackColor = Color.Black;
             buttonNewOrder.FlatStyle = FlatStyle.Flat;
             buttonNewOrder.ForeColor = SystemColors.ControlLightLight;
-            buttonNewOrder.Location = new Point(274, 308);
-            buttonNewOrder.Margin = new Padding(3, 2, 3, 2);
+            buttonNewOrder.Location = new Point(313, 411);
             buttonNewOrder.Name = "buttonNewOrder";
-            buttonNewOrder.Size = new Size(130, 22);
+            buttonNewOrder.Size = new Size(149, 29);
             buttonNewOrder.TabIndex = 21;
             buttonNewOrder.Text = "Ny ordre";
             buttonNewOrder.UseVisualStyleBackColor = false;
@@ -114,20 +109,18 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(274, 70);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
+            dataGridView1.Location = new Point(313, 93);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(416, 228);
+            dataGridView1.Size = new Size(475, 304);
             dataGridView1.TabIndex = 20;
             // 
             // orderSearchBar
             // 
             orderSearchBar.BorderStyle = BorderStyle.FixedSingle;
-            orderSearchBar.Location = new Point(274, 20);
-            orderSearchBar.Margin = new Padding(3, 2, 3, 2);
+            orderSearchBar.Location = new Point(313, 27);
             orderSearchBar.Name = "orderSearchBar";
-            orderSearchBar.Size = new Size(328, 23);
+            orderSearchBar.Size = new Size(375, 27);
             orderSearchBar.TabIndex = 19;
             orderSearchBar.Leave += searchBar_Leave;
             // 
@@ -136,23 +129,22 @@
             buttonMainMenu.BackColor = Color.Black;
             buttonMainMenu.FlatStyle = FlatStyle.Flat;
             buttonMainMenu.ForeColor = SystemColors.ControlLightLight;
-            buttonMainMenu.Location = new Point(10, 308);
-            buttonMainMenu.Margin = new Padding(3, 2, 3, 2);
+            buttonMainMenu.Location = new Point(11, 411);
             buttonMainMenu.Name = "buttonMainMenu";
-            buttonMainMenu.Size = new Size(108, 22);
+            buttonMainMenu.Size = new Size(123, 29);
             buttonMainMenu.TabIndex = 18;
             buttonMainMenu.Text = "Hovedmenu";
             buttonMainMenu.UseVisualStyleBackColor = false;
+            buttonMainMenu.Click += buttonMainMenu_Click_1;
             // 
             // buttonSearch
             // 
             buttonSearch.BackColor = Color.Black;
             buttonSearch.FlatStyle = FlatStyle.Flat;
             buttonSearch.ForeColor = SystemColors.ControlLightLight;
-            buttonSearch.Location = new Point(607, 18);
-            buttonSearch.Margin = new Padding(3, 2, 3, 2);
+            buttonSearch.Location = new Point(694, 24);
             buttonSearch.Name = "buttonSearch";
-            buttonSearch.Size = new Size(82, 22);
+            buttonSearch.Size = new Size(94, 29);
             buttonSearch.TabIndex = 17;
             buttonSearch.Text = "Søg";
             buttonSearch.UseVisualStyleBackColor = false;
@@ -162,9 +154,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Trebuchet MS", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(10, 152);
+            label3.Location = new Point(11, 203);
             label3.Name = "label3";
-            label3.Size = new Size(140, 22);
+            label3.Size = new Size(181, 26);
             label3.TabIndex = 16;
             label3.Text = "Filtrer efter status";
             // 
@@ -172,9 +164,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Trebuchet MS", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(10, 70);
+            label2.Location = new Point(11, 93);
             label2.Name = "label2";
-            label2.Size = new Size(171, 22);
+            label2.Size = new Size(216, 26);
             label2.TabIndex = 15;
             label2.Text = "Filtrer efter ordretype";
             // 
@@ -182,19 +174,18 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Trebuchet MS", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(10, 8);
+            label1.Location = new Point(11, 11);
             label1.Name = "label1";
-            label1.Size = new Size(110, 40);
+            label1.Size = new Size(141, 49);
             label1.TabIndex = 14;
             label1.Text = "Ordrer";
             // 
             // radioButton1
             // 
             radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(18, 92);
-            radioButton1.Margin = new Padding(3, 2, 3, 2);
+            radioButton1.Location = new Point(21, 123);
             radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(80, 19);
+            radioButton1.Size = new Size(101, 24);
             radioButton1.TabIndex = 28;
             radioButton1.TabStop = true;
             radioButton1.Text = "Salgsordre";
@@ -203,10 +194,9 @@
             // radioButton2
             // 
             radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(18, 114);
-            radioButton2.Margin = new Padding(3, 2, 3, 2);
+            radioButton2.Location = new Point(21, 152);
             radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(117, 19);
+            radioButton2.Size = new Size(144, 24);
             radioButton2.TabIndex = 29;
             radioButton2.TabStop = true;
             radioButton2.Text = "Produktionsordre";
@@ -219,19 +209,18 @@
             comboBoxSortby.ForeColor = SystemColors.ControlLightLight;
             comboBoxSortby.FormattingEnabled = true;
             comboBoxSortby.Items.AddRange(new object[] { "Ordrenr.: Stigende", "Ordrenr.: Faldende", "Dato: Nyeste", "Dato: Ældste" });
-            comboBoxSortby.Location = new Point(586, 44);
-            comboBoxSortby.Margin = new Padding(3, 2, 3, 2);
+            comboBoxSortby.Location = new Point(670, 59);
             comboBoxSortby.Name = "comboBoxSortby";
-            comboBoxSortby.Size = new Size(104, 23);
+            comboBoxSortby.Size = new Size(118, 28);
             comboBoxSortby.TabIndex = 47;
             comboBoxSortby.Text = "Sorter efter";
             // 
             // Orders
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(800, 451);
             Controls.Add(comboBoxSortby);
             Controls.Add(radioButton2);
             Controls.Add(radioButton1);
@@ -247,7 +236,6 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Orders";
             Text = "Orders";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

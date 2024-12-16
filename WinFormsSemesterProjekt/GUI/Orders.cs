@@ -78,10 +78,17 @@ namespace WinFormsSemesterProjekt
 
                 orderList.Clear();
                 orderList.Add(order);
-                
+
                 dataGridView1.Refresh();
             }
 
+        }
+
+        private void buttonMainMenu_Click_1(object sender, EventArgs e)
+        {
+            MainMenu menu = new MainMenu();
+            menu.Show();
+            this.Close();
         }
     }
 }
