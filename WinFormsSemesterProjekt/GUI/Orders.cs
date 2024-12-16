@@ -27,6 +27,8 @@ namespace WinFormsSemesterProjekt
             dataGridView1.DataSource = orderList;
         }
 
+
+        //Updates the list of orders and refrehses the order list view
         public void UpdateOrderList()
         {
             orderList.Clear();
@@ -44,6 +46,7 @@ namespace WinFormsSemesterProjekt
             }
         }
 
+        //Opens the OrderTypeSelection form and closes this form
         private void buttonNewOrder_Click(object sender, EventArgs e)
         {
             OrderTypeSelection orderTypeSelection = new OrderTypeSelection();
@@ -51,12 +54,14 @@ namespace WinFormsSemesterProjekt
             this.Close();
         }
 
+        //Opens a form that asks for confirmation of an order deletion
         private void buttonDeleteOrder_Click(object sender, EventArgs e)
         {
             ConfirmDeletionOrder confirmDeletionOrder = new ConfirmDeletionOrder(Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value), this);
             confirmDeletionOrder.Show();
         }
 
+        //Opens a new instance of the main menu and Closes this form
         private void buttonMainMenu_Click(object sender, EventArgs e)
         {
             MainMenu menu = new MainMenu();
@@ -64,6 +69,8 @@ namespace WinFormsSemesterProjekt
             this.Close();
         }
 
+        /*Takes the input from the searchbar, runs the FindOrder method
+          From OrderDB and updates the order list to only show that order*/
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             if (orderSearchBar.Text != null)
@@ -80,6 +87,7 @@ namespace WinFormsSemesterProjekt
 
         }
 
+        //Opens the EditOrder form and closes this form
         private void buttonEditOrder_Click(object sender, EventArgs e)
         {
             EditSalesOrder editSalesOrder = new EditSalesOrder(Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value));
