@@ -10,19 +10,20 @@ namespace WinFormsSemesterProjekt.DataBase
 {
     internal class ProductLineDatabase : DatabaseManager
     {
-        public static int UploadToDatabase(int orderID, int productID, int amount)
+        public static int UploadToDatabase(int orderID, int productID, int quantity, double pricePerUnit)
         {
             SqlCommand command = connection.CreateCommand();
             // Command is inheret from DatabaseManager.cs as a protected field
             string sql =
-                "INSERT INTO ProductLine (OrderID, ProductID, Amount) " +
-                "OUTPUT INSERTED.ProductLine.ID " +
-                "VALUES (@OrderID, @ProductID, @Amount)";
+                "INSERT INTO ProductLine (OrderID, ProductID, Quantity, PricePerUnit) " +
+                "OUTPUT INSERTED.ProductLineID " +
+                "VALUES (@OrderID, @ProductID, @Quantity, @PricePerUnit)";
 
             command.CommandText = sql;
             command.Parameters.AddWithValue("@OrderID", orderID);
             command.Parameters.AddWithValue("@ProductID", productID);
-            command.Parameters.AddWithValue("@Quantity", amount);
+            command.Parameters.AddWithValue("@Quantity", quantity);
+            command.Parameters.AddWithValue("@PricePerUnit", pricePerUnit);
 
             return DatabaseManager.ExecuteScalar(command);
         }
@@ -41,13 +42,18 @@ namespace WinFormsSemesterProjekt.DataBase
             {
                 while (reader.Read())
                 {
-                    var productLine = new ProductLine((int)reader[0],
-                                                      (int)reader[1],
-                                                      (int)reader[2]);
+                    var productLine = new ProductLine((int)reader[0], 
+                                                      (int)reader[1], 
+                                                      (int)reader[2],
+                                                      (int)reader[3],
+                                                      (double)reader[4]);
 
                     ProductLineList.Add(productLine);
                 }
             }
+
+            connection.Close();
+
             return ProductLineList;
         }
 
@@ -67,23 +73,28 @@ namespace WinFormsSemesterProjekt.DataBase
                 {
                     var productLine = new ProductLine((int)reader[0],
                                                       (int)reader[1],
-                                                      (int)reader[2]);
+                                                      (int)reader[2],
+                                                      (int)reader[3],
+                                                      (double)reader[4]);
 
                     ProductLineList.Add(productLine);
                 }
             }
+
+            connection.Close();
+
             return ProductLineList;
         }
 
-        public static void UpdateAmount(int productLineId, int newAmount)
+        public static void UpdateQuantity(int productLineId, int newQuantity)
         {
             SqlCommand command = connection.CreateCommand();
             command.CommandText =
                 "UPDATE ProductLine SET " +
-                "Amount = @Amount, " +
+                "Quantity = @Quantity " +
                 "WHERE ProductLineID = @ProductLineID";
 
-            command.Parameters.AddWithValue("@Amount", newAmount);
+            command.Parameters.AddWithValue("@Quantity", newQuantity);
             command.Parameters.AddWithValue("@ProductLineID", productLineId);
 
             DatabaseManager.ExecuteNonQuery(command);

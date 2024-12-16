@@ -13,7 +13,8 @@ namespace WinFormsSemesterProjekt.DataBase
         public static int CreateNewOrder(int customerID, DateTime orderDate, DateTime deliveryDate, string orderStatus, double totalPrice, string shippingMethod)
         {
             string query =
-                "INSERT INTO Order (CustomerID, OrderDate, DeliveryDate, OrderStatus, TotalPrice, ShippingMethod) " +
+                "INSERT INTO [Order] (CustomerID, OrderDate, DeliveryDate, OrderStatus, TotalPrice, ShippingMethod) " +
+                "OUTPUT INSERTED.OrderID " +
                 "VALUES (@CustomerID, @OrderDate, @DeliveryDate, @OrderStatus, @TotalPrice, @ShippingMethod)";
 
             var command = new SqlCommand(query, connection);
@@ -32,10 +33,12 @@ namespace WinFormsSemesterProjekt.DataBase
 
         public static Order FindOrder(int orderID)
         {
+            List<Order> orders = new List<Order>();
+
             connection.Open();
 
             string query =
-                "SELECT * FROM Order " +
+                "SELECT * FROM [Order] " +
                 "WHERE OrderID = @OrderID";
 
             var command = new SqlCommand(query, connection);
@@ -44,18 +47,23 @@ namespace WinFormsSemesterProjekt.DataBase
 
             SqlDataReader reader = command.ExecuteReader();
 
-            var order = new Order(
-                Convert.ToInt32(reader["OrderID"]),
-                Convert.ToInt32(reader["CustomerID"]),
-                Convert.ToDateTime(reader["OrderDate"]),
-                Convert.ToDateTime(reader["DeliveryDate"]),
-                reader["OrderStatus"].ToString(),
-                Convert.ToDouble(reader["TotalPrice"]),
-                reader["ShippingMethod"].ToString());
+            while (reader.Read())
+            {
+                var order = new Order(
+                    Convert.ToInt32(reader["OrderID"]),
+                    Convert.ToInt32(reader["CustomerID"]),
+                    Convert.ToDateTime(reader["OrderDate"]),
+                    Convert.ToDateTime(reader["DeliveryDate"]),
+                    reader["OrderStatus"].ToString(),
+                    Convert.ToDouble(reader["TotalPrice"]),
+                    reader["ShippingMethod"].ToString());
+
+                orders.Add(order);
+            }
 
             connection.Close();
 
-            return order;
+            return orders[0];
         }
 
         public static List<Order> FindAllOrders()
@@ -64,7 +72,7 @@ namespace WinFormsSemesterProjekt.DataBase
 
             List<Order> listOfOrders = new List<Order>();
 
-            string query = "SELECT * FROM Order";
+            string query = "SELECT * FROM [Order]";
 
             var command = new SqlCommand(query, connection);
 
@@ -92,7 +100,7 @@ namespace WinFormsSemesterProjekt.DataBase
         public static void UpdateOrder(Order order)
         {
             string query =
-                "UPDATE Order SET " +
+                "UPDATE [Order] SET " +
                 "DeliveryDate = @DeliveryDate " +
                 "OrderStatus = @OrderStatus " +
                 "TotalPrice = @TotalPrice " +
@@ -113,7 +121,7 @@ namespace WinFormsSemesterProjekt.DataBase
         public static int DeleteOrder(int orderId)
         {
             string query =
-                "DELETE Order " +
+                "DELETE [Order] " +
                 "WHERE OrderID = @OrderID";
 
             var command = new SqlCommand(query, connection);

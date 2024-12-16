@@ -39,9 +39,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Trebuchet MS", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(190, 32);
+            label1.Location = new Point(166, 24);
             label1.Name = "label1";
-            label1.Size = new Size(404, 76);
+            label1.Size = new Size(329, 61);
             label1.TabIndex = 0;
             label1.Text = "ProductionPro";
             // 
@@ -49,18 +49,19 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Trebuchet MS", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(257, 108);
+            label2.Location = new Point(225, 81);
             label2.Name = "label2";
-            label2.Size = new Size(269, 43);
+            label2.Size = new Size(216, 35);
             label2.TabIndex = 1;
             label2.Text = "Lagerhåndtering";
             // 
             // buttonProducts
             // 
             buttonProducts.Font = new Font("Trebuchet MS", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonProducts.Location = new Point(190, 187);
+            buttonProducts.Location = new Point(166, 140);
+            buttonProducts.Margin = new Padding(3, 2, 3, 2);
             buttonProducts.Name = "buttonProducts";
-            buttonProducts.Size = new Size(404, 66);
+            buttonProducts.Size = new Size(354, 50);
             buttonProducts.TabIndex = 2;
             buttonProducts.Text = "Produkter";
             buttonProducts.UseVisualStyleBackColor = true;
@@ -69,9 +70,10 @@
             // buttonOrders
             // 
             buttonOrders.Font = new Font("Trebuchet MS", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonOrders.Location = new Point(190, 259);
+            buttonOrders.Location = new Point(166, 194);
+            buttonOrders.Margin = new Padding(3, 2, 3, 2);
             buttonOrders.Name = "buttonOrders";
-            buttonOrders.Size = new Size(404, 66);
+            buttonOrders.Size = new Size(354, 50);
             buttonOrders.TabIndex = 3;
             buttonOrders.Text = "Ordrer";
             buttonOrders.UseVisualStyleBackColor = true;
@@ -80,9 +82,10 @@
             // buttonCustomers
             // 
             buttonCustomers.Font = new Font("Trebuchet MS", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            buttonCustomers.Location = new Point(190, 331);
+            buttonCustomers.Location = new Point(166, 248);
+            buttonCustomers.Margin = new Padding(3, 2, 3, 2);
             buttonCustomers.Name = "buttonCustomers";
-            buttonCustomers.Size = new Size(404, 66);
+            buttonCustomers.Size = new Size(354, 50);
             buttonCustomers.TabIndex = 4;
             buttonCustomers.Text = "Kunder";
             buttonCustomers.UseVisualStyleBackColor = true;
@@ -90,16 +93,15 @@
             // 
             // MainMenu
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(buttonCustomers);
             Controls.Add(buttonOrders);
             Controls.Add(buttonProducts);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "MainMenu";
             Text = "Hovedmenu";
             ResumeLayout(false);

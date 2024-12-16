@@ -65,7 +65,7 @@ namespace WinFormsSemesterProjekt.DataBase
 
             return customers[0];
         }
-      
+
         public static Customer RetrieveASingleCustomersUsingPhoneNumber(int phoneNumber)
         {
             var customers = new List<Customer>();
@@ -166,7 +166,7 @@ namespace WinFormsSemesterProjekt.DataBase
 
             string sql =
                 (
-                "SELECT * FROM Customer" 
+                "SELECT * FROM Customer"
                 );
 
             command.CommandText = sql;
@@ -244,6 +244,7 @@ namespace WinFormsSemesterProjekt.DataBase
 
             string sql =
                 "UPDATE Customer " +
+
                 "SET FirstName = @FirstName, LastName = @LastName, PhoneNumber = @PhoneNumber, Email = @Email, CustomerType = @CustomerType, Area = @Area " +
                 "WHERE CustomerID = @CustomerID";
 

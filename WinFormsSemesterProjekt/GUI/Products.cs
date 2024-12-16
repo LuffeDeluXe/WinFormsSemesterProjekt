@@ -4,19 +4,25 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Metrics;
 using System.Drawing;
+using System.Drawing.Design;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinformsSemesterprojekt;
 using WinformsSemesterprojekt.Models;
 using WinFormsSemesterProjekt.DataBase;
 using WinFormsSemesterProjekt.GUI;
 using WinFormsSemesterProjekt.GUI.PopUps;
+using WinFormsSemesterProjekt.Models;
 
 namespace WinFormsSemesterProjekt
 {
     public partial class Products : Form
     {
+        private List<string> _Categories { get; set; }
+
         public static Panel ProductsPanel;
 
         private BindingList<Product> ProductList { get; set; }
@@ -34,6 +40,9 @@ namespace WinFormsSemesterProjekt
             dataGridView1.DataSource = ProductList;
             searchBar.Text = "Søg efter et produkt...";
             searchBar.ForeColor = Color.LightGray;
+
+            _Categories = CategoryHelpingMethod.FilterProductsByCategory(ProductList);
+            listBoxCategories.DataSource = _Categories;
         }
 
         private void searchBar_Leave(object sender, EventArgs e)
@@ -110,14 +119,14 @@ namespace WinFormsSemesterProjekt
                 FilteredList = new BindingList<Product>(ProductDatabase.FindProductsByName(searchInput));
 
                 dataGridView1.DataSource = FilteredList;
-
+                
                 dataGridView1.Refresh();
             }
         }
 
         private void buttonEditProduct_Click(object sender, EventArgs e)
         {
-            if (Name != null)
+            if (ProductID != 0)
             {
                 EditProduct editProduct = new EditProduct(ProductID);
                 editProduct.Show();
@@ -135,11 +144,92 @@ namespace WinFormsSemesterProjekt
             ProductID = Convert.ToInt32(selectedRow.Cells[0].Value);
         }
 
+        private void listBoxCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxCategories.SelectedIndex != 0)
+            {
+                BindingList<Product> catogoryResultsDisplayed = CategoryHelpingMethod.SelectedCategoryInstances(ProductList, _Categories[listBoxCategories.SelectedIndex]);
+                dataGridView1.DataSource = catogoryResultsDisplayed;
+                dataGridView1.Refresh();
+            }
+            else
+            {
+                dataGridView1.DataSource = ProductList;
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            int index = listBoxCategories.SelectedIndex;
+            WriteToTxt(listBoxCategoriesSelectedList(index));
+        }
+
+        private BindingList<Product> listBoxCategoriesSelectedList(int index)
+        {
+            if (listBoxCategories.SelectedIndex != 0)
+            {
+                BindingList<Product> catogoryResultsDisplayed = CategoryHelpingMethod.SelectedCategoryInstances(ProductList, _Categories[listBoxCategories.SelectedIndex]);
+                dataGridView1.DataSource = catogoryResultsDisplayed;
+                return catogoryResultsDisplayed;
+            }
+            else
+            {
+                dataGridView1.DataSource = ProductList;
+                return ProductList;
+            }
+        }
+
+        private void WriteToTxt(BindingList<Product> listOfProducts)
+        {
+            string txtContent = "";
+
+            foreach (var product in listOfProducts)
+            {
+                txtContent += $"Produktnavn: {product.ProductName}, " +
+                              $"Produktkategori: {product.Category}, " +
+                              $"Produktpris: {product.Price}, " +
+                              $"Lagerbeholdning: {product.Stock}\n";
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Tekstfil|*.txt";
+            saveFileDialog.FileName = $"Lager over {_Categories[listBoxCategories.SelectedIndex]}.txt";
+            saveFileDialog.Title = "Gem din tekstfil";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(saveFileDialog.FileName, txtContent);
+
+                MessageBox.Show($"Oprettelse af tekstfil succesfuld\n\n" +
+                            $"Fil sti: {saveFileDialog.FileName}");
+            }
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            WinShowProductDetails winShowProductDetails = new WinShowProductDetails(ProductID);
+            winShowProductDetails.Show();
+            this.Close();
+
+        //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+        //    ProductID = Convert.ToInt32(selectedRow.Cells[0].Value);
+        //}
+        /* Jeg er lettere forvirret over, hvorvidt denne her skulle beholdes, da conflict resolveren
+        selv var forvirret. Derfor er den kommenteret ud. */
+
+
         private void buttonMainMenu_Click(object sender, EventArgs e)
         {
             MainMenu mainMenu = new MainMenu();
             mainMenu.Show();
-            this.Hide();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WinShowProductDetails winShowProductDetails = new WinShowProductDetails(ProductID);
+            winShowProductDetails.Show();
+            this.Close();
         }
     }
 }
