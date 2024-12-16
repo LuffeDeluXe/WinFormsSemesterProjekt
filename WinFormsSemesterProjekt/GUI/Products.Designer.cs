@@ -257,5 +257,6 @@
         private RadioButton radioButtonUnavailable;
         private Button buttonExport;
         private ComboBox comboBoxSortby;
-    }
+		private Button button1;
+	}
 }
