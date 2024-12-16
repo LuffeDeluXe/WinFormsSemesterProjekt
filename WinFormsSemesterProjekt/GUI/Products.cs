@@ -164,7 +164,6 @@ namespace WinFormsSemesterProjekt
 				dataGridView1.DataSource = ProductList;
 				return ProductList;
 			}
-
 		}
 
 		private void WriteToTxt(BindingList<Product> listOfProducts)
@@ -182,16 +181,36 @@ namespace WinFormsSemesterProjekt
 			SaveFileDialog saveFileDialog = new SaveFileDialog();
 			saveFileDialog.Filter = "Tekstfil|*.txt";
 			saveFileDialog.FileName = $"Lager over {_Categories[listBoxCategories.SelectedIndex]}.txt";
-
 			saveFileDialog.Title = "Gem din tekstfil";
 
 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
 			{
 				File.WriteAllText(saveFileDialog.FileName, txtContent);
+
 				MessageBox.Show($"Oprettelse af tekstfil succesfuld\n\n" +
 							$"Fil sti: {saveFileDialog.FileName}");
 			}
+		}
 
+		private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+			WinShowProductDetails winShowProductDetails = new WinShowProductDetails(ProductID);
+			winShowProductDetails.Show();
+			this.Close();
+		}
+
+		private void buttonMainMenu_Click(object sender, EventArgs e)
+		{
+			MainMenu mainMenu = new MainMenu();
+			mainMenu.Show();
+			this.Close();
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			WinShowProductDetails winShowProductDetails = new WinShowProductDetails(ProductID);
+			winShowProductDetails.Show();
+			this.Close();
 		}
 	}
 }
