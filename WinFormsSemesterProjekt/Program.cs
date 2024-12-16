@@ -14,6 +14,7 @@ namespace WinFormsSemesterProjekt
         static void Main()
         {
             //Customer aj = new Customer("anders", "jensen", 25262728, "aj@pp.dk", "private", "the moon");
+
             Initialize();
             Application.Run(new MainMenu());
 
@@ -28,5 +29,13 @@ namespace WinFormsSemesterProjekt
             Application.SetCompatibleTextRenderingDefault(false);
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
         }
+
+
+        //private static void Initialize()
+        //{
+        //    Application.EnableVisualStyles();
+        //    Application.SetCompatibleTextRenderingDefault(false);
+        //    Application.SetHighDpiMode(HighDpiMode.SystemAware);
+        //}
     }
 }

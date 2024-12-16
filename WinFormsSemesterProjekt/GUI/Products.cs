@@ -108,6 +108,20 @@ namespace WinFormsSemesterProjekt
 
                 dataGridView1.Refresh();
             }
+            else if (searchInput.Trim().Length == 0 || searchInput == "Søg efter et produkt...")
+            {
+                // Nothing happens if the search input is empty or contains the placeholder text.
+            }
+            else
+            {
+                FilteredList.Clear();
+
+                FilteredList = new BindingList<Product>(ProductDatabase.FindProductsByName(searchInput));
+
+                dataGridView1.DataSource = FilteredList;
+                
+                dataGridView1.Refresh();
+            }
         }
 
         private void buttonEditProduct_Click(object sender, EventArgs e)
@@ -142,8 +156,6 @@ namespace WinFormsSemesterProjekt
             {
                 dataGridView1.DataSource = ProductList;
                 dataGridView1.Refresh();
-            }
-        }
 
         private void buttonExport_Click(object sender, EventArgs e)
         {
@@ -197,7 +209,15 @@ namespace WinFormsSemesterProjekt
             WinShowProductDetails winShowProductDetails = new WinShowProductDetails(ProductID);
             winShowProductDetails.Show();
             this.Close();
-        }
+
+        //private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+        //    ProductID = Convert.ToInt32(selectedRow.Cells[0].Value);
+        //}
+        /* Jeg er lettere forvirret over, hvorvidt denne her skulle beholdes, da conflict resolveren
+        selv var forvirret. Derfor er den kommenteret ud. */
+
 
         private void buttonMainMenu_Click(object sender, EventArgs e)
         {

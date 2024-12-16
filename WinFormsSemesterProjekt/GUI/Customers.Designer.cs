@@ -122,6 +122,7 @@
             searchBar.BorderStyle = BorderStyle.FixedSingle;
             searchBar.Location = new Point(313, 26);
             searchBar.Name = "searchBar";
+            searchBar.PlaceholderText = "Søg efter en kunde...";
             searchBar.Size = new Size(375, 27);
             searchBar.TabIndex = 35;
             // 
