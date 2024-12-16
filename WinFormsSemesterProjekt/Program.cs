@@ -10,11 +10,15 @@ namespace WinFormsSemesterProjekt
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-
+        
         static void Main()
         {
+            //Customer aj = new Customer("anders", "jensen", 25262728, "aj@pp.dk", "private", "the moon");
             Initialize();
             Application.Run(new MainMenu());
+
+
+            //"anders", "jensen", 25262728, aj@pp.dk, "private", "the moon");
         }
 
 
