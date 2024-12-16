@@ -112,7 +112,7 @@ namespace WinFormsSemesterProjekt
 
         private void buttonEditProduct_Click(object sender, EventArgs e)
         {
-            if (Name != null)
+            if (ProductID != 0)
             {
                 EditProduct editProduct = new EditProduct(ProductID);
                 editProduct.Show();

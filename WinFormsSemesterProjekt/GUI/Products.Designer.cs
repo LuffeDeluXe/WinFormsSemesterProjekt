@@ -85,12 +85,13 @@
             buttonSearch.FlatStyle = FlatStyle.Flat;
             buttonSearch.ForeColor = SystemColors.ControlLightLight;
             buttonSearch.Location = new Point(1128, 35);
-            buttonSearch.Margin = new Padding(5, 5, 5, 5);
+            buttonSearch.Margin = new Padding(5);
             buttonSearch.Name = "buttonSearch";
             buttonSearch.Size = new Size(153, 46);
             buttonSearch.TabIndex = 3;
             buttonSearch.Text = "Søg";
             buttonSearch.UseVisualStyleBackColor = false;
+            buttonSearch.Click += buttonSearch_Click;
             // 
             // buttonMainMenu
             // 
@@ -98,7 +99,7 @@
             buttonMainMenu.FlatStyle = FlatStyle.Flat;
             buttonMainMenu.ForeColor = SystemColors.ControlLightLight;
             buttonMainMenu.Location = new Point(20, 654);
-            buttonMainMenu.Margin = new Padding(5, 5, 5, 5);
+            buttonMainMenu.Margin = new Padding(5);
             buttonMainMenu.Name = "buttonMainMenu";
             buttonMainMenu.Size = new Size(200, 46);
             buttonMainMenu.TabIndex = 4;
@@ -110,7 +111,7 @@
             // 
             searchBar.BorderStyle = BorderStyle.FixedSingle;
             searchBar.Location = new Point(509, 38);
-            searchBar.Margin = new Padding(5, 5, 5, 5);
+            searchBar.Margin = new Padding(5);
             searchBar.Name = "searchBar";
             searchBar.Size = new Size(608, 39);
             searchBar.TabIndex = 5;
@@ -121,11 +122,12 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(509, 146);
-            dataGridView1.Margin = new Padding(5, 5, 5, 5);
+            dataGridView1.Margin = new Padding(5);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(772, 486);
             dataGridView1.TabIndex = 6;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // buttonNewProduct
             // 
@@ -133,7 +135,7 @@
             buttonNewProduct.FlatStyle = FlatStyle.Flat;
             buttonNewProduct.ForeColor = SystemColors.ControlLightLight;
             buttonNewProduct.Location = new Point(509, 654);
-            buttonNewProduct.Margin = new Padding(5, 5, 5, 5);
+            buttonNewProduct.Margin = new Padding(5);
             buttonNewProduct.Name = "buttonNewProduct";
             buttonNewProduct.Size = new Size(240, 46);
             buttonNewProduct.TabIndex = 7;
@@ -147,7 +149,7 @@
             buttonEditProduct.FlatStyle = FlatStyle.Flat;
             buttonEditProduct.ForeColor = SystemColors.ControlLightLight;
             buttonEditProduct.Location = new Point(774, 654);
-            buttonEditProduct.Margin = new Padding(5, 5, 5, 5);
+            buttonEditProduct.Margin = new Padding(5);
             buttonEditProduct.Name = "buttonEditProduct";
             buttonEditProduct.Size = new Size(240, 46);
             buttonEditProduct.TabIndex = 8;
@@ -160,7 +162,7 @@
             buttonDeleteProduct.BackColor = Color.Black;
             buttonDeleteProduct.ForeColor = SystemColors.ControlLightLight;
             buttonDeleteProduct.Location = new Point(1040, 654);
-            buttonDeleteProduct.Margin = new Padding(5, 5, 5, 5);
+            buttonDeleteProduct.Margin = new Padding(5);
             buttonDeleteProduct.Name = "buttonDeleteProduct";
             buttonDeleteProduct.Size = new Size(240, 46);
             buttonDeleteProduct.TabIndex = 9;
@@ -172,16 +174,17 @@
             // 
             listBoxCategories.FormattingEnabled = true;
             listBoxCategories.Location = new Point(32, 187);
-            listBoxCategories.Margin = new Padding(5, 5, 5, 5);
+            listBoxCategories.Margin = new Padding(5);
             listBoxCategories.Name = "listBoxCategories";
             listBoxCategories.Size = new Size(358, 260);
             listBoxCategories.TabIndex = 11;
+            listBoxCategories.SelectedIndexChanged += listBoxCategories_SelectedIndexChanged;
             // 
             // radioButtonAvailable
             // 
             radioButtonAvailable.AutoSize = true;
             radioButtonAvailable.Location = new Point(32, 501);
-            radioButtonAvailable.Margin = new Padding(5, 5, 5, 5);
+            radioButtonAvailable.Margin = new Padding(5);
             radioButtonAvailable.Name = "radioButtonAvailable";
             radioButtonAvailable.Size = new Size(129, 36);
             radioButtonAvailable.TabIndex = 12;
@@ -193,7 +196,7 @@
             // 
             radioButtonUnavailable.AutoSize = true;
             radioButtonUnavailable.Location = new Point(32, 549);
-            radioButtonUnavailable.Margin = new Padding(5, 5, 5, 5);
+            radioButtonUnavailable.Margin = new Padding(5);
             radioButtonUnavailable.Name = "radioButtonUnavailable";
             radioButtonUnavailable.Size = new Size(181, 36);
             radioButtonUnavailable.TabIndex = 13;
@@ -207,7 +210,7 @@
             buttonExport.FlatStyle = FlatStyle.Flat;
             buttonExport.ForeColor = SystemColors.ControlLightLight;
             buttonExport.Location = new Point(509, 91);
-            buttonExport.Margin = new Padding(5, 5, 5, 5);
+            buttonExport.Margin = new Padding(5);
             buttonExport.Name = "buttonExport";
             buttonExport.Size = new Size(332, 46);
             buttonExport.TabIndex = 14;
@@ -223,7 +226,7 @@
             comboBoxSortby.FormattingEnabled = true;
             comboBoxSortby.Items.AddRange(new object[] { "Navn: A-Å", "Navn: Å-A", "Kategori: A-Å", "Kategori: Å-A", "Pris: Stigende", "Pris: Faldende" });
             comboBoxSortby.Location = new Point(1089, 93);
-            comboBoxSortby.Margin = new Padding(5, 5, 5, 5);
+            comboBoxSortby.Margin = new Padding(5);
             comboBoxSortby.Name = "comboBoxSortby";
             comboBoxSortby.Size = new Size(189, 40);
             comboBoxSortby.TabIndex = 47;
@@ -250,7 +253,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "Products";
             Text = "Products";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
