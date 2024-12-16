@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Drawing.Design;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -185,6 +186,7 @@ namespace WinFormsSemesterProjekt
 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
 			{
 				File.WriteAllText(saveFileDialog.FileName, txtContent);
+
 				MessageBox.Show($"Oprettelse af tekstfil succesfuld\n\n" +
 							$"Fil sti: {saveFileDialog.FileName}");
 			}
