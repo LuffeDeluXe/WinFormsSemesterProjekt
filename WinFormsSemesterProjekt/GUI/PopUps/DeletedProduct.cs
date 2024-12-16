@@ -12,11 +12,6 @@ namespace WinFormsSemesterProjekt.GUI.PopUps
 {
     public partial class DeletedProduct : Form
     {
-        public DeletedProduct()
-        {
-            InitializeComponent();
-        }
-
 		public DeletedProduct(string name)
 		{
 			InitializeComponent();
