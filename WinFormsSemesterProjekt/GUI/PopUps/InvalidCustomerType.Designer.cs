@@ -1,6 +1,6 @@
 ﻿namespace WinFormsSemesterProjekt.GUI.PopUps
 {
-    partial class CreatedCustomer
+    partial class InvalidCustomerType
     {
         /// <summary>
         /// Required designer variable.
@@ -28,45 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
             buttonOk = new Button();
-            labelText = new Label();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(31, 45);
+            label1.Name = "label1";
+            label1.Size = new Size(178, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Angiv venligst kundetype.";
             // 
             // buttonOk
             // 
-            buttonOk.Location = new Point(76, 84);
+            buttonOk.Location = new Point(73, 86);
             buttonOk.Name = "buttonOk";
             buttonOk.Size = new Size(94, 29);
-            buttonOk.TabIndex = 2;
+            buttonOk.TabIndex = 1;
             buttonOk.Text = "OK";
             buttonOk.UseVisualStyleBackColor = true;
             buttonOk.Click += buttonOk_Click;
             // 
-            // labelText
-            // 
-            labelText.AutoSize = true;
-            labelText.Location = new Point(36, 36);
-            labelText.Name = "labelText";
-            labelText.Size = new Size(174, 20);
-            labelText.TabIndex = 3;
-            labelText.Text = "Kunde {navn} er oprettet.";
-            // 
-            // CreatedCustomer
+            // InvalidCustomerType
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(248, 127);
-            Controls.Add(labelText);
             Controls.Add(buttonOk);
-            Name = "CreatedCustomer";
-            Text = "CreatedCustomer";
+            Controls.Add(label1);
+            Name = "InvalidCustomerType";
+            Text = "InvalidCustomerType";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
+        private Label label1;
         private Button buttonOk;
-        private Label labelText;
     }
 }

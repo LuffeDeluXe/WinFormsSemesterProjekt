@@ -44,6 +44,7 @@
             label6 = new Label();
             textBoxArea = new TextBox();
             label7 = new Label();
+            colorDialog1 = new ColorDialog();
             SuspendLayout();
             // 
             // buttonReturn
@@ -233,5 +234,6 @@
         private Label label6;
         private TextBox textBoxArea;
         private Label label7;
+        private ColorDialog colorDialog1;
     }
 }

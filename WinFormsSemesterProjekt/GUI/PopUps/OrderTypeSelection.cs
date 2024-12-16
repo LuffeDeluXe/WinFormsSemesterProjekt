@@ -29,6 +29,8 @@ namespace WinFormsSemesterProjekt.GUI.PopUps
             this.Close();
             AddProductionOrder addProductionOrder = new AddProductionOrder();
             addProductionOrder.Show();
+            Orders orders = new Orders();
+            orders.Hide();
         }
     }
 }

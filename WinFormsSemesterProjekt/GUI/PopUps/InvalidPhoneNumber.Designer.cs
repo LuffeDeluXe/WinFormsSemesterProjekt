@@ -1,6 +1,6 @@
 ﻿namespace WinFormsSemesterProjekt.GUI.PopUps
 {
-    partial class CreatedCustomer
+    partial class InvalidPhoneNumber
     {
         /// <summary>
         /// Required designer variable.
@@ -28,45 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonOk = new Button();
-            labelText = new Label();
+            label1 = new Label();
+            buttonOK = new Button();
             SuspendLayout();
             // 
-            // buttonOk
+            // label1
             // 
-            buttonOk.Location = new Point(76, 84);
-            buttonOk.Name = "buttonOk";
-            buttonOk.Size = new Size(94, 29);
-            buttonOk.TabIndex = 2;
-            buttonOk.Text = "OK";
-            buttonOk.UseVisualStyleBackColor = true;
-            buttonOk.Click += buttonOk_Click;
+            label1.AutoSize = true;
+            label1.Location = new Point(34, 33);
+            label1.Name = "label1";
+            label1.Size = new Size(175, 40);
+            label1.TabIndex = 0;
+            label1.Text = "Ugyldigt telefonnummer.\r\nPrøv venligst igen.";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // labelText
+            // buttonOK
             // 
-            labelText.AutoSize = true;
-            labelText.Location = new Point(36, 36);
-            labelText.Name = "labelText";
-            labelText.Size = new Size(174, 20);
-            labelText.TabIndex = 3;
-            labelText.Text = "Kunde {navn} er oprettet.";
+            buttonOK.Location = new Point(73, 86);
+            buttonOK.Name = "buttonOK";
+            buttonOK.Size = new Size(94, 29);
+            buttonOK.TabIndex = 1;
+            buttonOK.Text = "OK";
+            buttonOK.UseVisualStyleBackColor = true;
+            buttonOK.Click += buttonOK_Click;
             // 
-            // CreatedCustomer
+            // InvalidPhoneNumber
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(248, 127);
-            Controls.Add(labelText);
-            Controls.Add(buttonOk);
-            Name = "CreatedCustomer";
-            Text = "CreatedCustomer";
+            Controls.Add(buttonOK);
+            Controls.Add(label1);
+            Name = "InvalidPhoneNumber";
+            Text = "InvalidPhoneNumber";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button buttonOk;
-        private Label labelText;
+        private Label label1;
+        private Button buttonOK;
     }
 }

@@ -1,4 +1,5 @@
 using WinformsSemesterprojekt;
+using WinformsSemesterprojekt.Models;
 using WinFormsSemesterProjekt.DataBase;
 
 namespace WinFormsSemesterProjekt
@@ -9,6 +10,12 @@ namespace WinFormsSemesterProjekt
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
+        public static void Initialize()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+        }
         static void Main()
         {
             Initialize();
