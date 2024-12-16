@@ -15,7 +15,7 @@ namespace WinFormsSemesterProjekt.GUI
 {
     public partial class EditCustomer : Form
     {
-        private readonly Customer _editCustomer = new Customer(0, "", "", 0, "", "", "");
+        private Customer _editCustomer {get;set;}
         public EditCustomer(int customerId)
         {
             InitializeComponent();

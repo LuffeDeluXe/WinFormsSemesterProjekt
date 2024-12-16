@@ -29,7 +29,7 @@ namespace WinformsSemesterprojekt
         /// <param name="phoneNumber"></param>
         /// <param name="email"></param>
 
-        public Customer(int customerID, string firstName, string lastName, int phoneNumber, string email)
+        public Customer(int customerID, string firstName, string lastName, int phoneNumber, string email, string customerType, string area)
         {
             CustomerID = customerID;
             FirstName = firstName;
