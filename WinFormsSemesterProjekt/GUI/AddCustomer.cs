@@ -83,6 +83,7 @@ namespace WinFormsSemesterProjekt.GUI
 
                     CreatedCustomer createdCustomer = new CreatedCustomer(customerName);
                     createdCustomer.Show();
+                    this.Close();
                 }
             }
         }

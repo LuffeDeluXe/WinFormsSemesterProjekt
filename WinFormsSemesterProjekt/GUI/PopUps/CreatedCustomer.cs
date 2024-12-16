@@ -19,6 +19,8 @@ namespace WinFormsSemesterProjekt.GUI.PopUps
         }
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            Customers customers = new Customers();
+            customers.Show();
             this.Close();
         }
     }
