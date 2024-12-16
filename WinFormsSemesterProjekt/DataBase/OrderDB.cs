@@ -97,23 +97,23 @@ namespace WinFormsSemesterProjekt.DataBase
             return listOfOrders;
         }
 
-        public static void UpdateOrder(Order order)
+        public static void UpdateOrder(int orderID, int customerID, DateTime deliveryDate, string orderStatus, double totalPrice, string shippingMethod)
         {
             string query =
                 "UPDATE [Order] SET " +
-                "DeliveryDate = @DeliveryDate " +
-                "OrderStatus = @OrderStatus " +
-                "TotalPrice = @TotalPrice " +
+                "DeliveryDate = @DeliveryDate, " +
+                "OrderStatus = @OrderStatus, " +
+                "TotalPrice = @TotalPrice, " +
                 "ShippingMethod = @ShippingMethod " +
                 "WHERE OrderID = @OrderID";
 
             var command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@DeliveryDate", order.DeliveryDate);
-            command.Parameters.AddWithValue("@OrderStatus", order.OrderStatus);
-            command.Parameters.AddWithValue("@TotalPrice", order.TotalPrice);
-            command.Parameters.AddWithValue("@ShippingMethod", order.ShippingMethod);
-            command.Parameters.AddWithValue("@OrderID", order.OrderID);
+            command.Parameters.AddWithValue("@DeliveryDate", deliveryDate);
+            command.Parameters.AddWithValue("@OrderStatus", orderStatus);
+            command.Parameters.AddWithValue("@TotalPrice", totalPrice);
+            command.Parameters.AddWithValue("@ShippingMethod", shippingMethod);
+            command.Parameters.AddWithValue("@OrderID", orderID);
 
             DatabaseManager.ExecuteNonQuery(command);
         }

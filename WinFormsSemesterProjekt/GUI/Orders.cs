@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinformsSemesterprojekt.Models;
 using WinFormsSemesterProjekt.DataBase;
+using WinFormsSemesterProjekt.GUI;
 using WinFormsSemesterProjekt.GUI.PopUps;
 
 namespace WinFormsSemesterProjekt
@@ -16,35 +17,30 @@ namespace WinFormsSemesterProjekt
     public partial class Orders : Form
     {
         public BindingList<Order> orderList { get; set; } = new BindingList<Order>();
+        public List<Order> listOfOrders { get; set; } = new List<Order>();
         public Orders()
         {
-            List<Order> listOfOrders = OrderDB.FindAllOrders();
-
-            foreach (Order order in listOfOrders)
-            {
-                orderList.Add(order);
-            }
+            UpdateOrderList();
 
             InitializeComponent();
 
             dataGridView1.DataSource = orderList;
         }
 
-        private void searchBar_Leave(object sender, EventArgs e)
+        public void UpdateOrderList()
         {
-            if (orderSearchBar.Text == "")
-            {
-                orderSearchBar.Text = "Indtast ordrenummer...";
-                orderSearchBar.ForeColor = Color.Black;
-            }
-        }
+            orderList.Clear();
 
-        private void searchBar_Enter(object sender, EventArgs e)
-        {
-            if (orderSearchBar.Text == "Indtast ordrenummer...")
+            if (listOfOrders.Count <= 0)
             {
-                orderSearchBar.Text = "";
-                orderSearchBar.ForeColor = Color.LightGray;
+                listOfOrders.Clear();
+            }
+
+            listOfOrders = OrderDB.FindAllOrders();
+
+            foreach (Order order in listOfOrders)
+            {
+                orderList.Add(order);
             }
         }
 
@@ -52,12 +48,12 @@ namespace WinFormsSemesterProjekt
         {
             OrderTypeSelection orderTypeSelection = new OrderTypeSelection();
             orderTypeSelection.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void buttonDeleteOrder_Click(object sender, EventArgs e)
         {
-            ConfirmDeletionOrder confirmDeletionOrder = new ConfirmDeletionOrder();
+            ConfirmDeletionOrder confirmDeletionOrder = new ConfirmDeletionOrder(Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value), this);
             confirmDeletionOrder.Show();
         }
 
@@ -78,10 +74,17 @@ namespace WinFormsSemesterProjekt
 
                 orderList.Clear();
                 orderList.Add(order);
-                
+
                 dataGridView1.Refresh();
             }
 
+        }
+
+        private void buttonEditOrder_Click(object sender, EventArgs e)
+        {
+            EditSalesOrder editSalesOrder = new EditSalesOrder(Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value));
+            editSalesOrder.Show();
+            this.Close();
         }
     }
 }

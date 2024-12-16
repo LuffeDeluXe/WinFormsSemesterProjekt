@@ -53,11 +53,12 @@ namespace WinFormsSemesterProjekt.GUI
         {
             Orders orders = new Orders();
             orders.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            OrderDB.UpdateOrder(CurrentOrderID, Convert.ToInt32(customerIDTextBox.Text), DateTime.Now, "Created", Convert.ToDouble(totalPriceTextBox.Text), shippingComboBox.SelectedItem.ToString());
             CreatedOrder createdOrder = new CreatedOrder();
             createdOrder.Show();
             this.Close();
@@ -65,8 +66,8 @@ namespace WinFormsSemesterProjekt.GUI
 
         private void buttonAddProducts_Click(object sender, EventArgs e)
         {
-            WinAddProductLine productLine = new WinAddProductLine(CurrentOrderID, this);
-            productLine.Show();
+            WinAddProductLine addProductLine = new WinAddProductLine(CurrentOrderID, this);
+            addProductLine.Show();
         }
 
         private void CreateOrderButton_Click(object sender, EventArgs e)

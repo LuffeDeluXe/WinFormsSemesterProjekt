@@ -71,6 +71,7 @@
             // 
             pLProductIDTextBox.Location = new Point(339, 105);
             pLProductIDTextBox.Name = "pLProductIDTextBox";
+            pLProductIDTextBox.ReadOnly = true;
             pLProductIDTextBox.Size = new Size(100, 23);
             pLProductIDTextBox.TabIndex = 3;
             // 
@@ -126,6 +127,7 @@
             pLProductDescriptionBox.Location = new Point(339, 159);
             pLProductDescriptionBox.Multiline = true;
             pLProductDescriptionBox.Name = "pLProductDescriptionBox";
+            pLProductDescriptionBox.ReadOnly = true;
             pLProductDescriptionBox.Size = new Size(349, 138);
             pLProductDescriptionBox.TabIndex = 5;
             // 
@@ -162,6 +164,7 @@
             // 
             pLProductNameBox.Location = new Point(445, 105);
             pLProductNameBox.Name = "pLProductNameBox";
+            pLProductNameBox.ReadOnly = true;
             pLProductNameBox.Size = new Size(100, 23);
             pLProductNameBox.TabIndex = 9;
             // 
