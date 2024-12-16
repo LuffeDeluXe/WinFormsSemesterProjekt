@@ -87,7 +87,6 @@ namespace WinFormsSemesterProjekt.DataBase
 
             while (reader.Read())
             {
-
                 var ReadCustomer = new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), Convert.ToInt32(reader.GetString(3)), reader.GetString(4), reader.GetString(5), reader.GetString(6));
                 customers.Add(ReadCustomer);
             }
