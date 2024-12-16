@@ -16,11 +16,6 @@ namespace WinFormsSemesterProjekt.GUI.PopUps
     {
         private Product Product { get; set; }
         
-        public ConfirmDeletionProduct()
-        {
-            InitializeComponent();
-        }
-
         public ConfirmDeletionProduct(int productId)
         {
 			InitializeComponent();
