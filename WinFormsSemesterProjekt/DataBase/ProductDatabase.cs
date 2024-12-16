@@ -203,5 +203,33 @@ namespace WinFormsSemesterProjekt.DataBase
 
 			return rowsAffected;
 		}
+
+		public static bool CheckIfStockIsMin(int productID)
+		{
+			string query = "SELECT Stock, MinStock FROM Product " +
+						   "WHERE ProductID = @ProductID";
+
+            var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ProductID", productID);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+			var product = new Product("", "", "", 0, 0, 0, 0);
+
+            while (reader.Read())
+            {
+                product.MinStock = Convert.ToInt32(reader["MinStock"]);
+				product.Stock = Convert.ToInt32(reader["MaxStock"]);
+            }
+
+			if (product.Stock == product.MinStock)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+        }
 	}
 }
