@@ -51,7 +51,7 @@ namespace WinFormsSemesterProjekt.GUI
             totalPriceTextBox.Text = TotalPrice.ToString();
         }
 
-        //Opens a new Orders form and closes this form
+        //Opens a new Orders form and closes this AddSalesOrder form
         private void buttonReturn_Click(object sender, EventArgs e)
         {
             Orders orders = new Orders();
@@ -69,7 +69,7 @@ namespace WinFormsSemesterProjekt.GUI
             this.Close();
         }
 
-        //Opens the AddProductLine form with reference to the current OrderID and this form
+        //Opens the AddProductLine form with reference to the current OrderID and this AddSalesOrder form
         private void buttonAddProducts_Click(object sender, EventArgs e)
         {
             WinAddProductLine addProductLine = new WinAddProductLine(CurrentOrderID, this);

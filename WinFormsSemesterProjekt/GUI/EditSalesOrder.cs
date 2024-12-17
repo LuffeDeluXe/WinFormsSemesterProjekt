@@ -79,10 +79,10 @@ namespace WinFormsSemesterProjekt.GUI
             this.Close();
         }
 
-        /*Updates the order with the new relevant information and closes the EditOrder form*/
+        /*Updates the order with the new relevant information and closes the EditSalesOrder form*/
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            OrderDB.UpdateOrder(CurrentOrderID, Convert.ToInt32(customerIDLabel.Text), DateTime.Now, "Updated", Convert.ToDouble(totalPriceTextBox.Text), shippingMethodLabel.ToString());
+            OrderDB.UpdateOrder(CurrentOrderID, Convert.ToInt32(customerIDLabel.Text), DateTime.Now, "Updated", Convert.ToDouble(totalPriceTextBox.Text), shippingMethodLabel.Text.ToString());
             UpdatedOrder updatedOrder = new UpdatedOrder();
             updatedOrder.Show();
             this.Close();
@@ -126,7 +126,7 @@ namespace WinFormsSemesterProjekt.GUI
             }
         }
 
-        //Opens the AddProductLine form with reference to the current OrderID and this form
+        //Opens the AddProductLine form with reference to the current OrderID and this EditSalesOrder form
         private void buttonAddProducts_Click(object sender, EventArgs e)
         {
             WinAddProductLine addProductLine = new WinAddProductLine(CurrentOrderID, this);

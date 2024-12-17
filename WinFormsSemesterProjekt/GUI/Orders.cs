@@ -46,7 +46,7 @@ namespace WinFormsSemesterProjekt
             }
         }
 
-        //Opens the OrderTypeSelection form and closes this form
+        //Opens the OrderTypeSelection form and closes this Orders form
         private void buttonNewOrder_Click(object sender, EventArgs e)
         {
             OrderTypeSelection orderTypeSelection = new OrderTypeSelection();
@@ -61,7 +61,7 @@ namespace WinFormsSemesterProjekt
             confirmDeletionOrder.Show();
         }
 
-        //Opens a new instance of the main menu and Closes this form
+        //Opens a new instance of the main menu and Closes this Orders form
         private void buttonMainMenu_Click(object sender, EventArgs e)
         {
             MainMenu menu = new MainMenu();
@@ -87,7 +87,7 @@ namespace WinFormsSemesterProjekt
 
         }
 
-        //Opens the EditOrder form and closes this form
+        //Opens the EditOrder form and closes this Orders form
         private void buttonEditOrder_Click(object sender, EventArgs e)
         {
             EditSalesOrder editSalesOrder = new EditSalesOrder(Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value));
