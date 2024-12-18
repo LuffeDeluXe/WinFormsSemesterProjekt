@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,14 +18,37 @@ namespace WinFormsSemesterProjekt.GUI
         public BindingList<Product> ProductList { get; set; }
         public BindingList<Product> FilteredList { get; private set; } = new BindingList<Product>();
         private int OrderLineID { get; set; }
-        private AddSalesOrder CurrentSalesOrder { get; set; }
+        private AddSalesOrder CurrentAddSalesOrder { get; set; }
+        private EditSalesOrder CurrentEditSalesOrder { get; set; }
+        private string AddOrEditOrder { get; set; }
+
+        /*Initializes the form from the AddSalesOrder form*/
         public WinAddProductLine(int orderID, AddSalesOrder addSalesOrder)
         {
             InitializeComponent();
 
             ProductList = new BindingList<Product>(ProductDatabase.FindAllProducts());
 
-            CurrentSalesOrder = addSalesOrder;
+            CurrentAddSalesOrder = addSalesOrder;
+            AddOrEditOrder = "Add";
+
+            OrderLineID = orderID;
+
+            pLProductView.DataSource = ProductList;
+
+            plProductSearchBar.Text = "Indtast produkt id...";
+            plProductSearchBar.ForeColor = Color.Gray;
+        }
+
+        /*Initializes the form from the EditSalesOrder form*/
+        public WinAddProductLine(int orderID, EditSalesOrder editSalesOrder)
+        {
+            InitializeComponent();
+
+            ProductList = new BindingList<Product>(ProductDatabase.FindAllProducts());
+
+            CurrentEditSalesOrder = editSalesOrder;
+            AddOrEditOrder = "Edit";
 
             OrderLineID = orderID;
 
@@ -33,7 +57,7 @@ namespace WinFormsSemesterProjekt.GUI
             plProductSearchBar.ForeColor = Color.Gray;
         }
 
-
+        /*When the searchbar is unfocused it sets a default text*/
         private void PLSearchBar_Leave(object sender, EventArgs e)
         {
             if (plProductSearchBar.Text == "Indtast produkt id..." || String.IsNullOrEmpty(plProductSearchBar.Text))
@@ -47,6 +71,7 @@ namespace WinFormsSemesterProjekt.GUI
             }
         }
 
+        /*When the searchbar is focused it removes the default text*/
         private void PLSearchBar_Enter(object sender, EventArgs e)
         {
             if (plProductSearchBar.Text == "Indtast produkt id..." || String.IsNullOrEmpty(plProductSearchBar.Text))
@@ -60,6 +85,8 @@ namespace WinFormsSemesterProjekt.GUI
             }
         }
 
+        /*When the search button is clicked, the FindProduct method is called
+          Using the ProductID that is entered into the searchbar*/
         private void pLSearchProductButton_Click(object sender, EventArgs e)
         {
             string searchInput = plProductSearchBar.Text;
@@ -78,6 +105,8 @@ namespace WinFormsSemesterProjekt.GUI
             }
         }
 
+        /*Takes the info of the currently selected Product and puts it
+          Into their respective textboxes*/
         private void pLAddProductButton_Click(object sender, EventArgs e)
         {
             string productID = pLProductView.CurrentRow.Cells[0].Value.ToString();
@@ -95,19 +124,30 @@ namespace WinFormsSemesterProjekt.GUI
             string productDescription = pLProductView.CurrentRow.Cells[3].Value.ToString();
 
             pLProductDescriptionBox.Text = productDescription;
+
+            pLProductQuantityNumeric.Value = 1;
         }
 
+        /*Adds the ProductLine with the relevant info, to the ProductLine database table*/
         private void productLineCreateButton_Click(object sender, EventArgs e)
         {
             ProductLine productLine = new ProductLine(OrderLineID, Convert.ToInt32(pLProductIDTextBox.Text), Convert.ToInt32(pLProductQuantityNumeric.Value), Convert.ToDouble(pLPricePrUnitTextBox.Text));
 
-            //addSalesOrder.orderProductLines.Add(productLine);
+            int newStock = Convert.ToInt32(pLProductView.CurrentRow.Cells[5].Value) - Convert.ToInt32(pLProductQuantityNumeric.Value);
 
-            CurrentSalesOrder.UpDateTotalPrice();
+            ProductDatabase.UpdateProduct(Convert.ToInt32(pLProductIDTextBox.Text), pLProductNameBox.Text, pLProductView.CurrentRow.Cells[2].Value.ToString(), pLProductDescriptionBox.Text, Convert.ToDouble(pLProductView.CurrentRow.Cells[4].Value), newStock);
 
-            //CurrentSalesOrder.productLineDataView.Refresh();
+            if (AddOrEditOrder == "Add")
+            {
+                CurrentAddSalesOrder.UpDateTotalPrice();
+            }
 
-            this.Hide();
+            if (AddOrEditOrder == "Edit")
+            {
+                CurrentEditSalesOrder.UpDateTotalPrice();
+            }
+
+            this.Close();
         }
     }
 }

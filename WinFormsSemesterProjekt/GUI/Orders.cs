@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinformsSemesterprojekt.Models;
 using WinFormsSemesterProjekt.DataBase;
+using WinFormsSemesterProjekt.GUI;
 using WinFormsSemesterProjekt.GUI.PopUps;
 
 namespace WinFormsSemesterProjekt
@@ -16,51 +17,51 @@ namespace WinFormsSemesterProjekt
     public partial class Orders : Form
     {
         public BindingList<Order> orderList { get; set; } = new BindingList<Order>();
+        public List<Order> listOfOrders { get; set; } = new List<Order>();
         public Orders()
         {
-            List<Order> listOfOrders = OrderDB.FindAllOrders();
-
-            foreach (Order order in listOfOrders)
-            {
-                orderList.Add(order);
-            }
+            UpdateOrderList();
 
             InitializeComponent();
 
             dataGridView1.DataSource = orderList;
         }
 
-        private void searchBar_Leave(object sender, EventArgs e)
+
+        //Updates the list of orders and refrehses the order list view
+        public void UpdateOrderList()
         {
-            if (orderSearchBar.Text == "")
+            orderList.Clear();
+
+            if (listOfOrders.Count <= 0)
             {
-                orderSearchBar.Text = "Indtast ordrenummer...";
-                orderSearchBar.ForeColor = Color.Black;
+                listOfOrders.Clear();
+            }
+
+            listOfOrders = OrderDB.FindAllOrders();
+
+            foreach (Order order in listOfOrders)
+            {
+                orderList.Add(order);
             }
         }
 
-        private void searchBar_Enter(object sender, EventArgs e)
-        {
-            if (orderSearchBar.Text == "Indtast ordrenummer...")
-            {
-                orderSearchBar.Text = "";
-                orderSearchBar.ForeColor = Color.LightGray;
-            }
-        }
-
+        //Opens the OrderTypeSelection form and closes this Orders form
         private void buttonNewOrder_Click(object sender, EventArgs e)
         {
             OrderTypeSelection orderTypeSelection = new OrderTypeSelection();
             orderTypeSelection.Show();
-            this.Hide();
+            this.Close();
         }
 
+        //Opens a form that asks for confirmation of an order deletion
         private void buttonDeleteOrder_Click(object sender, EventArgs e)
         {
-            ConfirmDeletionOrder confirmDeletionOrder = new ConfirmDeletionOrder();
+            ConfirmDeletionOrder confirmDeletionOrder = new ConfirmDeletionOrder(Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value), this);
             confirmDeletionOrder.Show();
         }
 
+        //Opens a new instance of the main menu and Closes this Orders form
         private void buttonMainMenu_Click(object sender, EventArgs e)
         {
             MainMenu menu = new MainMenu();
@@ -68,6 +69,8 @@ namespace WinFormsSemesterProjekt
             this.Close();
         }
 
+        /*Takes the input from the searchbar, runs the FindOrder method
+          From OrderDB and updates the order list to only show that order*/
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             if (orderSearchBar.Text != null)
@@ -78,10 +81,18 @@ namespace WinFormsSemesterProjekt
 
                 orderList.Clear();
                 orderList.Add(order);
-                
+
                 dataGridView1.Refresh();
             }
 
+        }
+
+        //Opens the EditOrder form and closes this Orders form
+        private void buttonEditOrder_Click(object sender, EventArgs e)
+        {
+            EditSalesOrder editSalesOrder = new EditSalesOrder(Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value));
+            editSalesOrder.Show();
+            this.Close();
         }
     }
 }

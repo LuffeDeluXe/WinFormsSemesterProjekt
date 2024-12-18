@@ -28,6 +28,8 @@ namespace WinFormsSemesterProjekt.GUI
             shippingComboBox.SelectedIndex = 0;
         }
 
+        /*Updates the TotalPrice textbox to show the total price
+          Of all products combined, in the current order*/
         public void UpDateTotalPrice()
         {
             orderProductLines.Clear();
@@ -49,26 +51,36 @@ namespace WinFormsSemesterProjekt.GUI
             totalPriceTextBox.Text = TotalPrice.ToString();
         }
 
+        //Opens a new Orders form and closes this AddSalesOrder form
         private void buttonReturn_Click(object sender, EventArgs e)
         {
             Orders orders = new Orders();
             orders.Show();
-            this.Hide();
+            this.Close();
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        /*Updates the current order with all the necessary information,
+          Opens a new Orders form and closes this form*/
+        private void buttonFinish_Click(object sender, EventArgs e)
         {
+            OrderDB.UpdateOrder(CurrentOrderID, Convert.ToInt32(customerIDTextBox.Text), DateTime.Now, "Created", Convert.ToDouble(totalPriceTextBox.Text), shippingComboBox.SelectedItem.ToString());
             CreatedOrder createdOrder = new CreatedOrder();
             createdOrder.Show();
             this.Close();
         }
 
+        //Opens the AddProductLine form with reference to the current OrderID and this AddSalesOrder form
         private void buttonAddProducts_Click(object sender, EventArgs e)
         {
-            WinAddProductLine productLine = new WinAddProductLine(CurrentOrderID, this);
-            productLine.Show();
+            WinAddProductLine addProductLine = new WinAddProductLine(CurrentOrderID, this);
+            addProductLine.Show();
         }
 
+        /*Creates an Order with the CustomerID set in the customerID textbox,
+          Takes the current time as order and delivery date, sets status to "Created",
+          And by standard sets the shipping method to "Pickup Point"
+        
+          It then sets the orderID label to show the current orderID*/
         private void CreateOrderButton_Click(object sender, EventArgs e)
         {
             Order order = new Order(Convert.ToInt32(customerIDTextBox.Text), DateTime.Now, DateTime.Now, "Created", 0, shippingComboBox.SelectedItem.ToString());
@@ -78,6 +90,8 @@ namespace WinFormsSemesterProjekt.GUI
             orderIDLabel.Visible = true;
         }
 
+        /*Updates the Productline corresponding to the input in ProductLineID textbox
+          And changes the quantity to correspond with the input in the NewQuantity textbox*/
         private void updateProductLineButton_Click(object sender, EventArgs e)
         {
             if (productLineIDBox.Text != null && newQuantityBox.Text != null)
@@ -96,6 +110,7 @@ namespace WinFormsSemesterProjekt.GUI
 
         }
 
+        /*Takes the ID of the currently selected ProductLine and puts it into the ProductLineID textbox*/
         private void editProductLineButton_Click(object sender, EventArgs e)
         {
             string productLineID = productLineDataView.CurrentRow.Cells[0].Value.ToString();

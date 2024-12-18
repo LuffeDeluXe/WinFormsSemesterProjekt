@@ -72,36 +72,37 @@
             // 
             // buttonDeleteOrder
             // 
-            buttonDeleteOrder.BackColor = Color.Black;
-            buttonDeleteOrder.FlatStyle = FlatStyle.Flat;
-            buttonDeleteOrder.ForeColor = SystemColors.ControlLightLight;
+            buttonDeleteOrder.BackColor = SystemColors.ButtonHighlight;
+            buttonDeleteOrder.FlatAppearance.BorderSize = 0;
+            buttonDeleteOrder.ForeColor = SystemColors.ActiveCaptionText;
             buttonDeleteOrder.Location = new Point(560, 308);
             buttonDeleteOrder.Margin = new Padding(3, 2, 3, 2);
             buttonDeleteOrder.Name = "buttonDeleteOrder";
             buttonDeleteOrder.Size = new Size(130, 22);
             buttonDeleteOrder.TabIndex = 23;
-            buttonDeleteOrder.Text = "Slet valgt ordre";
+            buttonDeleteOrder.Text = "Slet valgte ordre";
             buttonDeleteOrder.UseVisualStyleBackColor = false;
             buttonDeleteOrder.Click += buttonDeleteOrder_Click;
             // 
             // buttonEditOrder
             // 
-            buttonEditOrder.BackColor = Color.Black;
-            buttonEditOrder.FlatStyle = FlatStyle.Flat;
-            buttonEditOrder.ForeColor = SystemColors.ControlLightLight;
+            buttonEditOrder.BackColor = SystemColors.ButtonHighlight;
+            buttonEditOrder.FlatAppearance.BorderSize = 0;
+            buttonEditOrder.ForeColor = SystemColors.ActiveCaptionText;
             buttonEditOrder.Location = new Point(416, 308);
             buttonEditOrder.Margin = new Padding(3, 2, 3, 2);
             buttonEditOrder.Name = "buttonEditOrder";
             buttonEditOrder.Size = new Size(130, 22);
             buttonEditOrder.TabIndex = 22;
-            buttonEditOrder.Text = "Ændr valgt ordre";
+            buttonEditOrder.Text = "Rediger valgte ordre";
             buttonEditOrder.UseVisualStyleBackColor = false;
+            buttonEditOrder.Click += buttonEditOrder_Click;
             // 
             // buttonNewOrder
             // 
-            buttonNewOrder.BackColor = Color.Black;
-            buttonNewOrder.FlatStyle = FlatStyle.Flat;
-            buttonNewOrder.ForeColor = SystemColors.ControlLightLight;
+            buttonNewOrder.BackColor = SystemColors.ButtonHighlight;
+            buttonNewOrder.FlatAppearance.BorderSize = 0;
+            buttonNewOrder.ForeColor = SystemColors.ActiveCaptionText;
             buttonNewOrder.Location = new Point(274, 308);
             buttonNewOrder.Margin = new Padding(3, 2, 3, 2);
             buttonNewOrder.Name = "buttonNewOrder";
@@ -118,6 +119,7 @@
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(416, 228);
             dataGridView1.TabIndex = 20;
             // 
@@ -129,13 +131,11 @@
             orderSearchBar.Name = "orderSearchBar";
             orderSearchBar.Size = new Size(328, 23);
             orderSearchBar.TabIndex = 19;
-            orderSearchBar.Leave += searchBar_Leave;
             // 
             // buttonMainMenu
             // 
-            buttonMainMenu.BackColor = Color.Black;
-            buttonMainMenu.FlatStyle = FlatStyle.Flat;
-            buttonMainMenu.ForeColor = SystemColors.ControlLightLight;
+            buttonMainMenu.BackColor = SystemColors.ButtonHighlight;
+            buttonMainMenu.ForeColor = SystemColors.ActiveCaptionText;
             buttonMainMenu.Location = new Point(10, 308);
             buttonMainMenu.Margin = new Padding(3, 2, 3, 2);
             buttonMainMenu.Name = "buttonMainMenu";
@@ -146,9 +146,8 @@
             // 
             // buttonSearch
             // 
-            buttonSearch.BackColor = Color.Black;
-            buttonSearch.FlatStyle = FlatStyle.Flat;
-            buttonSearch.ForeColor = SystemColors.ControlLightLight;
+            buttonSearch.BackColor = SystemColors.ButtonHighlight;
+            buttonSearch.ForeColor = SystemColors.ActiveCaptionText;
             buttonSearch.Location = new Point(607, 18);
             buttonSearch.Margin = new Padding(3, 2, 3, 2);
             buttonSearch.Name = "buttonSearch";
@@ -214,9 +213,8 @@
             // 
             // comboBoxSortby
             // 
-            comboBoxSortby.BackColor = Color.Black;
-            comboBoxSortby.FlatStyle = FlatStyle.Flat;
-            comboBoxSortby.ForeColor = SystemColors.ControlLightLight;
+            comboBoxSortby.BackColor = SystemColors.Window;
+            comboBoxSortby.ForeColor = SystemColors.WindowText;
             comboBoxSortby.FormattingEnabled = true;
             comboBoxSortby.Items.AddRange(new object[] { "Ordrenr.: Stigende", "Ordrenr.: Faldende", "Dato: Nyeste", "Dato: Ældste" });
             comboBoxSortby.Location = new Point(586, 44);

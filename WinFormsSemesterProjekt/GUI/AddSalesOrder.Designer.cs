@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             buttonReturn = new Button();
-            buttonAdd = new Button();
+            buttonFinish = new Button();
             label1 = new Label();
             label2 = new Label();
             kundeOrderLabel = new Label();
@@ -63,16 +63,16 @@
             buttonReturn.UseVisualStyleBackColor = true;
             buttonReturn.Click += buttonReturn_Click;
             // 
-            // buttonAdd
+            // buttonFinish
             // 
-            buttonAdd.Location = new Point(156, 305);
-            buttonAdd.Margin = new Padding(3, 2, 3, 2);
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(108, 22);
-            buttonAdd.TabIndex = 25;
-            buttonAdd.Text = "Færdig";
-            buttonAdd.UseVisualStyleBackColor = true;
-            buttonAdd.Click += buttonAdd_Click;
+            buttonFinish.Location = new Point(156, 305);
+            buttonFinish.Margin = new Padding(3, 2, 3, 2);
+            buttonFinish.Name = "buttonFinish";
+            buttonFinish.Size = new Size(108, 22);
+            buttonFinish.TabIndex = 25;
+            buttonFinish.Text = "Færdig";
+            buttonFinish.UseVisualStyleBackColor = true;
+            buttonFinish.Click += buttonFinish_Click;
             // 
             // label1
             // 
@@ -283,7 +283,7 @@
             Controls.Add(kundeOrderLabel);
             Controls.Add(label2);
             Controls.Add(buttonReturn);
-            Controls.Add(buttonAdd);
+            Controls.Add(buttonFinish);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "AddSalesOrder";
@@ -296,7 +296,7 @@
         #endregion
 
         private Button buttonReturn;
-        private Button buttonAdd;
+        private Button buttonFinish;
         private Label label1;
         private Label label2;
         private Label kundeOrderLabel;

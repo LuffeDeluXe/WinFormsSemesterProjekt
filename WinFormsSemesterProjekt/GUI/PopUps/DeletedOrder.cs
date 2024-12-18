@@ -20,8 +20,6 @@ namespace WinFormsSemesterProjekt.GUI.PopUps
         private void buttonOk_Click(object sender, EventArgs e)
         {
             this.Close();
-            Orders orders = new Orders();
-            orders.Show();
         }
     }
 }
