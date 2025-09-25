@@ -38,17 +38,5 @@ namespace WinformsSemesterprojekt.Models
             TotalPrice = totalPrice;
             ShippingMethod = shippingMethod;
         }
-
-        public static void UpdateWholeOrder(Order order, int customerID, DateTime orderDate, DateTime deliveryDate, string orderStatus, double totalPrice, string shippingMethod)
-        {
-            order.CustomerID = customerID;
-            order.OrderDate = orderDate;
-            order.DeliveryDate = deliveryDate;
-            order.OrderStatus = orderStatus;
-            order.TotalPrice = totalPrice;
-            order.ShippingMethod = shippingMethod;
-
-            OrderDB.UpdateOrder(order);
-        }
     }
 }

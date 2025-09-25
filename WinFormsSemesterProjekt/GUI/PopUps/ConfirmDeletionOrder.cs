@@ -7,21 +7,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinformsSemesterprojekt.Models;
+using WinFormsSemesterProjekt.DataBase;
 
 namespace WinFormsSemesterProjekt.GUI.PopUps
 {
     public partial class ConfirmDeletionOrder : Form
     {
-        public ConfirmDeletionOrder()
+        private Orders CurrentOrders { get; set; }
+        private int CurrentOrderID { get; set; }
+        public ConfirmDeletionOrder(int orderID, Orders orders)
         {
+            CurrentOrders = orders;
+            CurrentOrderID = orderID;
+
             InitializeComponent();
         }
 
+        /*First deletes all ProductLines associated with the Order and then deletes the Order*/
         private void buttonYes_Click(object sender, EventArgs e)
         {
-            this.Close();
+            List<ProductLine> lines = ProductLineDatabase.LookInTheDatabase(CurrentOrderID);
+
+            foreach (ProductLine line in lines)
+            {
+                ProductLineDatabase.DeleteProductLine(line.ProductLineID);
+            }
+
+            OrderDB.DeleteOrder(CurrentOrderID);
+
+            CurrentOrders.UpdateOrderList();
+
             DeletedOrder deletedOrder = new DeletedOrder();
             deletedOrder.Show();
+            this.Close();
         }
 
         private void buttonNo_Click(object sender, EventArgs e)
